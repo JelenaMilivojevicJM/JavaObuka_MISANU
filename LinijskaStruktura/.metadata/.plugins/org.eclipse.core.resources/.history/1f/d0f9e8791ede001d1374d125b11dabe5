@@ -1,0 +1,19 @@
+package jelena.milivojevic;
+
+public class SatiMinutiUSekunde {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program koji vreme učitano u satima, minutima i sekundama izračunava
+		 * i pretvara u sekundama.
+		 */
+
+		/*
+		 * Tekstualni algoritam 1. ulaz: učitati sate, minute i sekunde 2. obrada:
+		 * izračunati vreme u sekundama vreme = 3600 * s + 60 * m + s 3. izlaz: ispisati
+		 * vrednost vremena u sekundama
+		 */
+
+	}
+
+}

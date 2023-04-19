@@ -1,0 +1,11 @@
+package jelena.milivojevic;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*Napisati program za štampanje maksimalnih i minimalnih vrednosti 
+		 * primitivnih tipova podataka korišćenjem klasa omotača. */
+		
+	}
+
+}

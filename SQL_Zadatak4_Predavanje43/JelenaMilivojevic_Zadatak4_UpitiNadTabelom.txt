@@ -1,0 +1,34 @@
+# a) Prosecna ocena svih studenata:
+
+SELECT AVG(ocena) AS ProsecnaOcenaSvihStudenata FROM polozenipredmeti;
+
+
+# b) Najveca i najmanja ocena:
+
+SELECT MAX(ocena) AS najvecaOcena, MIN(ocena) AS NajmanjaOcena
+FROM polozenipredmeti;
+
+
+#v)Prikaz onih koji jesu polozili baze podataka 
+# i koji nisu medju onima koji su prisustvovali dolazcima na taj predmet:
+
+SELECT * FROM studenti 
+WHERE indeks IN (SELECT indeks 
+                FROM polozenipredmeti 
+                WHERE ocena >5 AND predmetID = 1) AND indeks NOT IN (SELECT indeks 
+                                              FROM dolascinapredavanja
+                                              WHERE prisustvo = "DA" AND predmetID = 1) ;
+
+
+#g)Procedura koja prikazuje kazive svih predmeta:
+
+DELIMITER //
+CREATE PROCEDURE naziviPredmeta()
+BEGIN
+SELECT naziv AS Nazivi_Predmeta FROM predmeti;
+END //
+DELIMITER ;
+
+CALL naziviPredmeta();
+
+

@@ -1,0 +1,16 @@
+package jelena.milivojevic;
+
+public class KapaticetKondenzatora {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program koji za nalaženje ekvivalentnog kapaciteta dva kondenzatora
+		 * kapaciteta C1= 10nF i C2 = 15 nF ako su vezana:
+		 * 
+		 * a) Redno; b) Paralelno; Rešenje: Ekvivalnentni kapacitet redne veze
+		 * izračunava se po formuli Ce= C1*C2/(C1+C2), a paralelne veze po formuli: Ce =
+		 * C1 + C2.
+		 */
+	}
+
+}

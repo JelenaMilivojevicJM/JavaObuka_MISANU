@@ -1,0 +1,18 @@
+package jelena.milivojevic;
+
+public class PrestupnaGodina {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati metodu kojom se utvrđuje da li je godina prestupna ili nije. U
+		 * glavnom programu uneti godinu i ispitati da li je prestupna ili nije. Na
+		 * primer, 1972. godina je prestupna.
+		 * 
+		 * Objašnjenje: Godina je prestupna ako je deljiva sa 4 (svaka četvrta godina je
+		 * prestupna) i nije deljiva sa 100 (svaka stota godina nije prestupna) ili je
+		 * deljiva sa 400 (svaka 400. godina je prestupna).
+		 */
+
+	}
+
+}

@@ -1,0 +1,26 @@
+package jelena.milivojevic;
+
+//import paketa util koji sadrzi klasu Scanner
+import java.util.Scanner;
+
+public class ScannerUpotreba {
+
+	public static void main(String[] args) {
+		// Unos podataka koriscenjem objekta klase Scanner
+		
+		//Objekat klase Scanner
+		Scanner sc = new Scanner(System.in); 
+		
+		boolean booleanValue = sc.nextBoolean(); 
+		String stringValue = sc.next(); 
+		byte byteValue = sc.nextByte(); 
+		int intValue = sc.nextInt(); 
+		short shortValue = sc.nextShort(); 
+		long longValue = sc.nextLong(); 
+		float floatValue = sc.nextFloat(); 
+		double doubleValue = sc.nextDouble();
+
+
+	}
+
+}

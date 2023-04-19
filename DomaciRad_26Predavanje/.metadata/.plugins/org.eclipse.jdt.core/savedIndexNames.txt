@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\MISANU\Gradivo_V Test\Predavanje 26_Decembar27_Utorak\DomaciRad_26Predavanje\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2622554005.index
+776207828.index

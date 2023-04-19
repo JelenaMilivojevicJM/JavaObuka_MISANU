@@ -1,0 +1,16 @@
+package zadatak5;
+
+public class DinamickiNiz {
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 5. : a) Kreirati dinamički niz. b) Unutar niza dodati
+		 * 10 imena, koristeći ugrađenu metodu. c) Ispisati sadržaj niza. d) Na poziciji
+		 * 5 dodati novo ime. e) Odštampati trenutni sadržaj niza. f) Obrisati jedno
+		 * ime. g) Odštampati trenutni sadržaj niza 
+		 */
+		
+		
+	}
+
+}

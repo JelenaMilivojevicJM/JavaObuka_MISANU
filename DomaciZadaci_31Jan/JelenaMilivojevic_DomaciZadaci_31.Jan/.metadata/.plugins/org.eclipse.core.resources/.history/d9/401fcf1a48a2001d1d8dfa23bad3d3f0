@@ -1,0 +1,13 @@
+package zadatak7;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 7. Programski kreirati fajl i upisati tekst: Ja sam programer!
+		 */
+		
+		
+	}
+
+}

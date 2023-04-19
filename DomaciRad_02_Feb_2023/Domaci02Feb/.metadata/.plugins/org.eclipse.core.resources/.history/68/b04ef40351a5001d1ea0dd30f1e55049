@@ -1,0 +1,10 @@
+package zadatak1_02Feb2023;
+
+public class DekadniUBinarni {
+
+	public static void main(String[] args) {
+		/*TEXT ZADATKA: 1. Napisati program koji pretvara binarni u dekadni broj. */
+
+	}
+
+}

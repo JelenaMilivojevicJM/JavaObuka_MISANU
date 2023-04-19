@@ -1,0 +1,12 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\LinijskaStruktura\.metadata\.plugins\org.eclipse.jdt.core
+918225440.index
+1482603485.index
+4172506776.index
+4170936524.index
+3722924482.index
+3758135607.index
+776207828.index
+2339525703.index
+1844349228.index
+1865797976.index
+635094196.index

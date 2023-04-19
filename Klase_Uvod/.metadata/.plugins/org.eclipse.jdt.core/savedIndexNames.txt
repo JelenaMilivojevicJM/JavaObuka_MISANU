@@ -1,0 +1,13 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\Klase_Uvod\.metadata\.plugins\org.eclipse.jdt.core
+3585580812.index
+2133995655.index
+2729488282.index
+1002044960.index
+957359192.index
+839889419.index
+550974290.index
+1158185629.index
+776207828.index
+2782751619.index
+3605019048.index
+1865797976.index

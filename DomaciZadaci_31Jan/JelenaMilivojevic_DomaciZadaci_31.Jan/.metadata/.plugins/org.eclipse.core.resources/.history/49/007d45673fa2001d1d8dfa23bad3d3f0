@@ -1,0 +1,10 @@
+package zadatak3;
+
+public class ProstiBrojevi {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

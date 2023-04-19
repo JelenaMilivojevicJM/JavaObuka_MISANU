@@ -1,0 +1,11 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\Enum\.metadata\.plugins\org.eclipse.jdt.core
+1438532948.index
+3420115191.index
+1563514106.index
+1865797976.index
+776207828.index
+582579650.index
+78057599.index
+602785127.index
+1389592909.index
+3168657505.index

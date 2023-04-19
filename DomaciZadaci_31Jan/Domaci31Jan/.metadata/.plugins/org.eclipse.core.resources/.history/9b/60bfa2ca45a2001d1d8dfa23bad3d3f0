@@ -1,0 +1,33 @@
+package zadatak8;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static int racunajS(int br) {
+			int cifra;
+			int suma=0;
+			while(br>0) {
+				cifra = br%10;
+				suma+=cifra;
+				br = br /10;
+			}
+			return suma;
+		}
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 8. Koristeći rekurzivan postupak izračunati sumu svih cifara unetog broja.
+		 */
+		
+		//ULAZ:
+		//Ucitavanje broja
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite broj: ");
+		int broj = sc.nextInt();
+		
+		int rezultat = racunajS(broj);
+		System.out.println("Rezultat: "+rezultat);
+	}
+
+}

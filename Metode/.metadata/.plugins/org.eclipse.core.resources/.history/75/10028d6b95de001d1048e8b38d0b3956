@@ -1,0 +1,15 @@
+package jelena.milivojevic;
+
+public class HermiteoviPolinomi {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati metodu za izračunavanje Hermiteovih polinoma pomoću rekurentne
+		 * formule Hn+1 = 2 * (x * Hn - n * Hn-1), gde je H0 = 1, H1 = x. Metodu nazvati
+		 * H(n, x), gde je n stepen polinoma, a x promenliva. U glavnom programu uneti
+		 * stepen polinoma i promenljivu x i pozvati metodu.
+		 */
+
+	}
+
+}

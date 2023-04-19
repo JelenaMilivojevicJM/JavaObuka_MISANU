@@ -1,0 +1,10 @@
+package jelena.milivojevic;
+
+public class GlavnaDijagonala {
+
+	public static void main(String[] args) {
+		/*Učitati dvodimenzionalni niz i ispisati elemente na glavnoj dijagonali. */
+	
+	}
+
+}

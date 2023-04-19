@@ -1,0 +1,38 @@
+package zadatak3;
+
+public class ProstiBrojevi {
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 3. Napisati program koji ispisuje sve proste brojeve od 1 do
+		 * 10. Prost broj je deljiv samo jedinicom i samim sobom.
+		 */
+
+		// Resnje: Koriscenje niza brojeva
+
+		// ULAZ:
+		// Deklarisanje i inicijalizacija
+
+		int[] brojevi = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		boolean prostBr = true;
+
+		System.out.println("Niz brojeva: ");
+		for (int i = 0; i < 10; i++) {
+			System.out.print(brojevi[i] + " ");
+		}
+
+		for (int i = 0; i < 10; i++) {
+			for (int j = 2; j * j < brojevi[i]; j++) {
+				if (brojevi[i] % j == 0) {
+					prostBr = false;
+					break;
+				}
+			}
+			if (prostBr) {
+				System.out.println("Prost broj je : " + brojevi[i]);
+			}
+		}
+
+	}
+
+}

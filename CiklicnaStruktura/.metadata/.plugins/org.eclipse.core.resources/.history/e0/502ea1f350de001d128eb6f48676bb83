@@ -1,0 +1,31 @@
+package jelena.milivojevic;
+
+import java.util.Scanner;
+
+public class WhileIf {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program kojim se učitavaju brojevi koji su deljivi sa 3. Naći
+		 * aritmetičku sredinu učitanih brojeva koji su veći od 5 i manji od 20.
+		 */
+		Scanner ulaz = new Scanner(System.in);
+		System.out.println("Unesite vrednostza a:");
+		int a = ulaz.nextInt();
+		int suma = 0, brojac = 0;
+		while (a % 3 == 0) {
+			if (a > 5 && a < 20) {
+				suma += a;
+				brojac++;
+			}
+			System.out.println("Unesite vrednostza a:");
+			a = ulaz.nextInt();
+		}
+		if (brojac != 0) {
+			double sr = (double) suma / brojac;
+			System.out.println("Aritmetička sredina je " + sr);
+		}
+		ulaz.close();
+	}
+
+}

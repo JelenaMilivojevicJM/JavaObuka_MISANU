@@ -1,0 +1,14 @@
+package zadatak1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * TEXT ZADATKA: 1. Napisati program koji će generisati i ispisati po jedan broj
+		 * sledećih tipova: Int, Float, Boolean, Double, Byte.
+		 */
+
+		
+	}
+
+}

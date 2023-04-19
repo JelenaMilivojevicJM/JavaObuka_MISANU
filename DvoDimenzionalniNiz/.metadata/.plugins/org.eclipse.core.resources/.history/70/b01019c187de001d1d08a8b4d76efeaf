@@ -1,0 +1,10 @@
+package jelena.milivojevic;
+
+public class NeparniIndeksKolona {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

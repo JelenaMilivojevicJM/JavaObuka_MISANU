@@ -1,0 +1,22 @@
+package zadatak1;
+
+public class Genericka<T>{
+
+	T atribut;
+	
+	Genericka(T atribut){
+		this.atribut = atribut;
+	}
+
+	public T getAtribut() {
+		return atribut;
+	}
+
+	public void setAtribut(T atribut) {
+		this.atribut = atribut;
+	}
+	
+	public void prikaziTip() {
+		System.out.println("Broj "+atribut+" ima tip vrednosti: "+atribut.getClass().getName());
+	}
+}

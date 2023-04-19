@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;dz1_2.zad_paket1_JelenaM&apos; to &apos;dz1_2zad_paket1_JelenaM&apos;&#x0D;&#x0A;- Original project: &apos;DZ1_2.zad_JelenaMilivojevic&apos;&#x0D;&#x0A;- Original element: &apos;DZ1_2.zad_JelenaMilivojevic/src/dz1_2.zad_paket1_JelenaM&apos;&#x0D;&#x0A;- Renamed element: &apos;DZ1_2.zad_JelenaMilivojevic/src/dz1_2zad_paket1_JelenaM&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;dz1_2.zad_paket1_JelenaM&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;dz1_2.zad_paket1_JelenaM" name="dz1_2zad_paket1_JelenaM" qualified="false" references="true" stamp="1680003586653" textual="false" version="1.0"/>
+</session>

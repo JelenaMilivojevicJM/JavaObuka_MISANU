@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\Domaci_02_Feb_2023\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+338938886.index
+776207828.index

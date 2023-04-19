@@ -1,0 +1,11 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\VezbanjeZaVTest\.metadata\.plugins\org.eclipse.jdt.core
+1340696594.index
+1865797976.index
+776207828.index
+61467830.index
+955144324.index
+750360501.index
+3607730884.index
+1019330022.index
+422745419.index
+3605019048.index

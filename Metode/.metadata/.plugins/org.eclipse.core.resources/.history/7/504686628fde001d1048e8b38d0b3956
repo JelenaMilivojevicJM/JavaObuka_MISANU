@@ -1,0 +1,11 @@
+package jelena.milivojevic;
+
+public class RacunanjeSilePrivlacenja {
+
+	public static void main(String[] args) {
+		/*Napisati metodu pod imenom sila za izračunavanje sile privlačenja između 
+dve materijalne tačke m1 i m2 na rastojanju r, datu formulom F = y * m1 * m2 / (r*r) */
+
+	}
+
+}

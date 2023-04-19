@@ -1,0 +1,20 @@
+package jelena.milivojevic;
+
+public class ZbirZnacajnihCifara {
+
+	public static void main(String[] args) {
+		/*
+		 * Sastaviti algoritam i napisati program za izračunavanje zbira značajnih
+		 * cifara proizvoljnog trocifrenog broja datog na ulazu. Na izlazu odštampati
+		 * traženi zbir.
+		 */
+
+		/*
+		 * Tekstualni algoritam 1. ulaz: učitati trocifreni broj n 2. obrada: izračunati
+		 * cifre stotine, desetice i jedinice i njihov zbir 3. izlaz: ispisati vrednost
+		 * zbira cifara trocifrenog broja
+		 */
+
+	}
+
+}

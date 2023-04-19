@@ -1,0 +1,31 @@
+package zadatak1;
+import java.io.*;
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * TEXT ZADATKA: 1. Napisati program koji će generisati i ispisati po jedan broj
+		 * sledećih tipova: Int, Float, Boolean, Double, Byte.
+		 
+		 */
+		
+		int brojInt = 1111;
+		
+		float brojF = 1111.1234567f;
+		
+		double brojD = 1111.123456789;
+		
+		boolean brojB = true;
+		
+		byte brojBy = 11;
+
+		System.out.println("int : "+brojInt);
+		System.out.println("float : "+brojF);
+		System.out.println("double : "+brojD);
+		System.out.println("boolean : "+brojB);
+		System.out.println("byte: "+brojBy);
+		
+	}
+}
+
+

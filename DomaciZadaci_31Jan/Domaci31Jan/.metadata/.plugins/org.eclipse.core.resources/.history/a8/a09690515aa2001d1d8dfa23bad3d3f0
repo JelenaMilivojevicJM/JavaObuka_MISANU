@@ -1,0 +1,33 @@
+package zadatak1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * TEXT ZADATKA: 1. Napisati program koji će generisati i ispisati po jedan broj
+		 * sledećih tipova: Int, Float, Boolean, Double, Byte.
+		 */
+
+		Genericka<Integer> g1 = new Genericka(1);
+		g1.getAtribut();
+		g1.prikaziTip();
+		
+		Genericka<Float> g2 = new Genericka(2.512343);
+		g2.getAtribut();
+		g2.prikaziTip();
+		
+		Genericka<Boolean> g3 = new Genericka(0);
+		g3.getAtribut();
+		g3.prikaziTip();
+		
+		Genericka<Double> g4 = new Genericka(5.58263523245);
+		g4.getAtribut();
+		g4.prikaziTip();
+		
+		Genericka<Byte> g5 = new Genericka(20);
+		g5.getAtribut();
+		g5.prikaziTip();
+		
+	}
+
+}

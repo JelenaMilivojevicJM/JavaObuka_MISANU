@@ -1,0 +1,16 @@
+package jelena.milivojevic;
+
+public class HornerovaSema {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program za tabeliranje vrednosti funkcije f(x) = x4 - 10x3 + 35x2 -
+		 * 50x + 24
+		 * 
+		 * koristeći Hornerovu šemu za izračunavanje vrednosti funkcije. Funkciju
+		 * tabelirati za vrednost x = 0.0(0.1)0.9.
+		 */
+
+	}
+
+}

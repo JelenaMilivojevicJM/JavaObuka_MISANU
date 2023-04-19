@@ -1,0 +1,13 @@
+package jelena.milivojevic;
+
+public class VrednostFunkcijef {
+
+	public static void main(String[] args) {
+		/*
+		 * Sastaviti algoritam i napisati metodu kojom se za zadate vrednosti x, y i z
+		 * izračunava vrednost f po formuli f = max(x, min(y,z)). U glavnom programu
+		 * uneti vrednosti za x, y i z i štampati rezultat.
+		 */
+	}
+
+}

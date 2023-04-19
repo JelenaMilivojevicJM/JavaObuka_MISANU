@@ -1,0 +1,56 @@
+package zadatak5;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DinamickiNiz {
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 5. : a) Kreirati dinamički niz. b) Unutar niza dodati 10
+		 * imena, koristeći ugrađenu metodu. c) Ispisati sadržaj niza. d) Na poziciji 5
+		 * dodati novo ime. e) Odštampati trenutni sadržaj niza. f) Obrisati jedno ime.
+		 * g) Odštampati trenutni sadržaj niza
+		 */
+
+		// a)Kreiranje dinamickog niza
+		List<String> nizImena = new ArrayList<String>();
+
+		// b)Unutar niza dodati 10 imena - Koriscenje ugradjene metode add();
+		nizImena.add("Mika");
+		nizImena.add("Zika");
+		nizImena.add("Pera");
+		nizImena.add("Laza");
+		nizImena.add("Luka");
+		nizImena.add("Lana");
+		nizImena.add("Mara");
+		nizImena.add("Paja");
+		nizImena.add("Lola");
+		nizImena.add("Masa");
+
+		// c) Ispisati sadržaj niza.
+		System.out.print("Pocetni sadrzaj niza: ");
+		for (String s : nizImena) {
+			System.out.print(s + " ");
+		}
+
+		// d) Na poziciji 5 dodati novo ime - Dodajemo ime Bora umesto imena Lana
+		nizImena.set(5, "Bora");
+
+		// e) Odštampati trenutni sadržaj niza.
+		System.out.print("\nTrenutni sadrzaj niza: ");
+		for (String s : nizImena) {
+			System.out.print(s + " ");
+		}
+
+		// f) Obrisati jedno ime - Brisemo ime na poziciji 8 (Lola)
+		nizImena.remove(8);
+
+		// g) Odštampati trenutni sadržaj niza
+		System.out.print("\nKrajnji sadrzaj niza: ");
+		for (String s : nizImena) {
+			System.out.print(s + " ");
+		}
+	}
+
+}

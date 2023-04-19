@@ -1,0 +1,27 @@
+package zadatak2;
+
+//Importovanje paketa java.lang koji sadrzi klasu Radnom
+import java.util.Random;
+
+public class PetSlucajnaBroja {
+
+	public static void main(String[] args) {
+		// Kreiranje objekta klase Random
+		Random randBr = new Random();
+
+		// Upotreba for petlje radi ponavljanja naredbi ispisa 5 radnom brojeva
+		for (int i = 0; i < 5; i++) {
+
+			System.out.printf((i + 1) + ". broj: " + randBr.nextInt(101) + " ");
+			/*
+			 * Pozivanje metode nextInt() koja je metoda objekta klase radnom Naznacen broj
+			 * 101 u zagradi je opseg do kog zelimo da ide ispisivanje nasumicnih brojeva
+			 * Posto metode nextInt()krece od broja 0, kao uslov stavljamo 101 ako zelimo da
+			 * uracuna broj 100
+			 */
+
+			System.out.println();
+		}
+	}
+
+}

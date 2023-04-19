@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\JDBC_Vezbanje_Predavanje43\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+429303134.index
+56556699.index
+776207828.index

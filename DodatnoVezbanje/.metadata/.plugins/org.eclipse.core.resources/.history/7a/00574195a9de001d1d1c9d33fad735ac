@@ -1,0 +1,46 @@
+package jelena.milivojevic;
+
+import java.util.Scanner;
+
+public class MAIN {
+
+	public static void main(String[] args) {
+		
+		// Ucitavanje vrednosti sa konzole:
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite tip vozila: (P za Putnicko/T zaTeretno)");
+		char tip= sc.next().charAt(0);
+		
+		//Kreiranje potrebnihObjekata:
+
+		if(tip=='P') {
+			System.out.println("Unesite broj putnika: ");
+			int brojPutnika = sc.nextInt();
+			System.out.println("Unesite tezinu vozila");
+			double tezinaVozila = sc.nextDouble();
+			System.out.println("Unesite prosecnu tezinu 1 putnika: ");
+			double tezina1Putnika = sc.nextDouble();
+			
+			PutnickoVozilo pv = new PutnickoVozilo(tezinaVozila,brojPutnika,tezina1Putnika);
+			double ukupnaTezina = pv.ukupnaTezina();
+			
+			//Poredjenje kroz uslov:
+			double nosivost = 1000;
+			
+			if(ukupnaTezina>nosivost) {
+				System.out.println("Ukupna tezina prevazilazi nosivost mosta! ");
+			}else {
+				System.out.println("Mozete bezbedno preci most!");
+			}
+			
+		}else if(tip=='T') {
+			//Poredjenje kroz uslov:
+			
+		}else {
+			System.out.println("Niste uneli odgovarajucu oznaku. Pokusajte ponovo!");
+		}	
+	
+		
+	}
+
+}

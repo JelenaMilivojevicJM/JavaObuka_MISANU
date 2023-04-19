@@ -1,0 +1,96 @@
+CREATE DATABASE evidencija;
+
+#Kreiranje i povezivanje tabela:
+CREATE TABLE studenti(
+   indeks INT PRIMARY KEY NOT NULL,
+    ime varchar(45),
+  prezime varchar(45),
+    grad varchar(45),
+    ulica varchar(45),
+    broj INT(3)
+)ENGINE=INNODB; 
+
+
+CREATE TABLE predmeti(
+   predmetID INT PRIMARY KEY NOT NULL,
+   naziv varchar(45)
+)ENGINE=INNODB;
+
+
+CREATE TABLE dolascinapredavanja(
+   predavanjeID INT PRIMARY KEY NOT NULL,
+   datum DATE,
+   prisustvo ENUM("DA","NE")
+)ENGINE=INNODB;
+
+
+CREATE TABLE polozenipredmeti(
+   polaganjeID INT PRIMARY KEY NOT NULL,
+    status ENUM("Polozen","NijePolozen"),
+   ocena INT
+)ENGINE=INNODB;
+
+ALTER TABLE polozenipredmeti
+ADD COLUMN predmetID INT;
+
+ALTER TABLE polozenipredmeti
+ADD FOREIGN KEY (predmetID) REFERENCES predmeti (predmetID)
+ON UPDATE CASCADE 
+ON DELETE NO ACTION;
+
+
+ALTER TABLE dolascinapredavanja
+ADD COLUMN indeks INT;
+
+ALTER TABLE dolascinapredavanja
+ADD FOREIGN KEY (indeks) REFERENCES studenti (indeks)
+ON UPDATE CASCADE 
+ON DELETE NO ACTION;
+
+ALTER TABLE dolascinapredavanja
+ADD COLUMN predmetID INT;
+
+ALTER TABLE dolascinapredavanja
+ADD FOREIGN KEY (predmetID) REFERENCES predmeti (predmetID)
+ON UPDATE CASCADE 
+ON DELETE NO ACTION; 
+
+ALTER TABLE polozenipredmeti
+ADD COLUMN indeks INT;
+
+ALTER TABLE polozenipredmeti
+ADD FOREIGN KEY (indeks) REFERENCES studenti (indeks)
+ON UPDATE CASCADE 
+ON DELETE NO ACTION;
+
+#Unos podataka u tabele:
+INSERT INTO `studenti`(`indeks`, `ime`, `prezime`, `grad`, `ulica`, `broj`)
+VALUES (111,"Pera","Peric","Beograd","Ustanicka",34),
+(222,"Mika","Mikic","Kragujevac","Cerska",4),
+(333,"Zika","Zikic","Novi Sad","Pocerska",14);
+
+INSERT INTO `predmeti`(`predmetID`, `naziv`)
+VALUES (1,"Baze Podataka"),
+(2,"Programiranje"),(3,"Veb Programiranje");
+
+INSERT INTO `dolascinapredavanja`(`predavanjeID`, `datum`, `prisustvo`, `indeks`, `predmetID`)
+VALUES (1,'2020-05-05',"DA",111,1),
+(2,'2020-05-12',"DA",111,1),
+(3,'2020-05-29',"DA",111,1),
+(4,'2020-05-05',"DA",111,1),
+(5,'2020-05-19',"DA",111,2),
+(6,'2020-05-26',"DA",111,2),
+(7,'2020-06-01',"DA",111,2),
+(8,'2020-06-03',"DA",222,2),
+(9,'2020-04-05',"DA",333,2),
+(10,'2020-04-12',"DA",333,2),
+(11,'2020-06-01',"DA",333,3),
+(12,'2020-06-03',"DA",333,3);
+
+INSERT INTO `polozenipredmeti`(`polaganjeID`, `status`, `ocena`, `predmetID`, `indeks`) 
+VALUES (1,"Polozen",6,1,111),
+(2,"Polozen",9,2,111),
+(3,"Polozen",7,1,222),
+(4,"Polozen",10,3,222),
+(5,"Polozen",10,2,333),
+(6,"Polozen",9,3,333);

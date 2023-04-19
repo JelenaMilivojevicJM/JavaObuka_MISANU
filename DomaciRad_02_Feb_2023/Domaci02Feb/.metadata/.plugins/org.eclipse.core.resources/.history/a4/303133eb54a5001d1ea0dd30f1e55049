@@ -1,0 +1,10 @@
+package zadatak2_02Feb2023;
+
+public class BrisanjeDuplikata {
+
+	public static void main(String[] args) {
+		/*TEXT ZADATKA: 2. Napisati program koji iz zadatog niza briše duplikate. 1232145657 -> 1234567 */
+
+	}
+
+}

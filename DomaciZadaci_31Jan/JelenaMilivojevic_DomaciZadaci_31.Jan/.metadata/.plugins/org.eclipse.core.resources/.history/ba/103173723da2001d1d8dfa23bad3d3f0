@@ -1,0 +1,54 @@
+package zadatak4;
+
+import java.util.Scanner;
+
+public class BrojParnihiNeparnih {
+
+	public static void main(String[] args) {
+		/*TEKST ZADATKA: 4. Napisati program koji računa broj parnih i neparnih brojeva u nizu */
+		
+		//ULAZ:
+		//Ucitati duzinu niza
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite duzinu niza: ");
+		int n = sc.nextInt();
+		
+		//Deklarisati i inicijalizovati niz
+		int niz[] = new int[n];
+		
+		//Deklarisati i inicijalizovati dva brojac
+		int brojacP = 0;
+		int brojacNP = 0;
+		
+		//Unosenje elemenata u niz
+		System.out.println("Unesite elemente niza: ");
+		for(int i =0; i<n; i++) {
+			System.out.println((i+1)+". element = ");
+			niz[i]=sc.nextInt();
+		}
+		
+		//OBRADA: 
+		//Prolaskom kroz uslove u for petlji popunjavamo dva nova niza
+		for(int i = 0; i<n; i++) {
+			//Uslov za broj parnih brojeva
+			if(niz[i]%2==0) {
+				brojacP++;
+			}
+			//Uslov za broj neparnih brojeva
+			if(niz[i]%2!=0) {
+				brojacNP++;
+			}
+		}
+		//IZLAZ:
+		//Stampanje niza i rezultata
+		System.out.println("Niz: ");
+		for(int i =0; i<n; i++) {
+			System.out.print(niz[i]+" ");
+		}
+		System.out.println("\nUkupno pranih brojeva u nizu: "+brojacP);
+		System.out.println("Ukupno nepranih brojeva u nizu: "+brojacNP);
+		
+		sc.close();
+	}
+
+}

@@ -1,0 +1,29 @@
+package zadatak7;
+
+import java.io.DataInputStream;
+import java.io.FileOutputStream;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		/*
+		 * TEKST ZADATKA: 7. Programski kreirati fajl i upisati tekst: Ja sam programer!
+		 */
+
+		// 1.Korak: Povezivanje sa stream-on i omogucavanje unosenja preko konzole
+		// Kao parametar konstruktora unosi se vrednost iz sistemskog ulaza sa konzole
+		// koju korisnik unese
+		DataInputStream dis = new DataInputStream(System.in);
+
+		// 2.Korak: Kreiranje fajla i Povezivanje sa Fajlom
+		FileOutputStream fos = new FileOutputStream("NoviFajl.txt");
+		
+		
+		//3.Korak: Ucitavanje sa konzole i Upis u File preko metoda read(); i write(); 
+		
+		System.out.println("Unesite zeljeni tekstualni sadrzaj. Za prekid unosa unesite karakter $");
+
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+package zadatak9;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * TEKST ZADATKA: 9. Napisati program koji prebrojava “space” simbole.
+		 */
+		
+		// ULAZ:
+		
+		// Ucitavanje textualnog sadrzaja sa konzole
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite recenicu: ");
+		String recenica = sc.nextLine();
+
+		// Deklaracija i inicijalizacija brojaca
+		int brojac = 0;
+
+		// Deklaracija+Inicijalizacija char niza od unetog Stringa
+		int duzinaNiza = recenica.length();
+		char niz[] = new char[duzinaNiza];
+		for (int i = 0; i < duzinaNiza; i++) {
+			niz[i] = recenica.charAt(i);
+			if (recenica.charAt(i) == ' ') {
+				brojac++;
+			}
+		}
+		// Izlaz:
+		System.out.println("Znak space se u unetoj recenici pojavljuje " + brojac + " puta.");
+
+		sc.close();
+	}
+}

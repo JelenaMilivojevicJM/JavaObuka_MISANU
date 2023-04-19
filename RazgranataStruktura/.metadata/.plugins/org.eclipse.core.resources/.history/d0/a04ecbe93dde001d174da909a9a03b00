@@ -1,0 +1,13 @@
+package jelena.milivojevic;
+
+public class SkalaOcenjivanja {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program koji predstavlja skalu ocenjivanja. - od 0 do 49 - je ocena
+		 * 1 - od 50 do 60 - je ocena 2 - od 61 do 69 - je ocena 3 - od 70 do 80 - je
+		 * ocena 4 - preko 81 je ocena 5
+		 */
+	}
+
+}

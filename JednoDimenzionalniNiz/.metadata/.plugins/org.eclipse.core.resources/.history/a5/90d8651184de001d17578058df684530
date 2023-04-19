@@ -1,0 +1,20 @@
+package jelena.milivojevic;
+
+public class Trougao {
+
+	public static void main(String[] args) {
+		/*
+		 * Tri pozitivna broja x, y, z predstavljaju stranice trougla ako zadovoljavaju
+		 * uslove:
+		 * 
+		 * x + y > z i |x - y| < z.
+		 * 
+		 * Sastaviti algoritam i napisati program kojim se za svaku od n trojki brojeva
+		 * (ai, bi, ci, i = 1, ..., n) ispituje da li predstavlja stranice trougla.
+		 * Štampati ai, bi, ci i odgovor “da” (ukoliko čine trougao) ili ”ne” (ukoliko
+		 * ne čine trougao).
+		 */
+
+	}
+
+}

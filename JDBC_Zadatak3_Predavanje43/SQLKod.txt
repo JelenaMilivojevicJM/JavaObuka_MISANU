@@ -1,0 +1,18 @@
+#Spisak biblioteka 
+
+#ID ImeBiblioteke Ulica Broj
+
+CREATE DATABASE spisakbiblioteka;
+
+CREATE TABLE biblioteke(
+  bibliotekaID  INT PRIMARY KEY NOT NULL,
+    ImeBiblioteke varchar(45),
+    ulica varchar(45),
+    broj int(3)
+);
+
+INSERT INTO `biblioteke`(`bibliotekaID`, `ImeBiblioteke`, `ulica`, `broj`)
+VALUES (1,"Stevan Sremac","Podunavska",3),
+(2,"Univerzitetska - Nikola Tesla","Kej Mike Paligorica",2),
+(3,"Resavska Biblioteka","Cerska",5);
+
