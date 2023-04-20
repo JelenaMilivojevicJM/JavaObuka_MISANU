@@ -1,0 +1,60 @@
+package jelena.milivojevic;
+
+//Import java.io paketa koji sadrzi Serializable Interface 
+import java.io.Serializable;
+
+/* O Serializable Intefrace-u: Oznaka impelentacije intefacea za serijalizaciju,
+ * kako  bismo mogli vrsiti serijalizaciju nad objektima ove klase.
+ Potrebno je da na zeljenu Java klasu, ciju instancu zelimo da serijalizujemo, impementiramo Serializable interface ( java.io. Serializable).
+Ovaj interface: Nema metode, Nema polja, njegova jedina svrha jeste da IDENTIFIKUJE klasu cija instanca treba da bude serijalizovana.
+*/
+
+/*Serijalizaciju i Deserijalizaciju omogucavaju klase koje implmentiraju Serializable Interface.
+ *  Kakve su klase koje implementiraju ovaj inter-face? Ako klasa implementira ovaj interface to onda podrazumeva 2 slucaja :
+1.	ili da onda svako polje objekta  te klase bude serijalizovano
+2.	ili mora biti transient (ignorisano od strane serijalizacije, znaci nece se serijalizovati)
+3.	Sve potklase automatski IMAJU mogucnost serijalizacije
+ */
+
+public class Grad implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	/*
+	 * serialVersionUID je 64-bitni broj koji se koristi kao jedinstveni
+	 * identifikator klase tokom procesa serijalizacije i deserijalizacije. Kada se
+	 * serijalizuje objekat klase, onda se u fajl zapisuje i ovaj identifikator.
+	 * Koristi se da bi se garantovala dosledna vrednost serialVersionUID-a u
+	 * različitim implementacijama Java kompajlera. SerialVersionUID se koristi da
+	 * bi se obezbedilo učitavanje iste klase (koja je korišćena tokom procesa
+	 * serijalizacije). koristi tokom deserijalizacije da bi se proverilo da li
+	 * pošiljalac i prijemnik serijskog objekta imaju učitane klase za taj objekat
+	 * koji su kompatibilni sa serijalizacijom.
+	 */
+	private String ime;
+	private int postCode;
+
+	Grad(String ime, int postCode) {
+		this.ime = ime;
+		this.postCode = postCode;
+	}
+
+	public String getIme() {
+		return ime;
+	}
+
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+
+	public int getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(int postCode) {
+		this.postCode = postCode;
+	}
+
+	public String toString() {
+		return ime + ": " + postCode;
+	}
+}

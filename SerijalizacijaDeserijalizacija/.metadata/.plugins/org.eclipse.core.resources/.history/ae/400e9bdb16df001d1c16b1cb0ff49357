@@ -1,0 +1,38 @@
+package jelena.milivojevic;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
+public class SeDes {
+
+	// SERIJALIZACIJA:
+	// Ovde u ovoj klasi pisemo konkretne metode kako se to izvrsava
+	
+	/* Metoda za serijalizaciju: - ona samo salje u fajl koji kreira za to. 
+	 * Parametri (sta zelimo da serijalizujemo,naziv fajla gde serijalizujemo objekte) */
+
+	public void serijalizuj(List<Grad> listaGradova, String nazivFajla) throws FileNotFoundException, IOException {
+
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nazivFajla));
+
+		oos.writeObject(listaGradova);
+		oos.close();
+
+	}
+
+	// Metoda za deserijalizaciju: - ona dovlaci iz fajla ono sto je upisano
+
+	public List<Grad> deserijalizuj(String nazivFajla)
+			throws FileNotFoundException, IOException, ClassNotFoundException {
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nazivFajla));
+		List<Grad> listaGradova = (List<Grad>) ois.readObject();
+		return listaGradova;
+
+	}
+
+}
