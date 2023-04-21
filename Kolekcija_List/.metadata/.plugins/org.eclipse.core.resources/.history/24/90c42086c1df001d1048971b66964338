@@ -1,0 +1,14 @@
+package jelena.milivojevic;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//Kreiranje objekta klase velika Slova
+		VelikoSlovo obj = new VelikoSlovo();
+
+		obj.unosVelikihSlova();
+		obj.ispisVelikihSlova();
+
+	}
+
+}

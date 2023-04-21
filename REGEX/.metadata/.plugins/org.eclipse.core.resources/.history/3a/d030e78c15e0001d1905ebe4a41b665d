@@ -1,0 +1,10 @@
+package jelena.milivojevic;
+
+public class Main {
+	// Primer upotrebe regulazrnih izraza kroz upotrebu metoda klase String:
+	public static void main(String[] args) {
+		/* */
+
+	}
+
+}

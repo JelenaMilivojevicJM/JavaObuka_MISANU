@@ -1,0 +1,41 @@
+package jelena.milivojevic;
+import java.util.HashMap;
+import java.util.Map;
+
+class Ucenik {
+    private String ime;
+    private int godine;
+    private Map<String,Integer> ocene;
+
+    public Ucenik(String ime, int godine) {
+        this.ime = ime;
+        this.godine = godine;
+        this.ocene = new HashMap<String,Integer>();
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public int getGodine() {
+        return godine;
+    }
+
+    public void dodajOcenu(String predmet, int ocena) {
+    	ocene.put(predmet, ocena);
+    }
+
+    public void izbrisiOcenu(String predmet) {
+    	ocene.remove(predmet);
+    }
+
+    public int getOcena(String predmet) {
+        return ocene.get(predmet);
+    }
+
+    public void printGrades() {
+        for (Map.Entry<String, Integer> entry : ocene.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}

@@ -1,0 +1,20 @@
+package jelena.milivojevic;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Kreiranje studenta
+		Ucenik ucenik = new Ucenik("Mika", 25);
+
+		// Dodavanje ocena
+		ucenik.dodajOcenu("Matematika", 9);
+		ucenik.dodajOcenu("Fizika", 8);
+		ucenik.dodajOcenu("Hemija", 7);
+		ucenik.dodajOcenu("Engleski", 10);
+
+		// Prikazivanje ocena
+		System.out.println("Ocene ucenika " + ucenik.getIme() + ":");
+		ucenik.printGrades();
+	}
+
+}

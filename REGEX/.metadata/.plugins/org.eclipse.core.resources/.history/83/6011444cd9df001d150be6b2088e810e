@@ -1,0 +1,37 @@
+package jelena.milivojevic;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Deklarisanje i inicijalizacija pocetnog stringa
+		String pocetnaRecenica = "Danas je lep dan," + " ptice pevaju i sunce sija.";
+
+		// Novi string kao obrasca regularnog izraza koji ce se koristiti kao obrazac
+		// pretrage
+		// Ovaj obrazac trazi pojavljivanje reci "Danas" u tekstu koji se pretrazuje
+		String obrazacZamene = "\\b(Danas)\\b";
+
+		// Objekat klase Pattern kao obrazac koji poziva svoju metodu za kompajliranje -
+		// prevod
+		Pattern obrazac = Pattern.compile(obrazacZamene);
+
+		// Kreiranje objekta klase Matcher koji se koristi za pretragu teksta date
+		// recenice
+		Matcher pretraga = obrazac.matcher(pocetnaRecenica);
+
+		// Zamena prve pojave obrasca za zamenu u tekstu sa "Sutra"
+		String izmenjenaRecenica = pretraga.replaceFirst("Sutra");
+		// Pretraga teksta upotrebom metode find() kao provera za ostalim pojavama
+		// obrasca za zamenu
+		while (pretraga.find()) {
+			izmenjenaRecenica = pretraga.replaceFirst("Sutra");
+		}
+
+		// Izlaz: Stampanje recenice nakon zamene
+		System.out.println(izmenjenaRecenica);
+	}
+
+}

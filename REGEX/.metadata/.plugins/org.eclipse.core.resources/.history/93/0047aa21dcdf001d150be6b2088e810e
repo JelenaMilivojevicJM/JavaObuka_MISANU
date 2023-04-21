@@ -1,0 +1,66 @@
+package jelena.milivojevic;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Deklarisanje i inicijalizacija pocetnog stringa. Ovaj string je nasa recenica
+		 * koju cemo pretrazivati pomocu regularnih izraza
+		 */
+		String pocetnaRecenica = "Danas je lep dan," + " ptice pevaju i sunce sija.";
+
+		/*
+		 * Kreiramo novi string kao obrazac regularnog izraza koji ce se koristiti kao
+		 * obrazac pretrage. Ovaj obrazac trazi pojavljivanje reci "Danas" u tekstu koji
+		 * se pretrazuje. Svaki "\\b" oznacava granicu reci, tako da se trazi samo cela
+		 * rec "Danas". Rec stavljena u zagradu (Danas) oznacava da treba pretraziti
+		 * grupu reci koje sadrze ovu rec.
+		 */
+		String obrazacZamene = "\\b(Danas)\\b";
+
+		/*
+		 * Kreiramo objekat klase Pattern kao obrazac koji poziva svoju metodu za
+		 * kompajliranje - prevod. Zapravo ovaj objekat klase Pattern predstavlja
+		 * kompajlirani obrazac regularnog izraza. Kompajlira pomocu poziva metode
+		 * compile(). Kompajliranje obrasca je neophodno kako bi se ubrzala pretraga
+		 * teksta
+		 */
+		Pattern obrazac = Pattern.compile(obrazacZamene);
+
+		/*
+		 * Kreiranje objekta klase Matcher koji se koristi za pretragu teksta date
+		 * recenice. Zapravo se ovaj objekat koristi za pretragu teksta pomocu obrasca
+		 * regularnog izraza. On sadrzi informacije o pretrazi koja je izvrsena.
+		 */
+		Matcher pretraga = obrazac.matcher(pocetnaRecenica);
+
+		/*
+		 * Zamena prve pojave obrasca za zamenu u tekstu sa "Sutra". Metoda replaceFirst
+		 * zamenjuje prvu pojavu obrasca sa zadatim tekstom. Novu vrednost, odnosno
+		 * izmenjenu recenicu dodeljujemo novom stringu koji kreiramo tim povodom.
+		 */
+		String izmenjenaRecenica = pretraga.replaceFirst("Sutra");
+
+		/*
+		 * Pretraga celog preostalog teksta upotrebom while petlje i metode find().
+		 * Metoda find trazi sledecu pojavu obrasca u tekstu. Provera za ostalim
+		 * pojavama obrasca za zamenu. Dakle, ako se obrazac za zamenu pronadje, metoda
+		 * find vraca true, i pozicionira se na pocetak pronadjene pojave
+		 */
+		while (pretraga.find()) {
+			izmenjenaRecenica = pretraga.replaceFirst("Sutra");
+		}
+
+		// Izlaz:
+		// Stampanje prvobitne recenice:
+		System.out.println("Pocetna recenica: ");
+		System.out.println(pocetnaRecenica);
+		// Stampanje recenice nakon zamene
+		System.out.println("Izmenjena recenica: ");
+		System.out.println(izmenjenaRecenica);
+	}
+
+}

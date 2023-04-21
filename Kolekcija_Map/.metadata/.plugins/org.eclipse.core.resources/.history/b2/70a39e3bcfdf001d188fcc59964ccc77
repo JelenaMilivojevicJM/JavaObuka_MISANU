@@ -1,0 +1,50 @@
+package jelena.milivojevic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/*Klasa Ucenik sadrži metode za dodavanje, uklanjanje i dobijanje ocena za određeni predmet.
+ * Ocene se dodaju u HashMap kolekciji gde su ključevi tipa String (predmet) a vrednosti tipa Integer (ocena). */
+class Ucenik {
+	// Polja
+	private String ime;
+	private int godine;
+	private Map<String, Integer> ocene;
+
+	// Konstruktor
+	public Ucenik(String ime, int godine) {
+		this.ime = ime;
+		this.godine = godine;
+		this.ocene = new HashMap<String, Integer>();
+	}
+
+	// Dohvatanje imena i godina
+	public String getIme() {
+		return ime;
+	}
+
+	public int getGodine() {
+		return godine;
+	}
+
+//Dohvatanje ocene iz nekog predmeta - iz kolekcije
+	public int getOcena(String predmet) {
+		return ocene.get(predmet);
+	}
+
+	// Dodavanje ocena za neki predmet (u kolekciju)
+	public void dodajOcenu(String predmet, int ocena) {
+		ocene.put(predmet, ocena);
+	}
+
+	// Brisanje ocene iz nekog predmeta (iz kolekcije)
+	public void izbrisiOcenu(String predmet) {
+		ocene.remove(predmet);
+	}
+
+	public void ispisOcene() {
+		for (Map.Entry<String, Integer> entry : ocene.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+	}
+}

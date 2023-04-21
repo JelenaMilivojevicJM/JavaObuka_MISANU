@@ -1,0 +1,37 @@
+package jelena.milivojevic;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class VelikoSlovo {
+	// Kreiranje liste velikihslova
+	// Posto radi samo nad referentnim tipom podataka umesto char stavljamo omotacku
+	// klasu Character
+	List<Character> velikaSlova = new ArrayList<Character>();
+
+	Scanner sc = new Scanner(System.in);
+
+	// Metoda za ucitavanje slova u listu
+	void unosVelikihSlova() {
+		System.out.println("Unesite velika slova abecede.*Za prekid unosenja, unesite broj 1* ");
+
+		while (true) {
+			System.out.println("Slovo: ");
+			Character vs = sc.next().charAt(0);
+			if (vs == '1') {
+				return;
+			}
+
+			// Smestanje ucitanih vrednosti sa konzole u kolekciju
+			this.velikaSlova.add(vs);
+		}
+	}
+
+	// Metoda za ispis liste:
+	void ispisVelikihSlova() {
+		System.out.println("Velika Slova: ");
+		System.out.print(this.velikaSlova);
+		System.out.println();
+	}
+}

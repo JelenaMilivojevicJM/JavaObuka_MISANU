@@ -1,0 +1,16 @@
+package jelena.milivojevic;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Teorijsko objasnjenje List-a: U hijerarhiji kolekcija, interfejs Collection
+		 * je koreni interfejs iz koga su izvedeni interfejsi List, Set, Queue, (i još
+		 * dodatnih interfejsa). Collection {List, Set, Queue} 1. Interfejs List
+		 * definiše kolekciju u kojoj se elementi mogu ponavljati.
+		 */
+	}
+
+}

@@ -1,0 +1,53 @@
+package jelena.milivojevic;
+
+import java.util.Scanner;
+
+public class Main {
+	// Primer upotrebe regulazrnih izraza kroz upotrebu metoda klase String:
+	public static void main(String[] args) {
+		/*
+		 * Stringovi u Javi imaju ugrađenu podršku za regularne izraze. Stringovi imaju
+		 * četiri ugrađene metode za regularne izraze: matches(), split()),
+		 * replaceFirst(),replaceAll().
+		 * 
+		 * Medjutim, treba napomenuti da metoda replace() NE podržava regularne izraze.
+		 * 
+		 * Ove metode nisu optimizovane za performanse i zato se upravo i koriste klase
+		 * Pattenr i Matcher koje jesu.
+		 */
+
+		/* Primer upotrebe korisnickog unosa uz primenu metode klase String,
+		 * radi provere da li je ucenik uneo validan broj godina*/
+		
+	        Scanner sc = new Scanner(System.in);
+	        boolean tacnost;
+	        //Koristimo do-while petlju jer ocekujemo da barem jednom prodjemo kroz proveru
+	        do {
+	        	/*Definisemo promenljivu kao obrazac je regex koji koristimo kao nase pravilo provere.
+	        	 * Ovako napizan obrazac prikazuje kvantifikatore.
+	        	 * Kvantifikatori (Quantifiers) se koriste za odredjivanje broja pojavljivanja znakova u nekom regexu.
+	        	 * Kinkretno ovde, u zagradi 2 je minimalni, a 3 maksimalni broj dozvoljenih cifara broja godina, odvojenih zarezom (,) bez razmaka između.
+	        	 * Minimalni broj cifara je 2 jer ocekujemo da ucenik ima vise od 9 godina.*/
+	            String obrazacGodine = "\\d{2,3}";
+	            
+	            System.out.print("Deo formulara za ucenika srednje skole: ");
+	            System.out.print("Unesi ime i prezime: ");
+	            String imePrezime = sc.nextLine();
+	            System.out.print("Unesi broj godina: ");
+	            String brojGod = sc.nextLine();
+	            
+	            //Primena Stringove metode mathces() za proveru poklapanja obrazca za unetim iznosom
+	            tacnost = brojGod.matches(obrazacGodine);
+	            
+	            //Ako ne postoji poklapanje ispisuje sledecu poruku:
+	            if (!tacnost) { 
+	            	System.out.println("Pogresan unos broja godina!");
+	            }
+	        } while (!tacnost);
+	        //Dakle, sve dok ne unese valizan broj godina
+	        System.out.println("Dobar unos broja godina. Hvala!");
+	        
+	        sc.close();
+	}
+
+}

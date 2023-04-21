@@ -1,0 +1,28 @@
+package jelena.milivojevic;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Teorijsko objasnjenje List-a: U hijerarhiji kolekcija, interfejs Collection
+		 * je koreni interfejs iz koga su izvedeni interfejsi List, Set, Queue.
+		 * Interfejs List definise kolekciju u kojoj se elementi mogu ponavljati List je
+		 * uređena kolekcija koja je izvedena iz korenog interfejsa Collection.
+		 * Karakteristike: 1) Interfejs List obezbeđuje niz metoda za rad sa elementima
+		 * liste, rad sa opsegom elemenata liste, pretragu elemenata, itd.
+		 * 
+		 * 2) Može sadržati duplikate elemenata. Interfejs List definiše kolekciju u
+		 * kojoj se elementi mogu ponavljati
+		 * 
+		 * 3) Kao kod nizova, indeks prvog elementa liste je 0.
+		 * 
+		 * 4) Za razliku od nizova, elementima se ne može pristupiti koristeći zagrade [
+		 * ], već preko odgovarajućih metoda get i set.
+		 * 
+		 * Nekoliko KLASA implementira interfejs List, od kojih su najšće korišćene
+		 * ArrayList i LinkedList. Sintaksa: List <Tip vrednosti> ImeKolekcije = new
+		 * KlasaKolekcije< Tip vrednosti>();
+		 */
+	}
+
+}

@@ -1,0 +1,38 @@
+package jelena.milivojevic;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+	/*
+	 * Teorijsko Objasnjenje REGEX-a:
+	 */
+	public static void main(String[] args) {
+
+		// Sledi jednostavan primer upotrebe:
+
+		// Kreirano string:
+		String recenica = "Danas je lep dan!";
+
+		// Pomocu objekta klase Pattern iz paketa util.regex pripremamo njemu dodeljenu
+		// vrednost za proveru:
+		Pattern obrazac = Pattern.compile("lep", Pattern.CASE_INSENSITIVE);
+		// Zapravo: Pretrazujemo da li je rec "lep" sadrzana u stringu
+		// Takodje oznakom CASE_INSENSITIVE napominjemo da je pretraga osetljiva na
+		// velicinu slova u recenici
+
+		Matcher poklapanje = obrazac.matcher(recenica);
+		boolean poklapanjeUspelo = poklapanje.find();
+
+		/*
+		 * Ovaj kod trazi pojavljivanje reci lep u recenici Danas je lep dan! i vraca
+		 * Poklapanje postoji! jer se rec pojavljuje u recenici
+		 */
+		if (poklapanjeUspelo) {
+			System.out.println("Poklapanje postoji!");
+		} else {
+			System.out.println("Poklapanje NE postoji!");
+		}
+	}
+
+}

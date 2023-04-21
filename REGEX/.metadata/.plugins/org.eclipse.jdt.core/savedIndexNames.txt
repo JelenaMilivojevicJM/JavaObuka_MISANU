@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\Task3_List_Map_REGEX\REGEX\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1483745550.index
+776207828.index
+1363290845.index
+2496684492.index
+717588517.index

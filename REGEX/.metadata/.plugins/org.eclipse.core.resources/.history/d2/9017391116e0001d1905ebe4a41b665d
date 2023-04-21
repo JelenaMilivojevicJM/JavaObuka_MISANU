@@ -1,0 +1,19 @@
+package jelena.milivojevic;
+
+public class Main {
+	// Primer upotrebe regulazrnih izraza kroz upotrebu metoda klase String:
+	public static void main(String[] args) {
+		/*
+		 * Stringovi u Javi imaju ugrađenu podršku za regularne izraze. Stringovi imaju
+		 * četiri ugrađene metode za regularne izraze: * matches(), * split()), *
+		 * replaceFirst() * replaceAll()
+		 * 
+		 * Metoda replace() NE podržava regularne izraze.
+		 * 
+		 * Ove metode nisu optimizovane za performanse. Kasnije ćemo koristiti klase
+		 * koje su optimizovane za performanse.
+		 */
+
+	}
+
+}

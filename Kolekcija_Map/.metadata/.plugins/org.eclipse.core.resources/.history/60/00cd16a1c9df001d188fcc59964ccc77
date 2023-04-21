@@ -1,0 +1,39 @@
+package jelena.milivojevic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+	/*
+	 * Teorijsko Objasnjenje kolekcije Map: Mapa je interfejs u okviru Java
+	 * kolekcija koji obezbeđuje funkcionalnost strukture podataka mape. Map
+	 * kolekcije su strukture podataka u programskom jeziku Java koje omogućavaju
+	 * pohranjivanje parova ključ/vrednost. Indexi moraju biti jedinstveni, dok
+	 * vrednosti mogu biti duplirane. Postoje različite implementacije Map kolekcija
+	 * kao što su HashMap, TreeMap i LinkedHashMap. Svaka od njih ima svoje
+	 * specifičnosti u pogledu redosleda elemenata, performansi i načina sortiranja.
+	 * 
+	 * Neke od uobičajenih metoda za Map kolekcije u programskom jeziku Java su: 1.
+	 * put(K key, V value) - dodaje par index/vrednost u mapu 2. get(Object key) -
+	 * vraća vrednost povezanu sa zadatim indexom 3. remove(Object key)- uklanja par
+	 * index /vrednost povezan sa zadatim indexom 4. containsKey(Object key) -
+	 * proverava da li mapa sadrži zadati index 5. containsValue(Object value) -
+	 * proverava da li mapa sadrži zadatu vrednost 6. size() - vraća broj parova
+	 * index /vrednost u mapi 7. isEmpty() - proverava da li je mapa prazna
+	 */
+	public static void main(String[] args) {
+
+		// Kreiranje mape
+		Map<String, Integer> map = new HashMap<>();
+
+		// Dodavanje elemenata u mapu
+		map.put("Jabuka", 100);
+		map.put("Banana", 200);
+		map.put("Narandža", 300);
+
+		// Prikazivanje elemenata mape
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+	}
+}
