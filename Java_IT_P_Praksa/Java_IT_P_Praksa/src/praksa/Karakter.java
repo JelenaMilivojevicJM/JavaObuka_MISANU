@@ -1,8 +1,14 @@
 package praksa;
 
+import java.io.Serializable;
+
 //1. Креирајте класу карактера која садржи податке за сваки карактер у got_meta_data.txt фајлу. 
 //Klasa "Karakter" sadrzi podatke(polja) za svaki karakter u pomenutom fajlu:
-public class Karakter {
+
+public class Karakter implements Serializable {
+	//Gererisani serijski broj klase 
+	private static final long serialVersionUID = 7732177178796230417L;
+	
 	// Tri privatna polja: name, allegiance i messagesFile
 	private String name;
 	private String allegiance;
@@ -45,3 +51,4 @@ public class Karakter {
 		this.messagesFile = messagesFile;
 	}
 }
+

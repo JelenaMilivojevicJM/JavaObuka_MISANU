@@ -1,7 +1,7 @@
 package praksa;
 
 //Uvoz paketa potrebnih za realizaciju programa:
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,39 +10,37 @@ import java.util.regex.Pattern;
 public class Main {
 	// main metoda pokretačke klase:
 	public static void main(String[] args) {
-		// ULAZ:
-		/*
-		 * Implementacija klase FileHelmper i Učitavanje meta podataka. Pozivamo metodu
-		 * loadMetaData() da bi se učitali meta podaci.
-		 */
-		String metaData = FileHelper.loadMetaData();
 
-		/*
-		 * Kreiramo niz Stringova pod nazivom "lines" i dodeljujemo mu vrednost
-		 * rezultata pozivanja metode "split()" preko vec kreiranje String varijable pod
-		 * nazivom "metaData". Metoda "split()" ima delimiter kao argument i deli
-		 * promenljivu "metaData" na niz podstringova na svakom pojavljivanju
-		 * delimitera. U ovom slučaju, delimiter je "System.lineSeparator()", koji vraća
-		 * sistemski zavisan string separatora linija. Dakle, varijabla "metaData" deli
-		 * se na odvojene linije na osnovu separatora linija sistema. To nam je bitno,
-		 * jer nam sluzi da prolazimo kroz sve linije počevši od druge (prva linija
-		 * sadrži zaglavlje). Svaka linija se deli na delove pomoću ove metode
-		 * split(", "). Delovi se koriste za kreiranje liste objekta klase Karakter koji
-		 * se dodaje u listu karaktera.
-		 */
-		String[] lines = metaData.split(System.lineSeparator());
 		// OBRADA 1:
-		// Kreiranje liste objekata klase Karakter
-		List<Karakter> karakteri = new ArrayList<>();
-		for (int i = 1; i < lines.length; i++) {
-			String[] parts = lines[i].split(", ");
-			String name = parts[0];
-			String allegiance = parts[1];
-			String messagesFile = parts[2];
-			Karakter karakter = new Karakter(name, allegiance, messagesFile);
-			karakteri.add(karakter);
-		}
+		List<Karakter> karakteri = ListaKaraktera.ucitajKaraktere();
 
+		/* Serijalizacija i Deserijalizacija */
+		// Kreiranje objekta klase SerDeser kako bismo koristili njene metode:
+		SerDeser sd = new SerDeser();
+		// Serijalizacija:
+		try {
+			/* Preko objketa klase SerDeser pozivamo njegovu metodu za serijalizaciju */
+			sd.serijalizuj(karakteri, "karakteri.ser");
+			/*
+			 * Naziv fajlova čuvamo u formatu ime.ser kako bismo naznačili da se radi o
+			 * fajlu koji sadrži serijalizovanje objekte. Radiće program i u slucaju da
+			 * stavimo extenziju .txt. Međutim u tom slučaju sadržaj fajla neće biti
+			 * najjasnije čitljiv (u smislu govornog jezika). Čak i u slucaju txt ekstenzije
+			 * potrebno je izvršiti deserijalizaciju kako bismo u konzoli videli jasno
+			 * sadrzaj fajla.
+			 */
+			System.out.println("Lista karaktera uspešno serijalizovana.");
+		} catch (IOException e) {
+			System.out.println("Greška pri serijalizaciji liste karaktera: " + e.getMessage());
+		}
+		// Deserijalizacija
+		try {
+			/* Preko objketa klase SerDeser pozivamo njegovu metodu za deserijalizaciju */
+			sd.deserijalizuj("karakteri.ser");
+			System.out.println("Lista karaktera uspešno deserijalizovana.");
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println("Greška pri deserijalizaciji liste karaktera: " + e.getMessage());
+		}
 		// IZLAZ 1:
 		// Ispisivanje podataka o svim karakterima
 		System.out.println("--------------------------------------------------");
@@ -56,58 +54,62 @@ public class Main {
 			System.out.println(karakter.getName() + " - " + karakter.getAllegiance());
 		}
 		System.out.println("--------------------------------------------------");
+
 		// 2. Одштампајте све поруке особе Daenerys
 		// OBRADA 2:
 		System.out.println("*Sve poruke osobe Daenerys(iz njenog chat-a)*");
 		/*
-		 * Kreiranje liste u koju učitavamo sve poruke osobe Daenerys - iz fajla
-		 * "messages82387561293.txt" U pomoć pozivamo klasu FileHelper kako bismo preko
-		 * njene metode loadMessages() učitali podatke iz konkretnog fajla u kome su
-		 * poruke osobe Daenerys. Kao stvarni argument (parametar) ove metode koristimo
-		 * ime konkretnog fajla iz kojeg želimo da učitamo podatke (u ovom slučaju to je
-		 * fajl sa podacima iy Denerisinog četa).
+		 * Kreiramo listu poruka iz chat-a osobe D, a za tu operaciju koristimo
+		 * Interface koji smo kreirali za učitavanje poruka.
 		 */
-		List<String> porukeDaenerys = FileHelper.loadMessages("messages82387561293.txt");
-		// Koristeći se for-each petljom prolazimo kroz poruke i ispisujemo ih
+		List<String> porukeDaenerys = UcitavanjePoruka.loadMessages(karakteri.get(0).getMessagesFile());
+		// Koristeći se for-each petljom prolazimo kroz sve poruke i ispisujemo ih
 		for (String pD : porukeDaenerys) {
 			// IZLAZ 2:
 			System.out.println(pD);
-
 		}
 		System.out.println("--------------------------------------------------");
 
-		// 3.Креирајте обавештење које приказује број порука који се сваки карактер
+		// 3.Креирајте обавештење које приказује број порука који се сваки карактеp
 		// послао.
-		// Ispisivanje broja poruka za svakog karaktera
+		// OBRADA 3:
 		System.out.println("*Broj poslatih poruka svakog učesnika*");
 		System.out.println("Učesnik : Ukupan broj poruka ");
-		// OBRADA 3:
 		for (Karakter karakter : karakteri) {
 			/*
-			 * Kreiramo listu poruka. Za učitavanje podataka ponovo koristimo klasu
-			 * FileHelper i njenu metodu loadMessages(). Parametar ove metode je metoda
-			 * klase Karakter koja služi za dohvatanje vrednosti polja messagesFile.
+			 * I za ovu operaciju koristimo Interface koji smo kreirali za učitavanje
+			 * poruka.
 			 */
-			List<String> poruke = FileHelper.loadMessages(karakter.getMessagesFile());
+			List<String> poruke = UcitavanjePoruka.loadMessages(karakter.getMessagesFile());
 			// IZLAZ 3:
+			// Ispisivanje broja poruka za svakog karaktera ponaosob
 			System.out.println(karakter.getName() + " : " + poruke.size() + " poruka");
 		}
 
 		System.out.println("--------------------------------------------------");
-		/* Elementi koda koji nam trebaju za resavanje 4.,5. i 6.stavke */
+
+		/*
+		 * Elementi koda koji nam trebaju za resavanje 4.,5. i 6.stavke. Definisanje
+		 * regularnih izraza i korišćenje metoda klase Pattern i klase Matcher, radi
+		 * prolaska kroz poruke svih karaktera i proveru sadržaja radi traženja
+		 * poklapanja sa traženim smajljima.
+		 */
 
 		// Definisanje regularnih izraza (REGEX) za smajlije
+
 		// Svi smajlili iz grupe "srećni smajliji" (ovde su i ljubavni smajliji)
-		Pattern happyPattern = Pattern.compile("🙂");
-		Pattern happy2Pattern = Pattern.compile("😄");
-		Pattern lovePattern = Pattern.compile("😍");
-		Pattern kissPattern = Pattern.compile("😘");
+		// Smajliji koji su argumenti su enum tipa
+		Pattern srecanPattern = Pattern.compile(Smajliji.SRECAN.getKod());
+		Pattern veseoPattern = Pattern.compile(Smajliji.VESEO.getKod());
+		Pattern ljubavPattern = Pattern.compile(Smajliji.LJUBAV.getKod());
+		Pattern cmokPattern = Pattern.compile(Smajliji.CMOK.getKod());
 
 		// Svi smajlili iz grupe "tužni smajliji"
-		Pattern sadPattern = Pattern.compile("😞");
-		Pattern suzaPattern = Pattern.compile("😢");
-		Pattern madPattern = Pattern.compile("👿");
-		Pattern placPattern = Pattern.compile("😭");
+		// Smajliji koji su argumenti su enum tipa
+		Pattern tuzanPattern = Pattern.compile(Smajliji.TUZAN.getKod());
+		Pattern placePattern = Pattern.compile(Smajliji.PLACE.getKod());
+		Pattern ljutPattern = Pattern.compile(Smajliji.LJUT.getKod());
+		Pattern kisaSuzaPattern = Pattern.compile(Smajliji.KISASUZA.getKod());
 
 		// 4. Урадити анализу карактера, бројећи њихову употребу смајлија:
 		// 5. Одштампати карактер који има најпозитивнију и најнегативнију диспозицију.
@@ -119,31 +121,31 @@ public class Main {
 		System.out.println("*Koji učesnik je koliko srećnih/tužnih smajlija poslao*");
 		System.out.println("Učesnik [ Broj srećnih smajlijia: , Broj tužnih smajlija ]");
 		for (Karakter karakter : karakteri) {
-			List<String> poruke = FileHelper.loadMessages(karakter.getMessagesFile());
+			List<String> poruke = UcitavanjePoruka.loadMessages(karakter.getMessagesFile());
 			int happyBrojac = 0;
 			int sadBrojac = 0;
 			for (String p : poruke) {
-				Matcher happyMatcher = happyPattern.matcher(p);
-				Matcher happy2Matcher = happy2Pattern.matcher(p);
-				Matcher loveMatcher = lovePattern.matcher(p);
-				Matcher kissMatcher = kissPattern.matcher(p);
+				Matcher srecanMatcher = srecanPattern.matcher(p);
+				Matcher veseoMatcher = veseoPattern.matcher(p);
+				Matcher ljubavMatcher = ljubavPattern.matcher(p);
+				Matcher cmokMatcher = cmokPattern.matcher(p);
 				// OBRADA 4:
 				/*
 				 * Program prolazi kroz while pretlju i povećava brojač srećnih smjalija za 1,
 				 * sve dok postoji poklapanje sa nekim od smajlija iz grupe srećnih smajlija.
 				 */
-				while (happyMatcher.find() || happy2Matcher.find() || loveMatcher.find() || kissMatcher.find()) {
+				while (srecanMatcher.find() || veseoMatcher.find() || ljubavMatcher.find() || cmokMatcher.find()) {
 					happyBrojac++;
 				}
-				Matcher suzaMatcher = suzaPattern.matcher(p);
-				Matcher madMatcher = madPattern.matcher(p);
-				Matcher placMatcher = placPattern.matcher(p);
-				Matcher sadMatcher = sadPattern.matcher(p);
+				Matcher placeMatcher = placePattern.matcher(p);
+				Matcher ljutMatcher = ljutPattern.matcher(p);
+				Matcher kisaSuzaMatcher = kisaSuzaPattern.matcher(p);
+				Matcher tuzanMatcher = tuzanPattern.matcher(p);
 				/*
 				 * Program prolazi kroz while pretlju i povećava brojač tužnih smjalija za 1,
 				 * sve dok postoji poklapanje sa nekim od smajlija iz grupe tužnih smajlija.
 				 */
-				while (suzaMatcher.find() || madMatcher.find() || placMatcher.find() || sadMatcher.find()) {
+				while (placeMatcher.find() || ljutMatcher.find() || kisaSuzaMatcher.find() || tuzanMatcher.find()) {
 					sadBrojac++;
 				}
 			}
@@ -152,7 +154,7 @@ public class Main {
 					.println(karakter.getName() + " [ " + " srećnih: " + happyBrojac + ", tužnih: " + sadBrojac + " ]");
 			// OBRADA 5:
 			/*
-			 * Ispitivanje uslova za stavku broj 5 Broj pronađenih smajlija sabiramo i
+			 * Ispitivanje uslova za stavku broj 5. Broj pronađenih smajlija sabiramo i
 			 * proveravamo da li je karakter sa najpozitivnijom ili najnegativnijom
 			 * dispozicijom. Na kraju se ispisuju imena karaktera sa najpozitivnijom i
 			 * najnegativnijom dispozicijom.
@@ -192,36 +194,35 @@ public class Main {
 		 * !! U delu PRE OBRADA 4 i OBRADA 5 kreirali smo promenljive koje
 		 * predstsavljaju regex-e koje koristimo za analizu i u ovoj 6.stavci.
 		 */
-
-		List<String> porukeJon = FileHelper.loadMessages("messages2094721612573.txt");
+		List<String> porukeJon = UcitavanjePoruka.loadMessages(karakteri.get(0).getMessagesFile());
 		int brojacJon = 0;
 		int brojacDaenerys = 0;
 		for (Karakter k : karakteri) {
 			// FOR petlja koju koristimo za prolazak kroz Jonov chat
 			for (String p : porukeJon) {
 				// ljubavni smajliji
-				Matcher loveMatcher = lovePattern.matcher(p);
-				Matcher kissMatcher = kissPattern.matcher(p);
+				Matcher ljubavMatcher = ljubavPattern.matcher(p);
+				Matcher cmokMatcher = cmokPattern.matcher(p);
 				/*
 				 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
 				 * Jon-a za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
 				 * ljubavnih smajlija.
 				 */
-				while (loveMatcher.find() || kissMatcher.find()) {
+				while (ljubavMatcher.find() || cmokMatcher.find()) {
 					brojacJon++;
 				}
 			}
 			// FOR petlja koju koristimo za prolazak kroz Daenerys-in chat
 			for (String p : porukeDaenerys) {
 				// ljubavni smajliji
-				Matcher loveMatcher = lovePattern.matcher(p);
-				Matcher kissMatcher = kissPattern.matcher(p);
+				Matcher ljubavMatcher = ljubavPattern.matcher(p);
+				Matcher cmokMatcher = cmokPattern.matcher(p);
 				/*
 				 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
 				 * Daenerys za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
 				 * ljubavnih smajlija.
 				 */
-				while (loveMatcher.find() || kissMatcher.find()) {
+				while (ljubavMatcher.find() || cmokMatcher.find()) {
 					brojacDaenerys++;
 				}
 			}
