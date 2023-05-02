@@ -10,7 +10,7 @@ public interface UcitavanjePoruka {
 	 * koristi za učitavanje poruka iz fajla sa imenom koje je prosleđeno kao
 	 * argument.
 	 */
-	static List<String> loadMessages(String fileName) {
+	public static List<String> loadMessages(String fileName) {
 		return FileHelper.loadMessages(fileName);
 	}
 }

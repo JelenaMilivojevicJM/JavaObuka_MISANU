@@ -51,4 +51,3 @@ public class Karakter implements Serializable {
 		this.messagesFile = messagesFile;
 	}
 }
-

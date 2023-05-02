@@ -69,11 +69,10 @@ public class SerDeser {
 		 * listi karaktera Zatim te takve pročitane podatke smeštamo u našu listu
 		 * karaktera.
 		 */
-
+		
 		ois.close();
 		// Naznačavamo da metoda vraća vrednost kreirane liste
 		return karakteri;
-
 	}
 
 }

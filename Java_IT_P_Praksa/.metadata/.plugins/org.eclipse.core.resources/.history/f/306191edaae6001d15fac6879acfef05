@@ -1,0 +1,79 @@
+package praksa;
+
+//Uvoza paketa potrebnih za izvršavanje programa
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
+//Ova klasa služi sa serijalizaciju i deserijalizaciju objekata kalse Karakter
+public class SerDeser {
+	// SERIJALIZACIJA:
+	/*
+	 * Serijalizovan objekat IDE U FILE. Da bismo serijalizovali objekat potrebno
+	 * nam je da koristimo dve ključne klase za serijalizaciju objekta: 1.
+	 * ObjectOutputStream (oos) - on konvertuje JAVA objekt u sekvencu bajtova i
+	 * zapisuje ih pomoću fos-a u file ili u bazu podataka (zato je fos njegov
+	 * parametar); 2. FileOutputStream (fos) - on smešta sekvencu Byte-ova unutar
+	 * file-a i označava zapis binarnih podataka u fajl.
+	 */
+
+	/*
+	 * Metoda za serijalizaciju: - ona samo šalje u fajl koji kreira za to.
+	 * Parametri (sta želimo da serijalizujemo,naziv fajla gde serijalizujemo
+	 * objekte)
+	 */
+	public void serijalizuj(List<Karakter> karakteri, String nazivFajla) throws FileNotFoundException, IOException {
+
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("karakteri.ser"));
+
+		oos.writeObject(karakteri);
+		/*
+		 * oos poziva svoju metodu write za ispis objekata( kao argumente navodimo koje
+		 * objekte). Dakle, svaki put kada kreiramo novi objekat, odnosno dodamo novi
+		 * karakter u listu - on će ga zapisati.
+		 */
+		oos.close();
+	}
+
+	// DESERIJALIZACIJA:
+	/*
+	 * DEserijalizacija - je proces rekonstruisanja objekta koji je prethodno već
+	 * serijalizovan. Znači, Serijalizovan objekat IDE IZ FILEa nazad u object. Da
+	 * bismo serijalizovali objekat potrebno nam je da koristimo dve ključne klase
+	 * za serijalizaciju objekta: 1. ObjectInputStream (ois) - sekvencu bajtova
+	 * vraća u objekat; 2. FileInputStream (fis) - vraća sekvencu bajtova.
+	 */
+	/*
+	 * Ovde kreiramo metodu za deserijalizaciju. Metoda za deserijalizaciju: - ona
+	 * vraća iz fajla ono što je upisano. Tip podataka koje vraća ova metoda je tip
+	 * liste. Taj tip metode koje cemo desijarizovati pokalpa se sa tipom koji smo
+	 * serijalizovali Parametar je naziv fajla u kojem se nalazi taj serijalizovani
+	 * objekat (lista objekata).
+	 */
+	public List<Karakter> deserijalizuj(String nazivFajla)
+			throws FileNotFoundException, IOException, ClassNotFoundException {
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nazivFajla));
+		/*
+		 * Unutar ove metode kreiramo listu u koju smeštamo te deserijalizovane podatke:
+		 * Korišćenje metode objekta ois, koja ima za zadatak da čita podatke iz fajla i
+		 * vraća ih u sekvencu bajtova koji se dalje konvertuju u objekat
+		 */
+
+		List<Karakter> karakteri = (List<Karakter>) ois.readObject();
+		/*
+		 * Primenjujemo kastovanje - znaci dodelićemo ulogu tom objektu da se radi o
+		 * listi karaktera Zatim te takve pročitane podatke smeštamo u našu listu
+		 * karaktera.
+		 */
+
+		ois.close();
+		// Naznačavamo da metoda vraća vrednost kreirane liste
+		return karakteri;
+
+	}
+
+}

@@ -1,19 +1,16 @@
 package praksa;
 
-//Uvoz paketa potrebnih za realizaciju programa:
 import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//Pokretačka klasa "Main":
 public class Main {
-	// main metoda pokretačke klase:
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		// OBRADA 1:
 		List<Karakter> karakteri = ListaKaraktera.ucitajKaraktere();
-
+		System.out.println("--------------------------------------------------");
 		/* Serijalizacija i Deserijalizacija */
 		// Kreiranje objekta klase SerDeser kako bismo koristili njene metode:
 		SerDeser sd = new SerDeser();
@@ -41,52 +38,37 @@ public class Main {
 		} catch (IOException | ClassNotFoundException e) {
 			System.out.println("Greška pri deserijalizaciji liste karaktera: " + e.getMessage());
 		}
+
+		/*
+		 * Kreiranje objekta klase Poruke, kako bismo preko odgovarajućih prosleđenih
+		 * parametara dobili spisak svih učesnika konverzacija, kada pozovemo
+		 * odgovarajuću metodu namenjenu tome.
+		 */
+		Poruke poruke = new Poruke(karakteri, karakteri.get(0).getMessagesFile());
 		// IZLAZ 1:
 		// Ispisivanje podataka o svim karakterima
-		System.out.println("--------------------------------------------------");
-		System.out.println("*Svi učesnici u konverzacijama*");
-		System.out.println("Ime Prezime  -  Kuća ");
-		/*
-		 * Upotrebom for-each petlje prolazimo kroz sve karaktere i ispisujemo njihova
-		 * imena i kuće kojima pripadaju
-		 */
-		for (Karakter karakter : karakteri) {
-			System.out.println(karakter.getName() + " - " + karakter.getAllegiance());
-		}
-		System.out.println("--------------------------------------------------");
+		poruke.ispisiPrimaoce(karakteri);
 
 		// 2. Одштампајте све поруке особе Daenerys
-		// OBRADA 2:
-		System.out.println("*Sve poruke osobe Daenerys(iz njenog chat-a)*");
+
 		/*
-		 * Kreiramo listu poruka iz chat-a osobe D, a za tu operaciju koristimo
-		 * Interface koji smo kreirali za učitavanje poruka.
+		 * OBRADA 2: Kreiramo listu poruka iz chat-a osobe D, a za tu operaciju
+		 * koristimo Interface koji smo kreirali za učitavanje poruka.
 		 */
 		List<String> porukeDaenerys = UcitavanjePoruka.loadMessages(karakteri.get(0).getMessagesFile());
-		// Koristeći se for-each petljom prolazimo kroz sve poruke i ispisujemo ih
-		for (String pD : porukeDaenerys) {
-			// IZLAZ 2:
-			System.out.println(pD);
-		}
-		System.out.println("--------------------------------------------------");
+		// IZLAZ 2:
+		poruke.ispisiPorukeDaenerys(porukeDaenerys);
 
-		// 3.Креирајте обавештење које приказује број порука који се сваки карактеp
-		// послао.
-		// OBRADA 3:
-		System.out.println("*Broj poslatih poruka svakog učesnika*");
-		System.out.println("Učesnik : Ukupan broj poruka ");
-		for (Karakter karakter : karakteri) {
-			/*
-			 * I za ovu operaciju koristimo Interface koji smo kreirali za učitavanje
-			 * poruka.
-			 */
-			List<String> poruke = UcitavanjePoruka.loadMessages(karakter.getMessagesFile());
-			// IZLAZ 3:
-			// Ispisivanje broja poruka za svakog karaktera ponaosob
-			System.out.println(karakter.getName() + " : " + poruke.size() + " poruka");
-		}
-
-		System.out.println("--------------------------------------------------");
+		/*
+		 * 3.Креирајте обавештење које приказује број порука који се сваки карактеp
+		 * послао.
+		 */
+		/*
+		 * OBRADA 3: Pozivamo metodu objekat klase Poruke, koja nam služi za
+		 * prebrojavanje poruka svih karaktera
+		 */
+		// IZLAZ 3: Ispis broja poruka svakog karaktera ponaosob
+		poruke.prebrojPoruke(karakteri);
 
 		/*
 		 * Elementi koda koji nam trebaju za resavanje 4.,5. i 6.stavke. Definisanje
@@ -121,10 +103,10 @@ public class Main {
 		System.out.println("*Koji učesnik je koliko srećnih/tužnih smajlija poslao*");
 		System.out.println("Učesnik [ Broj srećnih smajlijia: , Broj tužnih smajlija ]");
 		for (Karakter karakter : karakteri) {
-			List<String> poruke = UcitavanjePoruka.loadMessages(karakter.getMessagesFile());
+			List<String> analizaKaraktera = UcitavanjePoruka.loadMessages(karakter.getMessagesFile());
 			int happyBrojac = 0;
 			int sadBrojac = 0;
-			for (String p : poruke) {
+			for (String p : analizaKaraktera) {
 				Matcher srecanMatcher = srecanPattern.matcher(p);
 				Matcher veseoMatcher = veseoPattern.matcher(p);
 				Matcher ljubavMatcher = ljubavPattern.matcher(p);
@@ -179,8 +161,8 @@ public class Main {
 		// 6.Да ли Jon воли Daenerys више него што она воли њега.
 		/*
 		 * Logika rešavanja stavke broj 6: Ako u Daenerysinom chatu ima više ljubavnih
-		 * smajlija, dakle primila je više takvih poruka, znači da Jon više voli nju
-		 * nego ona njega (jer on dakle poslao njoj više takvih), i obrnuto.
+		 * smajlija, dakle poslala je više takvih poruka, znači da ona više voli Jon-a
+		 * nego on nju (jer on dakle poslao njoj manje takvih), i obrnuto.
 		 */
 
 		// OBRADA 6:
@@ -195,44 +177,45 @@ public class Main {
 		 * predstsavljaju regex-e koje koristimo za analizu i u ovoj 6.stavci.
 		 */
 		List<String> porukeJon = UcitavanjePoruka.loadMessages(karakteri.get(0).getMessagesFile());
+		// Brojac Jonovih poruka
 		int brojacJon = 0;
+		// Brojac Daenerysinih poruka
 		int brojacDaenerys = 0;
-		for (Karakter k : karakteri) {
-			// FOR petlja koju koristimo za prolazak kroz Jonov chat
-			for (String p : porukeJon) {
-				// ljubavni smajliji
-				Matcher ljubavMatcher = ljubavPattern.matcher(p);
-				Matcher cmokMatcher = cmokPattern.matcher(p);
-				/*
-				 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
-				 * Jon-a za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
-				 * ljubavnih smajlija.
-				 */
-				while (ljubavMatcher.find() || cmokMatcher.find()) {
-					brojacJon++;
-				}
-			}
-			// FOR petlja koju koristimo za prolazak kroz Daenerys-in chat
-			for (String p : porukeDaenerys) {
-				// ljubavni smajliji
-				Matcher ljubavMatcher = ljubavPattern.matcher(p);
-				Matcher cmokMatcher = cmokPattern.matcher(p);
-				/*
-				 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
-				 * Daenerys za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
-				 * ljubavnih smajlija.
-				 */
-				while (ljubavMatcher.find() || cmokMatcher.find()) {
-					brojacDaenerys++;
-				}
+
+		// FOR petlja koju koristimo za prolazak kroz Jonov chat
+		for (String p : porukeJon) {
+			// ljubavni smajliji
+			Matcher ljubavMatcher = ljubavPattern.matcher(p);
+			Matcher cmokMatcher = cmokPattern.matcher(p);
+			/*
+			 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
+			 * Jon-a za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
+			 * ljubavnih smajlija.
+			 */
+			while (ljubavMatcher.find() || cmokMatcher.find()) {
+				brojacJon++;
 			}
 		}
-
+		// FOR petlja koju koristimo za prolazak kroz Daenerys-in chat
+		for (String p : porukeDaenerys) {
+			// ljubavni smajliji
+			Matcher ljubavMatcher = ljubavPattern.matcher(p);
+			Matcher cmokMatcher = cmokPattern.matcher(p);
+			/*
+			 * Program prolazi kroz while pretlju i povećava brojač ljubavnih smjalija kod
+			 * Daenerys za 1, sve dok postoji poklapanje sa nekim od smajlija iz grupe
+			 * ljubavnih smajlija.
+			 */
+			while (ljubavMatcher.find() || cmokMatcher.find()) {
+				brojacDaenerys++;
+			}
+		}
 		// IZLAZ 6:
 		if (brojacDaenerys > brojacJon) {
-			System.out.println("Jon više voli Daenerys nego ona njega!");
-		} else {
 			System.out.println("Daenerys više voli Jon-a nego on nju!");
+		} else {
+			System.out.println("Jon više voli Daenerys nego ona njega!");
 		}
+		System.out.println("--------------------------------------------------");
 	}
 }
