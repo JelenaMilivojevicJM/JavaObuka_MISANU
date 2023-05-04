@@ -1,0 +1,203 @@
+CREATE DATABASE bazabiblioteke;
+
+CREATE TABLE biblioteke (
+  bibliotekaID INT PRIMARY KEY NOT NULL,
+  naziv VARCHAR(45),
+  grad VARCHAR(45),
+  ulica VARCHAR(45),
+  ulicniBroj VARCHAR(3),
+  telefon VARCHAR(45)
+);
+
+CREATE TABLE clanovi (
+  brClanskeKarte INT PRIMARY KEY NOT NULL,
+  ime VARCHAR(45),
+  prezime VARCHAR(45),
+  datumRodjenja DATE,
+  telefon VARCHAR(45),
+  grad VARCHAR(45),
+  ulica VARCHAR(45),
+  ulicniBroj VARCHAR(3)
+);
+
+ALTER TABLE clanovi
+ADD COLUMN bibliotekaID INT;
+
+ALTER TABLE clanovi
+ADD FOREIGN KEY (bibliotekaID) REFERENCES biblioteke(bibliotekaID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION;
+
+CREATE TABLE bibliotekari (
+ sifraZaposlenog INT PRIMARY KEY NOT NULL,
+  ime VARCHAR(45),
+  prezime VARCHAR(45),
+  grad VARCHAR(45),
+  ulica VARCHAR(45),
+  ulicniBroj VARCHAR(3),
+  telefon VARCHAR(45),
+  jmbg VARCHAR(13),
+  bibliotekaID INT,
+  FOREIGN KEY (bibliotekaID) REFERENCES biblioteke(bibliotekaID)
+  ON UPDATE CASCADE
+  ON DELETE NO ACTION
+);
+
+CREATE TABLE knjige (
+  isbn INT PRIMARY KEY NOT NULL,
+  naziv VARCHAR(45),
+  jezik VARCHAR(45),
+  izdavac VARCHAR(45)
+);
+
+CREATE TABLE autori (
+ autorID INT PRIMARY KEY NOT NULL,
+ ime VARCHAR(45),
+ prezime VARCHAR(45)
+);
+
+CREATE TABLE knjigeAutori(
+knjigeAutoriID INT PRIMARY KEY NOT NULL,
+autorID INT,
+isbn INT,
+FOREIGN KEY (autorID) REFERENCES autori(autorID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION,
+FOREIGN KEY (isbn) REFERENCES knjige(isbn)
+ON UPDATE CASCADE
+ON DELETE NO ACTION
+);
+
+CREATE TABLE odeljenja(
+odeljenjeID INT PRIMARY KEY NOT NULL,
+naziv ENUM("Decje", "Pozajmno", "Naucno"));
+
+CREATE TABLE decjeOdeljenje(
+decjeOdeljenjeID INT PRIMARY KEY NOT NULL,
+uzrast INT NOT NULL,
+odeljenjeID INT,
+FOREIGN KEY (odeljenjeID) REFERENCES odeljenje(odeljenjeID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION);
+
+CREATE TABLE pozajmnoOdeljenje(
+pozajmnoOdeljenjeID INT PRIMARY KEY NOT NULL,
+aktuelnost BOOLEAN NOT NULL,
+zanr VARCHAR(45),
+odeljenjeID INT,
+FOREIGN KEY (odeljenjeID) REFERENCES odeljenje(odeljenjeID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION);
+
+CREATE TABLE naucnoOdeljenje(
+naucnoOdeljenjeID INT PRIMARY KEY NOT NULL,
+naucnaOblast VARCHAR(45),
+odeljenjeID INT,
+FOREIGN KEY (odeljenjeID) REFERENCES odeljenje(odeljenjeID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION);
+
+CREATE TABLE knjigaOdeljenje(
+knjigaOdeljenjeID INT PRIMARY KEY NOT NULL,
+isbn INT,
+odeljenjeID INT,
+FOREIGN KEY (isbn) REFERENCES knjige(isbn)
+ON UPDATE CASCADE
+ON DELETE NO ACTION,
+FOREIGN KEY (odeljenjeID) REFERENCES odeljenja(odeljenjeID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION);
+
+CREATE TABLE iznajmljivanja (
+iznajmljivanjeID INT PRIMARY KEY,
+datumIznajmljivanja DATE,
+datumVracanja DATE,
+brClanskeKarte INT,
+sifraZaposlenog INT,
+isbn INT,
+bibliotekaID INT,
+FOREIGN KEY (brClanskeKarte) REFERENCES clanovi( brClanskeKarte)
+ON UPDATE CASCADE
+ON DELETE NO ACTION,
+FOREIGN KEY (sifraZaposlenog) REFERENCES bibliotekari(sifraZaposlenog)
+ON UPDATE CASCADE
+ON DELETE NO ACTION,
+FOREIGN KEY (isbn) REFERENCES knjige(isbn)
+ON UPDATE CASCADE
+ON DELETE NO ACTION,
+FOREIGN KEY (bibliotekaID) REFERENCES biblioteke(bibliotekaID)
+ON UPDATE CASCADE
+ON DELETE NO ACTION
+); 
+
+INSERT INTO `biblioteke`(`bibliotekaID`, `naziv`, `grad`, `ulica`, `ulicniBroj`, `telefon`)
+VALUES (1,"NB Stevan Sremac","Nis","Borivoja Gojkovica","9","018-511-403"),
+(2,"UB Nikola Tesla","Nis","Univerzitetski Trg","2","018-257-956"),
+(3,"Resavska Biblioteka","Svilajnac","Trg Heroja","bb","035-323-272");
+
+INSERT INTO `clanovi`(`brClanskeKarte`, `ime`, `prezime`, `datumRodjenja`, `telefon`, `grad`, `ulica`, `ulicniBroj`, `bibliotekaID`) 
+VALUES (1100,"Pera","Peric",'1990-08-08',"066-123-345","Nis","Kosovska","bb",1),
+(1200,"Mika","Mikic",'1980-09-09',"065-122-235","Nis","Zelengorska","15",1),
+(1300,"Laza","Lazic",'1995-06-06',"064-121-134","Nis","Takovska","23",1),
+(2100,"Zika","Zikic",'1992-02-02',"063-111-114","Nis","Cairska","40A",2),
+(2200,"Ana","Anic",'2000-05-05',"060-131-133","Nis","Dusanova","1B",2),
+(2300,"Mara","Maric",'2015-04-04',"061-125-434","Nis","Knjazevacka","34C",2),
+(3100,"Mara","Maric",'2015-04-04',"061-125-434","Svilajnac","Svetog Save","15A",3),
+(3200,"Lara","Laric",'2012-02-02',"062-225-432","Svilajnac","Moravska","bb",3),
+(3300,"Una","Unic",'2010-10-10',"069-925-499","Svilajnac","Cerska","10",3); 
+
+INSERT INTO `bibliotekari`(`sifraZaposlenog`, `ime`, `prezime`, `grad`, `ulica`, `ulicniBroj`, `telefon`, `jmbg`, `bibliotekaID`) 
+VALUES (678,"Nikola","Nikolic","Nis","Obilicev venac","75A","069-234-421",1010977182711,1),
+(423,"Jovana","Jovanoic","Nis","Herosjka","bb","067-467-829",0202982718271,2),
+(555,"Ivan","Ivanovic","Svilajnac","Resavskih Partizana","12","065-534-525",0303975122731,3); 
+
+INSERT INTO `knjige`(`isbn`, `naziv`, `jezik`, `izdavac`) 
+VALUES (101010,"Dervis i smrt","Srpski","Vulkan"),
+(102020,"Na Drini cuprija","Srpski","Laguna"),
+(121020,"Sreca","Srpski","Vulkan"),
+(202020,"Globalizacija","Srpski","Vulkan"),
+(212020,"Pedagogija","Srpski","Prosvetni Glasnik"),
+(222020,"Zlocin i Kazna","Srpski","Laguna"),
+(303030,"Bela griva","Srpski","Zavod"),
+(333030,"Mali princ","Srpski","Larus"),
+(323030,"Robinzon Kruso","Srpski","Logos");
+
+
+INSERT INTO `autori`(`autorID`, `ime`, `prezime`) 
+VALUES (11,"Mesa","Selimovic"),
+(12,"Ivo","Andric"),
+(13,"Haim","Sapira"),
+(14,"Petar","Petrovic"),
+(15,"Nedeljko","Trnavac"),
+(16,"Jovan","Djordjevic"),
+(17,"Fjodor","Dostojevski"),
+(18,"Rene","Gijo"),
+(19,"Enotoni","de Sent Egziperi"),
+(20,"Daniel","Defoe");
+
+INSERT INTO `knjigeautori`(`knjigeAutoriID`, `autorID`, `isbn`)
+VALUES (1111,11,101010),(1222,12,102020),(1333,13,121020),(2111,14,202020),
+(2222,15,212020),(2333,16,212020),(2444,17,222020),
+(3111,18,303030),(3222,19,333030),(3333,20,323030); 
+
+INSERT INTO `odeljenja`(`odeljenjeID`, `naziv`)
+VALUES (100100100,"Pozajmno"),(200200200,"Naucno"),(300300300,"Decje"); 
+
+INSERT INTO `pozajmnoodeljenje`(`pozajmnoOdeljenjeID`, `aktuelnost`, `zanr`, `odeljenjeID`)
+VALUES (100100101,true,"drama",100100100);
+
+INSERT INTO `naucnoodeljenje`(`naucnoOdeljenjeID`, `naucnaOblast`, `odeljenjeID`) VALUES (200200201,"istrazivanje",200200200); 
+
+INSERT INTO `decjeodeljenje`(`decjeOdeljenjeID`, `uzrast`, `odeljenjeID`)
+VALUES(300300301,7,300300300);
+
+INSERT INTO `knjigaodeljenje`(`knjigaOdeljenjeID`, `isbn`, `odeljenjeID`) 
+VALUES (1,101010,100100100),(2,202020,200200200),(3,303030,300300300);
+
+INSERT INTO `iznajmljivanja`(`iznajmljivanjeID`, `datumIznajmljivanja`, `datumVracanja`, `brClanskeKarte`, `sifraZaposlenog`, `isbn`, `bibliotekaID`) 
+VALUES (1145,'2023-05-04','2023-05-18',1100,678,101010,1),
+(1312,'2023-05-05','2023-05-19',1300,678,121020,1),
+(2324,'2023-05-05','2023-05-19',2300,423,202020,2),
+(2344,'2023-05-05','2023-05-19',2300,423,202020,2);
+
+
