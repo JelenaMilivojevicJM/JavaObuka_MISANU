@@ -16,13 +16,13 @@ public class Delete {
 			System.out.println("Uspesna konekcija ka bazi!");
 			
 			//DELETE:
-				String sqldelete ="DELETE FROM knjige WHERE isbn=?";
+				String sqldelete ="DELETE FROM knjige WHERE knjigaID=?";
 
 
 				PreparedStatement pstmt = conn.prepareStatement(sqldelete);
 
 				//Setovanje vrednosti
-				pstmt.setInt(1,333030);
+				pstmt.setInt(1,145222);
 
 				//Izvrsavanje
 				int brisanje= pstmt.executeUpdate();

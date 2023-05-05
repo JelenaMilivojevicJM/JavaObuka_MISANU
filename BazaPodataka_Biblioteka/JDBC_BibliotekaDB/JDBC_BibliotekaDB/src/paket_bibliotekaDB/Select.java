@@ -44,8 +44,7 @@ public class Select {
 				String grad = result.getString(6);
 				String ulica = result.getString(7);
 				String ubr = result.getString(8);
-				int bibliotekaID = result.getInt(9);
-
+				
 				StringBuilder builder = new StringBuilder();
 				builder.append("----CLAN---- ");
 				builder.append("\nBroj clanske karte: ");
@@ -64,8 +63,6 @@ public class Select {
 				builder.append(ulica);
 				builder.append("\nUlicni Broj: ");
 				builder.append(ubr);
-				builder.append("\nID Biblioteke: ");
-				builder.append(bibliotekaID);
 
 				System.out.println(builder.toString());
 

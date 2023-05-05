@@ -20,16 +20,19 @@ public class Insert {
 			System.out.println("Uspesna konekcija ka bazi!");
 
 			// INSERT:
-			String sqlinsert = "INSERT INTO `knjige`(`isbn`, `naziv`, `jezik`, `izdavac`) VALUES (?,?,?,?)";
+			String sqlinsert = "INSERT INTO `knjige`(`knjigaID`,`isbn`,`naziv`,`jezik`,`izdavac`,`status`,`pozajmnoOdeljenjeID`) VALUES (?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 
 			// Setovanje vrednosti
 			pstmt.setInt(1, 145222);
-			pstmt.setString(2, "Jelena, zena koje nema");
-			pstmt.setString(3, "Srpski");
-			pstmt.setString(4, "Laguna");
-
+			pstmt.setInt(2, 890898655);
+			pstmt.setString(3, "Jelena, zena koje nema");
+			pstmt.setString(4, "Srpski");
+			pstmt.setString(5, "Laguna");
+			pstmt.setString(6, "NaRaspolaganju");
+			pstmt.setInt(7, 112);
+			
 			// Izvrsavanje
 			int unetPodatak = pstmt.executeUpdate();
 

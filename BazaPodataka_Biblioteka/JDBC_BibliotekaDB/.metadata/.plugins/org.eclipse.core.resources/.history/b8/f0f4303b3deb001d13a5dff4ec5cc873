@@ -1,0 +1,10 @@
+package paket_Logovanje_BibliotekaDB;
+
+public class Privilegije {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

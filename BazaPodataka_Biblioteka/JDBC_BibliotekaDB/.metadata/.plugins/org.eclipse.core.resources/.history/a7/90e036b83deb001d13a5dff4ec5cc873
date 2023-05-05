@@ -1,0 +1,19 @@
+package paket_Logovanje_BibliotekaDB;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class Privilegije {
+
+	public static void main(String[] args) {
+		/*Ucitavanje podataka za admine i korisnike. 
+		 * Prilikom ucitavanja, u skladu sa ulogom osobe program odredjuje koje privilegije ima. */
+		
+		
+		//Definisanje privilegija
+		String posmatrac = "Posmatrac";
+		String izmena = "Izmena";
+	}
+
+}

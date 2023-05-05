@@ -1,0 +1,98 @@
+package paket_Logovanje_BibliotekaDB;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class Privilegije {
+
+	public static void main(String[] args) {
+		/*Ucitavanje podataka za admine i korisnike. 
+		 * Prilikom ucitavanja, u skladu sa ulogom osobe program odredjuje koje privilegije ima. */
+		
+		
+		//Definisanje privilegija
+		String posmatrac = "Posmatrac";
+		String izmena = "Izmena";
+		
+		//OBRADA:
+		//Ucitavanje podataka i obrada kroz postavljeni uslov
+		
+		// 1.Adresa na kojoj se nalazi baza
+		String url = "jdbc:mysql://localhost:3308/bazabiblioteke";
+
+		// 2.Korisnicko ime servera kome pristupamo
+		String username = "root";
+
+		// 3.Pasword servera kome pristpamo
+		String password = "";
+
+		System.out.println("Konekcija....");
+
+		// Konektovanje sa bazom preko klasa connection i driver managera:
+
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+			System.out.println("Uspesna konekcija sa bazom!");
+
+			// Upit postavljamo kroz objekat tipa string:
+			String admini = "SELECT * FROM admini";
+			String korisnici = "SELECT * FROM korisnici";
+			
+			// Objekat za komunikaciju sa bazom
+			Statement stmt = conn.createStatement();
+
+			// Objekat za skupljanje rezultata
+			ResultSet result1 = stmt.executeQuery(admini);
+			ResultSet result2 = stmt.executeQuery(korisnici);
+
+			while (result1.next()) {
+				int adminID = result1.getInt(1);
+				String nickName = result1.getString(2);
+				String sifra = result1.getString(3);
+				String email = result1.getString(4);
+				
+				StringBuilder builder = new StringBuilder();
+				builder.append("----ULOGA Admin---- ");
+				builder.append("\nID admina: ");
+				builder.append(adminID);
+				builder.append("\nnickName: ");
+				builder.append(nickName);
+				builder.append("\nSifra: ");
+				builder.append(sifra);
+				builder.append("\nEmail: ");
+				builder.append(email);
+				builder.append("\nPrivilegija: ");
+				builder.append(izmena);
+				
+				System.out.println(builder.toString());
+
+			}
+			
+			while (result2.next()) {
+				int korisnikID = result1.getInt(1);
+				String nickName = result1.getString(2);
+				String sifra = result1.getString(3);
+				String email = result1.getString(4);
+				
+				StringBuilder builder = new StringBuilder();
+				builder.append("----ULOGA korisnik---- ");
+				builder.append("\nID korisnika: ");
+				builder.append(korisnikID);
+				builder.append("\nnickName: ");
+				builder.append(nickName);
+				builder.append("\nSifra: ");
+				builder.append(sifra);
+				builder.append("\nEmail: ");
+				builder.append(email);
+				builder.append("\nPrivilegija: ");
+				builder.append(posmatrac);
+				
+				System.out.println(builder.toString());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

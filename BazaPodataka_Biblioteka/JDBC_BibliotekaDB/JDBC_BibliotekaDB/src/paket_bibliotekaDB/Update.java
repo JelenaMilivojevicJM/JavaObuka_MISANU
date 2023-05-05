@@ -17,7 +17,7 @@ public class Update {
 
 			System.out.println("Uspesna konekcija ka bazi!");
 
-			String sqlupdate = "UPDATE knjige SET jezik=? WHERE isbn=?";
+			String sqlupdate = "UPDATE knjige SET jezik=? WHERE knjigaID=?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sqlupdate);
 
