@@ -1,0 +1,71 @@
+package paket1_proveraSifre;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class Main {
+
+	public static void main(String[] args) {
+	/*Pravimo program koji ucitava i proverava podatke svih korisnika svih biblioteka koji umaju naloge.
+	 * Svaki korisnik se tretira kao jedan objekat.
+	 *  Objektima klase korisnik dodeljujemo sve vrednosti korisnika koje ucitavamo iz baze. 
+	 *  Fokus provere je jacina lozinke(sifre) korisnika. Pod pretpostavkom da se sifra smatra jakom
+	 *  ukoliko na primer sadrzi najmanje 1 veliko slovo, 1 malo slovo, brojeve i specijalne karaktere,
+	 *  a duzina sifre je minimum 8 karaktera.
+	 *  Zarad provere koristimo REGEX.*/
+		
+		//1.POVEZIVANJE SA BAZOM PODATAKA
+		String url = "jdbc:mysql://localhost:3308/bazabiblioteke";
+		String username = "root";
+		String password = "";
+		System.out.println("Konekcija....");
+
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+			System.out.println("Uspesna konekcija sa bazom!");
+
+			String sqlselect = "SELECT * FROM korisnici";
+
+			Statement stmt = conn.createStatement();
+
+			ResultSet result = stmt.executeQuery(sqlselect);
+
+			//2.UCITAVANJE PODATAKA O KORISNICIMA
+		
+			while (result.next()) {
+				int korsnikID = result.getInt(1);
+				String nickName = result.getString(2);
+				String sifra = result.getString(3);
+				String email = result.getString(4);
+				
+
+				//3.KREIRANJE LISTE OBJEKATA KLASE KORISNIK I DODELA VREDNOSTI
+				
+				List<Korisnik> listaKorisnika = new ArrayList<Korisnik>();
+				listaKorisnika.add(new Korisnik(korsnikID,nickName,sifra,email));
+				
+				//4.PROVERA SIFRE
+				String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+		        Pattern pattern = Pattern.compile(regex);
+		        Matcher matcher = pattern.matcher(sifra);
+		        
+		        if (matcher.matches()) {
+		        	//5.ISPIS SVIH REZULTATA PROVERE
+		            System.out.print(listaKorisnika.toString()+" jacina sifre: JAKA!");
+		        } else {
+		            System.out.print(listaKorisnika.toString()+" jacina sifre: SLABA!");
+		        }
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

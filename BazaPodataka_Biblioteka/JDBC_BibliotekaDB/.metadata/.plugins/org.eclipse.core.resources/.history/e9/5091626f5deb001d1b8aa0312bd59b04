@@ -1,0 +1,14 @@
+package paketIznajmljeneKnjige;
+
+public class Knjiga {
+	
+	//Polja:
+	private int id;
+	private long isbn;
+	private String naziv;
+	private String jezik;
+	private String izdavac;
+	private String status;
+	private int pozajmnoOdeljenjeID;
+
+}

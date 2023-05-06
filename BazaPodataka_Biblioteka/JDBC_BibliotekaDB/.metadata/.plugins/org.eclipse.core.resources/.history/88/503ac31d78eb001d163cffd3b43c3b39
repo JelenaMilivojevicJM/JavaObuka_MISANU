@@ -1,0 +1,16 @@
+package paket1_proveraSifre;
+
+public class Main {
+
+	public static void main(String[] args) {
+	/*Pravimo program koji ucitava i proverava podatke svih korisnika svih biblioteka koji umaju naloge.
+	 * Svaki korisnik se tretira kao jedan objekat.
+	 *  Objektima klase korisnik dodeljujemo sve vrednosti korisnika koje ucitavamo iz baze. 
+	 *  Fokus provere je jacina lozinke(sifre) korisnika. Pod pretpostavkom da se sifra smatra jakom
+	 *  ukoliko na primer sadrzi najmanje 1 veliko slovo, 1 malo slovo, brojeve i specijalne karaktere.
+	 *  Zarad provere koristimo REGEX.*/
+		
+		
+	}
+
+}

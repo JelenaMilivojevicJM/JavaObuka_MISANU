@@ -1,0 +1,18 @@
+package paketBibliotekari;
+
+import java.io.Serializable;
+
+public class Bibliotekar implements Serializable{
+	//Serijski broj klase 
+			private static final long serialVersionUID = 7836L;
+			
+			private int sifraZaposlenog;
+			private String ime;
+			private String prezime;
+			private String grad;
+			private String ulica;
+			private String ulicniBroj;
+			private String telefon;
+			private int jmbg;
+			private int  bibliotekaID;
+}

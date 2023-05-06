@@ -1,0 +1,97 @@
+#UPITI:
+#1. Kreirati pogled i prikazati samo one knjige koje su iznamljene:
+
+CREATE VIEW iznajmnljeneKnjige AS 
+SELECT * FROM `knjige` WHERE status="Iznajmljena";
+
+SELECT * FROM iznajmnljeneKnjige;
+
+
+#2.Prikazati nazive svih knjiga i imena i prezimena njihovih autora:
+#(Koriscenje INNER JOIN-a)
+
+SELECT knjige.naziv, autori.ime, autori.prezime
+FROM knjige INNER JOIN knjigeAutori ON knjige.knjigaID = knjigeAutori.knjigaID
+INNER JOIN autori ON knjigeAutori.autorID = autori.autorID;
+
+
+# 3. Prikazati samo imena i prezimena onih članova koji jos nisu platili članarinu (čiji je statusPlacanja NaCekanju):
+#(Koriscenje INNER JOIN-a)
+
+SELECT clanovi.ime, clanovi.prezime,uclanjenja.statusPlacanja
+FROM clanovi INNER JOIN uclanjenja 
+ON clanovi.brClanskeKarte = uclanjenja.brClanskeKarte
+WHERE uclanjenja.statusPlacanja = "NaCekanju";
+
+
+#4. Prikazati najstarijeg clana biblioteke (medju svim bibliotekama) iz Nisa:
+#(Koriscenje podupita)
+
+SELECT * FROM clanovi
+WHERE datumRodjenja = (SELECT MIN(datumRodjenja) FROM clanovi WHERE grad = 'Nis') AND grad = 'Nis';
+
+
+# 5.Prikazati sve podatke iz tabele clanovi, sortirane prvo po prezimenu u rastućem redosledu, a zatim po imenu u opadajućem redosledu:
+#(Koriscenje ORDER BY klauzule)
+SELECT * FROM clanovi
+ORDER BY prezime ASC, ime DESC;
+
+
+#6. Prikazati ukupan broj članova po gradu i ulici iz tabele clanovi:
+#(Koriscenje ugradjene funkcije COUNT() i GROUP BY klauzule)
+
+SELECT grad, ulica, COUNT(*)
+FROM clanovi
+GROUP BY grad, ulica;
+
+
+#7.Prikazati nickName korisnika koji je najduže ostao ulogovan:
+#(Koriscenje funkcija TIMESTAMPDIFF i MAX, klauzula GROUP BY,ORDER BY,i LIMIT i INNER JOIN-a)
+
+SELECT korisnici.nickName, MAX(TIMESTAMPDIFF(SECOND, logovanja.datumVremeUlaska, logovanja.datumVremeIzlaska)) AS TrajanjeUSekundama
+FROM logovanja INNER JOIN korisnici ON logovanja.korisnikID = korisnici.korsnikID
+GROUP BY korisnici.nickName
+ORDER BY TrajanjeUSekundama DESC
+LIMIT 1;
+
+
+# 8. Prikazati sve podatke o članovima iz tabele clanovi koji žive u Nišu i čije prezime počinje sa slovom P:
+
+SELECT * FROM clanovi
+WHERE grad = 'Nis' AND prezime LIKE "P%";
+
+
+# 9.Prikazati clanove čije prezime ima tačno 4 karaktera i završava se sa 'aric':
+
+SELECT * FROM clanovi
+WHERE prezime LIKE '_aric';
+
+
+#10.Napraviti i pozvati proceduru koja prikazuje sve članove čiji je grad Svilajnac:
+#(Koriscenje procedure)
+
+#a)Kreiranje
+DELIMITER //
+CREATE PROCEDURE clanoviIzSvilajnca()
+BEGIN
+    SELECT *FROM clanovi WHERE grad = "Svilajnac";
+END //
+DELIMITER ;
+
+#b)Pozivanje procedure
+CALL clanoviIzSvilajnca();
+
+
+# 11. Kreirati fuknciju koja kada se pozove ispisuje ukupan broj članova u svim bibliotekama:
+# a) Kreiranje fukncije:
+DELIMITER //
+CREATE FUNCTION ukupnoClanova() RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE ukupno INT;
+    SELECT COUNT(*) AS UkupanBrojSvihClanova INTO ukupno FROM uclanjenja;
+    RETURN ukupno;
+END //
+DELIMITER ;
+#b)Pozivanje funkcije:
+SELECT ukupnoClanova();
