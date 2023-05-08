@@ -1,0 +1,14 @@
+package paket_HS;
+
+public class Heap_Sort {
+/*Heap sort je algoritam sortiranja zasnovan na binarnoj strukturi podataka Heap. Heap sort je sličan algoritmu Selection sort, gde prvo pronalazimo najmanji element i postavljamo ga na početak.
+ * Ponavljamo isti proces za preostale elemente.
+ * Ovo sortiranje, dakle, koristi strukturu podataka poznatu kao heap, koja omogućava brzo pronalaženje maksimalnog elementa u nizu. U prvom koraku se niz konstruiše u obliku heap-a, a zatim se vrši sortiranje tako što se uzima koren heap-a (najveći element) i stavlja na kraj niza. Nakon toga se ponovo pravi heap od preostalog dela niza, i postupak se ponavlja sve dok se ne sortira ceo niz.
+ * Heap sort takođe ima vremensku složenost O(n*log(n)). */
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

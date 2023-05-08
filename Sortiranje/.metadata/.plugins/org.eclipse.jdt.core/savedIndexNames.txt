@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\Sortiranje\.metadata\.plugins\org.eclipse.jdt.core
+4123498828.index
+3226734016.index
+1116033942.index
+776207828.index
+4141815425.index
+637062351.index
+1865797976.index
+4044460538.index

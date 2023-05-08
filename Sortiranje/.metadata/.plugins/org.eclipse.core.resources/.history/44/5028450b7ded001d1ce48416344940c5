@@ -1,0 +1,38 @@
+package paket_BS;
+
+public class Bubble_Sort {
+/* Bubble sort je jedan od algoritama sortiranja.
+ * Ovaj algorotam je poznat i kao najjednostavniji među algoritmima sortiranja.
+ * Postoje dve vrste Bubble sortiranja: Uzlasno(Rastuće) (od manjeg ka većem) i Silazno (Opadajuće)(od većeg ka manjem).
+ * U algoritmu Bubble sortiranja, program prolazi niz od prvog do posljednjeg elementa.
+ * Prilikom prolaska, trenutni element uspoređuje sa sledećim elementom.
+ * Rastuće sortiranje: Ako je trenutni element manji od sledećeg elementa, zamjenjuju mesta. I tako redom dok se ne prođu i uporede se svi elementi iz niza
+ * Opadajuće sortiranje: Ako je trenutni element veći od sledećeg elementa, zamjenjuju mesta. I tako redom dok se ne prođu i uporede se svi elementi iz niza*/
+	
+	//PRIMER BUBBLE SORTIRANJA
+	
+	//Metoda za ređanje elemenata u rastućem redosledu
+	static void sortirajRastuce(int[] arr) {
+        int n = arr.length;
+        int temp = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+     
+                if (arr[j - 1] > arr[j]) {
+                    //Zamena elemenata
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+	}
+	//Metoda za ređanje elemenata u opadajućem redosledu
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

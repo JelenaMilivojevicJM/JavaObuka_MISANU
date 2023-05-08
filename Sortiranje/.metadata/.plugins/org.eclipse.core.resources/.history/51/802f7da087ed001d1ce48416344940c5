@@ -1,0 +1,92 @@
+package paket_BS;
+
+public class Bubble_Sort {
+	/*
+	 * Bubble sort je jedan od algoritama sortiranja. Ovaj algorotam je poznat i kao
+	 * najjednostavniji među algoritmima sortiranja. Postoje dve vrste Bubble
+	 * sortiranja: Uzlasno(Rastuće) (od manjeg ka većem) i Silazno (Opadajuće)(od
+	 * većeg ka manjem). U algoritmu Bubble sortiranja, program prolazi niz od prvog
+	 * do posljednjeg elementa. Prilikom prolaska, trenutni element uspoređuje sa
+	 * sledećim elementom. Rastuće sortiranje: Ako je trenutni element manji od
+	 * sledećeg elementa, zamjenjuju mesta. I tako redom dok se ne prođu i uporede
+	 * se svi elementi iz niza Opadajuće sortiranje: Ako je trenutni element veći od
+	 * sledećeg elementa, zamjenjuju mesta. I tako redom dok se ne prođu i uporede
+	 * se svi elementi iz niza
+	 */
+
+	// PRIMER BUBBLE SORTIRANJA:
+
+	// Metoda za ređanje elemenata u rastućem redosledu
+	static void sortirajRastuce(int[] niz) {
+		/* Kao parametar ove metode prosleđujemo niz koji želimo da sortiramo */
+		int n = niz.length;
+		int temp = 0;
+		// For petljama prolazimo kroz dati niz
+		/*
+		 * Prva for petlja sa promenljivom i prolazi kroz sve elemente niza od početka
+		 * do kraja, osim poslednjeg elementa. Ova petlja služi da odredi početnu
+		 * poziciju za upoređivanje elemenata.
+		 */
+		for (int i = 0; i < n - 1; i++) {
+			/*
+			 * Druga for petlja sa promenljivom j prolazi kroz sve elemente niza od pozicije
+			 * i + 1 do kraja. Ova petlja služi da uporedi element na poziciji i sa svim
+			 * elementima nakon njega.
+			 */
+			for (int j = i + 1; j < n; j++) {
+				/*
+				 * Ispitivanje uslova,da li je element na poziciji i veći od elementa na
+				 * poziciji j. Ukoliko je element na poziciji i veći od elementa na poziciji j,
+				 * menja im se mesto. Ovaj proces se ponavlja dok se ceo niz ne sortira.
+				 */
+				if (niz[i] > niz[j]) {
+					temp = niz[i];
+					niz[i] = niz[j];
+					niz[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < niz.length; i++) {
+			System.out.print(niz[i] + " ");
+		}
+
+	}
+
+	// Metoda za ređanje elemenata u opadajućem redosledu
+	static void sortirajOpadajuce(int[] niz) {
+		/* Kao parametar ove metode prosleđujemo niz koji želimo da sortiramo */
+		int n = niz.length;
+		int temp = 0;
+		// For petljama prolazimo kroz dati niz
+		for (int i = 0; i < n - 1; i++) {
+			for (int j = i + 1; j < n; j++) {
+				// Uslov za upoređivanje
+				if (niz[i] <= niz[j]) {
+					// Zamena elemenata
+					temp = niz[i];
+					niz[i] = niz[j];
+					niz[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < niz.length; i++) {
+			System.out.print(niz[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		// Deklaracija i Inicijalizacija početnog niza
+		int niz[] = { 2, 5, 7, 8, 1, 3, 6, 4, 9 };
+		System.out.println("Niz pre sortiranja: ");
+		for (int i = 0; i < niz.length; i++) {
+			System.out.print(niz[i] + " ");
+		}
+
+		System.out.println("\nNiz sortiran rastuće: ");
+		sortirajRastuce(niz);
+
+		System.out.println("\nNiz sortiran opadajuće: ");
+		sortirajOpadajuce(niz);
+	}
+
+}
