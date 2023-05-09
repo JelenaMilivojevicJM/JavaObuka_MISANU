@@ -1,0 +1,57 @@
+package paket_Binary_Search;
+
+public class Binary_Search_String {
+	/*
+	 * Binary Search je algoritam pretrage koji pronalazi poziciju ciljne vrednosti
+	 * unutar sortiranog niza. Radi tako što ponavljano deli pretraživački interval
+	 * na pola. Ako je vrednost pretraživačkog ključa manja od stavke u sredini
+	 * intervala, algoritam sužava interval na donju polovinu. U suprotnom, sužava
+	 * ga na gornju polovinu. Ponavljano proverava dok se vrednost ne pronađe ili
+	 * interval ne bude prazan. Binarno pretraživanje je brz algoritam za pretragu
+	 * sa složenošću vremena izvršavanja od O(log n). Da bi ovaj algoritam ispravno
+	 * funkcionisao, prikupljanje podataka treba da bude u sortiranom obliku, i zato
+	 * je ovo je efikasniji algoritam .
+	 */
+	/*
+	 * 1.Vremenska složenost: Binary Search-a je O(log n) jer ponavljano deli
+	 * pretraživački interval na pola. To znači da je Binary Search efikasniji od
+	 * Linear Search-a za velike skupove podataka.
+	 */
+	/*
+	 * 2.Uslov sortiranja:Binary Search zahteva da niz bude sortiran pre pretrage.
+	 */
+	/*
+	 * 3.Način pretrage:Binary Search ponavljano deli pretraživački interval na pola
+	 * i sužava ga na donju ili gornju polovinu u zavisnosti od toga da li je ključ
+	 * manji ili veći od elementa u sredini intervala
+	 */
+	
+	public static int binarySearch(int[] arr, int key) { // definisanje metode binarySearch koja prima sortirani niz celih brojeva i ključ kao ulaz
+        int left = 0; // definisanje promenljive left koja predstavlja početak pretraživačkog intervala
+        int right = arr.length - 1; // definisanje promenljive right koja predstavlja kraj pretraživačkog intervala
+        while (left <= right) { // while petlja koja se izvršava dok je left manje ili jednako right
+            int mid = left + (right - left) / 2; // izračunavanje srednjeg indeksa
+            if (arr[mid] == key) { // proverava da li je element na srednjem indeksu jednak ključu
+                return mid; // ako jeste, vraća indeks elementa
+            } else if (arr[mid] < key) { // inače proverava da li je element na srednjem indeksu manji od ključa
+                left = mid + 1; // ako jeste, ažurira promenljivu left tako što joj dodeljuje vrednost mid + 1
+            } else {
+                right = mid - 1; // inače ažurira promenljivu right tako što joj dodeljuje vrednost mid - 1
+            }
+        }
+        return -1; // ako ključ nije pronađen u nizu, vraća -1
+    }
+
+    public static void main(String[] args) { // glavna metoda programa
+        int[] arr = {10, 20, 30, 40, 50}; // definisanje sortiranog niza celih brojeva
+        int key = 30; // definisanje ključa koji se traži u nizu
+        int result = binarySearch(arr, key); // pozivanje metode binarySearch sa nizom i ključem kao ulazom
+        if (result == -1) { // proverava da li je rezultat jednak -1
+            System.out.println("Element nije pronađen"); // ako jeste, ispisuje poruku da element nije pronađen
+        } else {
+            System.out.println("Element pronađen na indeksu: " + result); // inače ispisuje poruku da je element pronađen na određenom indeksu
+        }
+    }
+}
+
+}

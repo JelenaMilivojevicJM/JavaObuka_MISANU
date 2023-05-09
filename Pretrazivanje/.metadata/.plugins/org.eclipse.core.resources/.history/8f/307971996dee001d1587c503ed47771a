@@ -1,0 +1,125 @@
+package paket_FS;
+
+public class Fibonacci_Search {
+	/*
+	 * Fibonacci pretraga je tehnika pretrage koja se temelji na upoređivanju i
+	 * koristi Fibonaccijeve brojeve za pretraživanje elementa u sortiranom nizu.
+	 */
+
+	/*
+	 * Fibonačijevi brojevi su rekurzivno definisani kao F(n) = F(n-1) + F(n-2),
+	 * F(0) = 0, F(1) = 1. Prvih nekoliko Fibonačijevih brojeva su 0, 1, 1, 2, 3, 5,
+	 * 8, 13, 21, 34, 55, 89, 144. Fibonačijev niz je niz brojeva u kojima je svaki
+	 * član zbir dva prethodna člana. Prva dva člana su 0 i 1. Na primer, prvih 11
+	 * članova serije su 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 i 55. U matematičkom
+	 * smislu, niz Fibonačijevih brojeva Sn je definisan relacijom ponavljanja: S(n)
+	 * = S(n-1) + S(n-2), sa S(0) = 0 i S(1) = 1
+	 */
+
+	/*
+	 * Fibonačijeva metoda pretrage, baš kao i metoda binarne pretrage, je algoritam
+	 * pretraživanja zasnovan na poređenju koji se zasniva na tehnici zavadi pa
+	 * vladaj. Ovaj metod pretrage radi na nizu koji je sortiran po neopadajućem
+	 * redosledu. Fibonacci pretraga i binarna pretraga su slične po tome što su obe
+	 * tehnike pretrage koje se temelje na upoređivanju i rade na sortiranim
+	 * nizovima. Obe su algoritmi deljenja i osvajanja i imaju logaritamsku
+	 * vremensku složenost. Razlike između njih uključuju način na koji dele niz.
+	 * Binarna pretraga koristi operator deljenja za deljenje raspona, dok Fibonacci
+	 * pretraga ne koristi /, već koristi + i -.
+	 */
+
+	/*
+	 * Prednosti Fibonacci pretrage uključuju činjenicu da je prijateljska prema
+	 * predmemoriji i koristi samo operacije sabranja i oduzimanja .To može biti
+	 * korisno kada je ulazni niz velik i ne može se uklopiti u CPU predmemoriju ili
+	 * čak u RAM . Nedostatak Fibonacci pretrage je što u prosjeku koristi više
+	 * upoređivanju od binarne pretrage.
+	 */
+
+	// FIBONACCI SEARCH PRIMER:
+
+	// Metoda za primenu fibonacci pretrage
+	public static int fibonacciSearch(int[] niz, int x) {
+
+		// n je dužina niza
+		int n = niz.length;
+
+		// Inicijalizacija Fibonacci brojeva:
+		// fib2 je (m-2)-ti Fibonacci broj
+		int fib2 = 0;
+		// fib1 je (m-1)-ti Fibonacci broj
+		int fib1 = 1;
+		// fib je m-ti Fibonacci broj
+		int fib = fib2 + fib1;
+
+		// Pronalaženje najmanjeg Fibonacci broja većeg ili jednakog od n
+		while (fib < n) {
+			// Ažuriranje Fibonacci brojeva
+			fib2 = fib1;
+			fib1 = fib;
+			fib = fib2 + fib1;
+		}
+
+		// Defnisanje početne tačka podele niza
+		int pocetnaTacka = -1;
+
+		// Petlja kroz koju prolazimo sve dok ima elemenata za pretragu
+		while (fib > 1) {
+			// i je indeks za uporedjivanje x-a s elementom u nizu
+			// koristimo (m-2)-ti Fibonacci broj kao indeks
+			int i = Math.min(pocetnaTacka + fib2, n - 1);
+
+			// ako je x veći od elementa na indeksu i,
+			// pretražujemo elemente nakon i
+			if (niz[i] < x) {
+				// ažuriramo Fibonacci brojeve tako da se pomaknemo jedan Fibonacci nadole
+				fib = fib1;
+				fib1 = fib2;
+				fib2 = fib - fib1;
+				// ažuriramo pocetnu tacku podele na indeks i
+				pocetnaTacka = i;
+			}
+			// ako je x manji od elementa na indeksu i,
+			// pretražujemo elemente pre i
+			else if (niz[i] > x) {
+				// ažuriramo Fibonacci brojeve tako da se pomaknemo dva Fibonaccija nadole
+				fib = fib2;
+				fib1 = fib1 - fib2;
+				fib2 = fib - fib1;
+			}
+			// ako je x jednak elementu na indeksu i,
+			// vraćamo indeks i
+			else {
+				return i;
+			}
+		}
+
+		// Proveravamo da li je preostao jedan element za upoređivanje
+		if (fib1 == 1 && niz[pocetnaTacka + 1] == x) {
+			return pocetnaTacka + 1;
+		}
+
+		// element nije pronađen, vraćamo -1
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		// Inicijalizacija niza
+		int[] niz = { 2, 3, 4, 10, 40 };
+		
+		//Element koji tražimo
+		int x = 10;
+		
+		//Pozivamo fibonacciSearch metodu za pronalaženje elementa x u nizu 
+		int index = fibonacciSearch(niz, x);
+		
+		//Ako je index različit od -1, element je pronađen
+		if (index != -1) {
+			System.out.println("Element " + x + " je pronađen na indeksu " + index);
+		} else {
+			//Inače, element nije pronađen
+			System.out.println("Element " + x + " nije pronađen u nizu");
+		}
+
+	}
+}

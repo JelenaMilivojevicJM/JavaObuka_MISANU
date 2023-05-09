@@ -1,0 +1,23 @@
+package paket_Linear_Search;
+
+public class Linear_Search_CeoBroj {
+	/*
+	 * Linearna pretraga je definisana kao sekvencijalni algoritam pretrage koji
+	 * počinje na jednom kraju i prolazi kroz svaki element liste dok se ne pronađe
+	 * željeni element, u suprotnom pretraga se nastavlja do kraja skupa podataka.
+	 * To je je način pronalaženja ciljne vrednosti unutar kolekcije podataka.
+	 * Koristi se za pretragu ključnog elementa iz više elemenata. Najprikladniji je
+	 * za male i nesortirane skupove podataka. 1.Vremenska složenost:Vremenska
+	 * složenost Linear Search-a je O(n) jer u najgorem slučaju mora da proveri
+	 * svaki element u nizu. 2.Uslov sortiranja:Linear Search ne zahteva da niz bude
+	 * sortiran pre pretrage. 3.Način pretrage:Linear Search proverava svaki element
+	 * niza redom dok ne pronađe željeni element.
+	 * 
+	 * 
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

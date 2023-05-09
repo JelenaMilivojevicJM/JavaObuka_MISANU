@@ -1,0 +1,30 @@
+package paket_Binary_Search;
+
+public class Binary_Search_String {
+	/*
+	 * Binary Search je algoritam pretrage koji pronalazi poziciju ciljne vrednosti
+	 * unutar sortiranog niza. Radi tako što ponavljano deli pretraživački interval
+	 * na pola. Ako je vrednost pretraživačkog ključa manja od stavke u sredini
+	 * intervala, algoritam sužava interval na donju polovinu. U suprotnom, sužava
+	 * ga na gornju polovinu. Ponavljano proverava dok se vrednost ne pronađe ili
+	 * interval ne bude prazan. Binarno pretraživanje je brz algoritam za pretragu
+	 * sa složenošću vremena izvršavanja od O(log n). Da bi ovaj algoritam ispravno
+	 * funkcionisao, prikupljanje podataka treba da bude u sortiranom obliku, i zato
+	 * je ovo je efikasniji algoritam .
+	 */
+	/*
+	 * 1.Vremenska složenost: Binary Search-a je O(log n) jer ponavljano deli
+	 * pretraživački interval na pola. To znači da je Binary Search efikasniji od
+	 * Linear Search-a za velike skupove podataka.
+	 */
+	/*
+	 * 2.Uslov sortiranja:Binary Search zahteva da niz bude sortiran pre pretrage.
+	 */
+	/*
+	 * 3.Način pretrage:Binary Search ponavljano deli pretraživački interval na pola
+	 * i sužava ga na donju ili gornju polovinu u zavisnosti od toga da li je ključ
+	 * manji ili veći od elementa u sredini intervala
+	 */
+	
+	
+}

@@ -1,0 +1,49 @@
+package paket_Linear_Search;
+
+public class Linear_Search_CeoBroj {
+	/*
+	 * Linearna pretraga je definisana kao sekvencijalni algoritam pretrage koji
+	 * počinje na jednom kraju i prolazi kroz svaki element liste dok se ne pronađe
+	 * željeni element, u suprotnom pretraga se nastavlja do kraja skupa podataka.
+	 * To je je način pronalaženja ciljne vrednosti unutar kolekcije podataka.
+	 * Koristi se za pretragu ključnog elementa iz više elemenata. Najprikladniji je
+	 * za male i nesortirane skupove podataka.
+	 */
+	/*
+	 * 1.Vremenska složenost:Vremenska složenost Linear Search-a je O(n) jer u
+	 * najgorem slučaju mora da proveri svaki element u nizu.
+	 */
+	/*
+	 * 2.Uslov sortiranja:Linear Search ne zahteva da niz bude sortiran pre
+	 * pretrage.
+	 */
+	/*
+	 * 3.Način pretrage:Linear Search proverava svaki element niza redom dok ne
+	 * pronađe željeni element.
+	 */
+	
+	//Metoda koja obavlja ovu vrstu pretrage
+    public static int linearSearch(int[] arr, int key) { 
+// definisanje metode linearSearch koja prima niz celih brojeva i ključ kao ulaz
+        for (int i = 0; i < arr.length; i++) { 
+// for petlja koja prolazi kroz niz
+            if (arr[i] == key) { 
+// proverava da li je trenutni element jednak ključu
+                return i; // ako jeste, vraća indeks elementa
+            }
+        }
+        return -1; // ako ključ nije pronađen u nizu, vraća -1
+    }
+
+    public static void main(String[] args) { // glavna metoda programa
+        int[] arr = {10, 20, 30, 40, 50}; // definisanje niza celih brojeva
+        int key = 30; // definisanje ključa koji se traži u nizu
+        int result = linearSearch(arr, key); // pozivanje metode linearSearch sa nizom i ključem kao ulazom
+        if (result == -1) { // proverava da li je rezultat jednak -1
+            System.out.println("Element nije pronađen"); // ako jeste, ispisuje poruku da element nije pronađen
+        } else {
+            System.out.println("Element pronađen na indeksu: " + result); // inače ispisuje poruku da je element pronađen na određenom indeksu
+        }
+    }
+}
+

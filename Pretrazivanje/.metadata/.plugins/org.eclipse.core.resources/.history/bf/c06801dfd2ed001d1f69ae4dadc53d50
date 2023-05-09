@@ -1,0 +1,33 @@
+package paket_FS;
+
+public class Fibonacci_Search {
+	/*
+	 * Fibonacci pretraga je tehnika pretrage koja se temelji na upoređivanju i
+	 * koristi Fibonaccijeve brojeve za pretraživanje elementa u sortiranom nizu.
+	 */
+	/*
+	 * Fibonačijev niz je niz brojeva u kojima je svaki član zbir dva prethodna
+	 * člana. Prva dva člana su 0 i 1. Na primer, prvih 11 članova serije su 0, 1,
+	 * 1, 2, 3, 5, 8, 13, 21, 34 i 55. U matematičkom smislu, niz Fibonačijevih
+	 * brojeva Sn je definisan relacijom ponavljanja: S(n) = S(n-1) + S(n-2), sa
+	 * S(0) = 0 i S(1) = 1
+	 */
+
+	/*
+	 * Fibonačijeva metoda pretrage, baš kao i metoda binarne pretrage, je algoritam
+	 * pretraživanja zasnovan na poređenju koji se zasniva na tehnici zavadi pa
+	 * vladaj. Ovaj metod pretrage radi na nizu koji je sortiran po neopadajućem
+	 * redosledu. Fibonacci pretraga i binarna pretraga su slične po tome što su obe
+	 * tehnike pretrage koje se temelje na upoređivanju i rade na sortiranim
+	 * nizovima. Obe su algoritmi deljenja i osvajanja i imaju logaritamsku
+	 * vremensku složenost. Razlike između njih uključuju način na koji dele niz.
+	 * Binarna pretraga koristi operator deljenja za deljenje raspona, dok Fibonacci
+	 * pretraga ne koristi /, već koristi + i -.
+	 */
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

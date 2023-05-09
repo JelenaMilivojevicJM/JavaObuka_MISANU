@@ -1,0 +1,39 @@
+package paket_Binary_Search;
+
+public class Binary_Search_String {
+	// Metoda linearSearch koja prima niz stringova i ključ kao ulazni parametar
+	public static int linearSearch(String[] niz, String kljuc) {
+		// for petlja koja prolazi kroz niz
+		for (int i = 0; i < niz.length; i++) {
+			// proverava da li je trenutni element jednak ključu koristeći metodu equals
+			if (niz[i].equals(kljuc)) {
+				// ako jeste, vraća indeks elementa
+				return i;
+			}
+		}
+		// ako ključ nije pronađen u nizu, vraća -1
+		return -1;
+	}
+
+	// Glavna metoda programa
+	public static void main(String[] args) {
+		// Definisanje niza stringova
+		String[] niz = { "Jabuka", "Kruska", "Breskva", "Banana", "Kajsija" };
+
+		// definisanje ključa koji se traži u nizu
+		String kljuc = "Breskva";
+
+		// Pozivanje metode linearSearch sa nizom i ključem kao ulazom
+		int result = linearSearch(niz, kljuc);
+
+		// provera da li je rezultat jednak -1
+		if (result == -1) {
+			// ako jeste, ispisuje poruku da element nije pronađen
+			System.out.println("Element koji ima vrednost Breskva nije pronađen");
+
+			// inače ispisuje poruku da je element pronađen na određenom indeksu
+		} else {
+			System.out.println("Element koji ima vrednost Breskva je pronađen na indeksu: " + result);
+		}
+	}
+}
