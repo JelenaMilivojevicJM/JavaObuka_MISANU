@@ -1,0 +1,148 @@
+package grafovi_paket1_Integer;
+
+/*Definisanje Grafa u Javi:
+ * Koncept grafa dolazi iz matematike. Graf je matematička struktura koja se koristi za predstavljanje veze između parova objekata.
+ * U Javi, Graf je struktura podataka koja čuva određene podatke. 
+ * Predstavlja mrežu koja povezuje više tačaka jedna sa drugom.
+ * Graf je struktura podataka koja čuva povezane podatke. 
+ * Drugim rečima, graf G (ili g) je definisan kao skup temena(čvorova)(V) i ivica (E) koji povezuje vrhove.
+ * Svaki graf se sastoji od ivica (edges )i temena(vertices ) (koji se nazivaju i čvorovi(nodes)).
+ * Svaki čvor i ivica imaju relaciju. Gde čvor predstavlja podatke, a ivica predstavlja odnos između njih.
+ * Čvorovi su podaci, to su tačke koje spajaju ivice, to je označen krugom sa oznakom na njima. 
+ * Ivice su označene linijom koja povezuje čvorove, to su prave koje spajaju neka dva vrha.
+ * Postoji nekoliko tipova grafova: Ponderisani graf, neponderisani graf, usmereni graf,
+ * neusmereni graf, povezani graf (slabo povezani graf, jako povezani graf), nepovezani graf, 
+ * višestruki graf, gust graf, retki graf.
+ * Osnovne metode koje možemo implementirati u grafu uključuju broj čvorova, broj grani, 
+ * dodavanje i uklanjanje čvorova i grana i traženje puteva između čvorova.
+*/
+import java.util.*;
+
+//Deklaracija klase Graph koja koristi generički tip T.
+public class Graf<T> {
+
+	/*
+	 * Kreiranje privatnog objekta klase Map koji čuva ivice grafa. Ključ je tipa T,
+	 * a vrednost je lista tipa T
+	 */
+	private Map<T, List<T>> map = new HashMap<>();
+
+	/*
+	 * Kreiranje metode koja dodaje novi čvor u graf. Prima jedan argument tipa T
+	 * koji predstavlja novi čvor.
+	 */
+	public void dodajNoviCvor(T s) {
+		// Ova linija koda dodaje novi čvor u mapu sa praznom listom kao vrednošću.
+		map.put(s, new LinkedList<T>());
+	}
+
+	/*
+	 * Kreiranje metode koja dodaje novu ivicu između dva čvora. Prima tri
+	 * argumenta: izvorni čvor (source), odredišni čvor (destination) i boolean
+	 * vrednost koja označava da li je ivica dvosmerna ili ne.
+	 */
+	public void dodajNovuIvicu(T izvorniCvor, T odredisniCvor, boolean dvosmernostIvice) {
+		// Provera da li mapa sadrži izvorni čvor kao ključ.
+		if (!map.containsKey(izvorniCvor))
+
+			// Ako ne sadrži izvorni čvor kao ključ, poziva metodu dodajNoviCvor da doda
+			// novi čvor u graf.
+			dodajNoviCvor(izvorniCvor);
+
+		// Provera da li mapa sadrži odredišni čvor kao ključ.
+		if (!map.containsKey(odredisniCvor))
+
+			// Ako ne sadrži odredišni čvor kao ključ, poziva metodu dodajNoviCvor da doda
+			// novi čvor u graf.
+			dodajNoviCvor(odredisniCvor);
+
+		// Dodavanje odredišnog čvora u listu povezanih sa izvornim čvorom.
+		map.get(izvorniCvor).add(odredisniCvor);
+
+		// Provera da li je ivica dvosmerna
+		if (dvosmernostIvice == true) {
+			// Ako je dvosmerna,dodajr izvorni čvor u listu povezanih sa odredišnim čvorom.
+			map.get(odredisniCvor).add(izvorniCvor);
+		}
+	}
+
+	/*
+	 * Metoda koja broji broj ivica u grafu. Prima jedan argument koji označava da
+	 * li su ivice dvosmerne ili ne.
+	 */
+	public void izbrojiIvice(boolean dvosmernostIvice) {
+
+		// Inicijalizacija promenljive brojac na 0.
+		// Promenljiva brojac se koristi za brojanje ivica.
+		int brojac = 0;
+
+		// Prolazenje kroz sve ključeve mape (tj. sve čvorove grafa).
+		for (T v : map.keySet()) {
+			// Za svaki čvor se dodaje veličina liste povezanih sa tim čvorom na promenljivu
+			// brojac
+			brojac = brojac + map.get(v).size();
+		}
+
+		// Provera da li su ivice dvosmerne.
+		if (dvosmernostIvice == true) {
+			brojac = brojac / 2;
+			// Ako su dvosmerne, broj ivica se deli sa 2.
+		}
+		// Ispis ukupnog broja ivica u grafu.
+		System.out.println("Ukupan Broj Ivica u Grafu: " + brojac);
+	}
+
+	/*Metoda koja proverava da li graf sadrži određeni čvor.
+	 * Prima jedan argument tipa T koji predstavlja čvor koji se proverava.*/
+	public void sadrziCvor(T s) {
+		// Provera da li mapa sadrži dati čvor kao ključ.
+
+		if (map.containsKey(s)) { 
+			// Ako sadrži, ispisuje poruku da graf sadrži dati čvor.
+			System.out.println("Graf SADRŽI "+ s + " kao čvor.");
+		} else {
+			// Ako mapa ne sadrži dati čvor kao ključ, ispisuje poruku da graf ne sadrži dati čvor.
+			System.out.println("Graf NE SADRŽI " + s + " kao čvor.");
+		}
+	}
+	
+	
+	/*Metoda koja proverava da li graf sadrži ivicu između dva čvora.
+	 * Prima dva argumenta tipa T koji predstavljaju izvorni i odredišni čvor.*/
+	public void sadrziIvicu(T s, T d) {
+		//Provera da li lista povezanih sa izvornim čvorom sadrži odredišni čvor.
+		if (map.get(s).contains(d)) {
+			//Ako sadrži odredišni čvor,ispisuje poruku da graf sadrži ivicu između ta dva čvora.
+			System.out.println("Graf SADRŽI ivicu između čvorova" + s + " i " + d + ".");
+		} else {
+			//Ako ne sadrži odredišni čvor,ispisuje poruku da graf ne sadrži ivicu između ta dva čvora.
+			System.out.println("Graf NE SADRŽI ivicu između čvorova " + s + " i " + d + ".");
+		}
+	}
+
+	
+	/*Predefinisana metoda toString() klase StringBuilder.
+	 * Metoda vraća string reprezentaciju grafa.*/
+	public String toString() {
+		
+		//Kreiranje novog objekat klase StringBuilder koji će se koristiti za kreiranje string reprezentacije grafa.
+		StringBuilder builder = new StringBuilder();
+		
+		//Prolazak kroz sve ključeve mape (tj. sve čvorove grafa).
+		for (T v : map.keySet()) {
+			//Za svaki čvor se dodaje njegova string reprezentacija u StringBuilder objekat, zajedno sa znakom “:”.
+			builder.append(v.toString() + ": ");
+			
+			//Prolazak kroz listu povezanih sa trenutnim čvorom.
+			for (T w : map.get(v)) {
+				//Za svaki povezani čvor se dodaje njegova string reprezentacija u StringBuilder objekat, zajedno sa razmakom.
+				builder.append(w.toString() + " ");
+			}
+			//Na kraju svake liste povezanih se dodaje novi red u StringBuilder objekat.
+			builder.append("\n");
+		}
+		//- Na kraju metode se vraća string reprezentacija grafa koja je kreirana pomoću StringBuilder objekta.
+		return (builder.toString());
+	}
+	/* */
+}

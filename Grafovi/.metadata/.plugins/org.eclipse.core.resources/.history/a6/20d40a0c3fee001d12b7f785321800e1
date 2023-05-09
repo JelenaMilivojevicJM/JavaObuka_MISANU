@@ -1,0 +1,19 @@
+package grafovi_paket1_Integer;
+/*Definisanje Grafa u Javi:
+ * Koncept grafa dolazi iz matematike. 
+ * U Javi, Graf je struktura podataka koja čuva određene podatke. 
+ * Predstavlja mrežu koja povezuje više tačaka jedna sa drugom.
+ * Graf je struktura podataka koja čuva povezane podatke. 
+ * Drugim rečima, graf G (ili g) je definisan kao skup temena(čvorova)(V) i ivica (E) koji povezuje vrhove.
+ * Svaki graf se sastoji od ivica (edges )i temena(vertices ) (koji se nazivaju i čvorovi(nodes)).
+ * Svaki čvor i ivica imaju relaciju. Gde čvor predstavlja podatke, a ivica predstavlja odnos između njih.
+ * Čvorovi su podaci, to su tačke koje spajaju ivice, to je označen krugom sa oznakom na njima. 
+ * Ivice su označene linijom koja povezuje čvorove, to su prave koje spajaju neka dva vrha.
+ * Postoji nekoliko tipova grafova: Ponderisani graf, neponderisani graf, usmereni graf,
+ *  neusmereni graf, povezani graf (slabo povezani graf, jako povezani graf), nepovezani graf, 
+ *  višestruki graf, gust graf, retki graf.
+*/
+
+public class Graf {
+
+}
