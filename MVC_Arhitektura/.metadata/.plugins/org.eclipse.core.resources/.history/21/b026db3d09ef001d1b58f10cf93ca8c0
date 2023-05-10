@@ -1,0 +1,43 @@
+package paket1;
+
+public class Zaposleni {
+	/*Zaposleni je Komponenta Model: Predstavlja poslovnu logiku aplikacije i takođe stanje aplikacije. Objekat
+	modela preuzima i čuva stanje modela u bazi podataka. Koristeći sloj modela, pravila se
+	primenjuju na podatke koji predstavljaju koncepte primene.*/
+
+	    // Deklaracija privatnih promenljivih
+	    private String ime; // Ime zaposlenog
+	    private String id; // ID zaposlenog
+	    private String odeljenje; // Odeljenje zaposlenog
+
+	    // Getter metoda za dobijanje ID-a zaposlenog
+	    public String getId() {
+	        return id;
+	    }
+
+	    // Setter metoda za postavljanje ID-a zaposlenog
+	    public void setId(String id) {
+	        this.id = id;
+	    }
+
+	    // Getter metoda za dobijanje imena zaposlenog
+	    public String getIme() {
+	        return ime;
+	    }
+
+	    // Setter metoda za postavljanje imena zaposlenog
+	    public void setIme(String ime) {
+	        this.ime = ime;
+	    }
+
+	    // Getter metoda za dobijanje odeljenja zaposlenog
+	    public String getOdeljenje() {
+	        return odeljenje;
+	    }
+
+	    // Setter metoda za postavljanje odeljenja zaposlenog
+	    public void setOdeljenje(String odeljenje) {
+	        this.odeljenje = odeljenje;
+	    }
+	}
+	 

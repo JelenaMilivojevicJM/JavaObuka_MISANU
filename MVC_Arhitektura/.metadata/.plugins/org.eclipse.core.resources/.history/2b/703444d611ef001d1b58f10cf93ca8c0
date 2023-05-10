@@ -1,0 +1,112 @@
+package glavniPaket;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class Main {
+	/*
+	 * Model-View-Controller (MVC) je obrazac dizajna (design pattern) u oblasti veb
+	 * razvoja, koji se obično koristi za razvoj korisiničkih interfejsa.
+	 * Dizajnerski obrasci su dobro dokazano rešenje za rešavanje specifičnog
+	 * problema/zadatka. MVC Počiva na ideji o ponovnoj upotrebi već postojećeg
+	 * softverskog koda, olakšavanju razvoja i kasnijem održavanju aplikacionog
+	 * softvera metodom razdvajanja na posebne komponente: model, prikaz podataka
+	 * (pogled) i kontrolor (upravljač), pri čemu je komponenta za prikaz
+	 * informacija odvojena od interakcije korisnika sa tim informacijama.
+	 * Podrazumeva da se program ili aplikacija sastoji od modela podataka,
+	 * informacija o prezentaciji i kontrolnih informacija. Dakle, primena MVC
+	 * obrazca zahteva da sve ove komponente budu razdvojene kao različiti objekti.
+	 */
+
+	/*
+	 * Osnovna prednost MVC arhitekture je što se razdvajanjem u posebne celine, kod
+	 * velikih projekata, na kome može da radi više osoba, omogućava laka izmena
+	 * nekog elementa, bez velike intervencije u drugim elementima, kao i ponovno
+	 * korišćenje već napravljenih elemenata.
+	 */
+
+	/*
+	 * MVC arhitektura omogućava da se logika aplikacije odvoji od korisničkog
+	 * interfejsa tako što se programski kod organizuje u tri odvojene komponente:
+	 * model, prikaz podataka i kontrolor. MVC projektni šablon se sastoji od tri
+	 * zasebne, ali međusobno povezane komponente: 1.model — je centralni deo
+	 * aplikacije, koja obuhvata promenljivu (dinamičku) strukturu podataka,
+	 * direktno upravljanje podacima, logikom i pravilima aplikacije; 2.prikaz,
+	 * pogled (view) - bilo koji izlazni prikaz podataka u korisničkom okruženju;
+	 * 3.upravljač (controller) — ulazne podatke pretvara u komande koje upravljaju
+	 * modelom ili prikazom podataka u korisničkom okruženju.
+	 */
+
+	public static void main(String[] args) throws SQLException {
+		// Dohvatanje podataka o zaposlenom iz baze podataka na osnovu ID-a zaposlenog
+		Zaposleni model = jdbcPodaci();
+
+		// Kreiranje pogleda za ispisivanje detalja o zaposlenom na konzolu
+		Pogled pogled = new Pogled();
+
+		// Kreiranje kontrolera za zaposlenog
+		Kontroler kontroler = new Kontroler(model, pogled);
+
+		// Ažuriranje pogleda na zaposlenog
+		kontroler.updatePogled();
+
+	}
+
+	// Metoda za dohvatanje podataka o zaposlenom iz baze podataka
+	/*
+	 * metoda jdbcPodaci() je simulacija dohvatanja podataka o zaposlenom iz baze
+	 * podataka. Ova metoda se povezuje sa bazom podataka i dohvata podatke o
+	 * zaposlenom na osnovu datog kriterijuma, kao što je ovde ID zaposlenog.
+	 */
+	private static Zaposleni jdbcPodaci() throws SQLException {
+
+		// Učitavanje s konzole id broja zaposlenog
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite ID zaposlenog za kog želite da program učita podatke");
+		int idz = sc.nextInt();
+		sc.close();
+
+		if (idz == 111 || idz == 122 || idz == 133 || idz == 411 || idz == 412) {
+			System.out.println("Uneli ste: " + idz);
+			System.out.println("Konekcija sa bazom . . .");
+		} else {
+			System.out.println("Uneli ste nepostojeći ID broj");
+		}
+
+		// Povezivanje sa bazom podataka
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3308/firma", "root", "");
+
+		// Kreiranje SQL upita
+		String prikaz = "SELECT * FROM zaposleni WHERE zaposleniID = " + idz;
+
+		// Objekat za komunikaciju sa bazom
+		Statement statement = connection.createStatement();
+
+		// Objekat za skupljanje rezultata - Izvršavanje SQL upita
+		ResultSet resultSet = statement.executeQuery(prikaz);
+
+		// Kreiranje objekta Zaposleni na osnovu rezultata upita
+
+		Zaposleni zaposleni = new Zaposleni();
+
+		while (resultSet.next()) {
+			zaposleni.setId(resultSet.getString(1));
+			zaposleni.setIme(resultSet.getString(2));
+			zaposleni.setPrezime(resultSet.getString(3));
+			zaposleni.setPozicija(resultSet.getString(4));
+			zaposleni.setOdeljenje(resultSet.getString(5));
+			zaposleni.setEmail(resultSet.getString(6));
+		}
+
+		// Zatvaranje resursa
+		resultSet.close();
+		statement.close();
+		connection.close();
+
+		return zaposleni;
+	}
+}

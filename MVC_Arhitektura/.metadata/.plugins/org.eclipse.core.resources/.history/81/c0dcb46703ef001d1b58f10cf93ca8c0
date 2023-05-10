@@ -1,0 +1,14 @@
+package paket1;
+
+public class Pogled {
+	/*Komponenta Pogled: Predstavlja vizuelizaciju podataka dobijenih iz modela. Sastoji od izlaza aplikacije ili korisničkog interfejsa. On šalje tražene podatke klijentu, koji se preuzimaju iz sloja modela od strane kontrolera.*/
+    // Metoda za ispisivanje detalja o zaposlenom
+    public void printEmployeeDetails(String EmployeeName, String EmployeeId, String EmployeeDepartment) {
+        System.out.println("Employee Details: "); // Ispisuje tekst "Employee Details: "
+        System.out.println("Name: " + EmployeeName); // Ispisuje ime zaposlenog
+        System.out.println("Employee ID: " + EmployeeId); // Ispisuje ID zaposlenog
+        System.out.println("Employee Department: " + EmployeeDepartment); // Ispisuje odeljenje zaposlenog
+    }
+}
+
+}

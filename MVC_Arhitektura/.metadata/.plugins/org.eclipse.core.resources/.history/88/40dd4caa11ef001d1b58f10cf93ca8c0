@@ -1,0 +1,78 @@
+package kontroler;
+
+import pogled.*;
+import model.*;
+
+public class Kontroler {
+	/* Komponenta Kontroler: Dobija korisničke zahteve iz prikaza i obrađuje ih, uz
+		 * neophodne provere. Deluje kao interfejs između modela i pogleda. Kontrolor
+		 * povezuje prikaz podataka sa modelom tako što prima korisnički unos i ažurira
+		 * model i prikaz podataka. Zahtevi se zatim šalju modelu za obradu podataka.
+		 * Kada se obrađuju, podaci se šalju nazad u kontroler, a zatim se prikazuju na
+		 * prikazu.
+		 */
+
+		// Deklaracija privatnih promenljivih
+		private Zaposleni model; // Model zaposlenog
+		private Pogled pogled; // Pogled na zaposlenog
+
+		// Konstruktor za inicijalizaciju modela i pogleda
+		public Kontroler(Zaposleni model, Pogled pogled) {
+			this.model = model;
+			this.pogled = pogled;
+		}
+
+		// Setter metoda za postavljanje ID-a zaposlenog u modelu
+		public void setId(String id) {
+			model.setId(id);
+		}
+
+		// Getter metoda za dobijanje ID-a zaposlenog iz modela
+		public String getId() {
+			return model.getId();
+		}
+
+		// Setter metoda za postavljanje imena zaposlenog u modelu
+		public void setIme(String ime) {
+			model.setIme(ime);
+		}
+
+		// Getter metoda za dobijanje imena zaposlenog iz modela
+		public String getIme() {
+			return model.getIme();
+		}
+
+		// Setter metoda za postavljanje prezimena zaposlenog u modelu
+		public void setPrezime(String prezim) {
+			model.setPrezime(prezim);
+		}
+
+		// Getter metoda za dobijanje prezimena zaposlenog iz modela
+		public String getPrezime() {
+			return model.getPrezime();
+		}
+
+		// Setter metoda za postavljanje odeljenja zaposlenog u modelu
+		public void setOdeljenje(String odeljenje) {
+			model.setOdeljenje(odeljenje);
+		}
+
+		// Getter metoda za dobijanje odeljenja zaposlenog iz modela
+		public String getOdeljenje() {
+			return model.getOdeljenje();
+		}
+
+		// Setter metoda za postavljanje emaila zaposlenog u modelu
+		public void setEmail(String email) {
+			model.setEmail(email);
+		}
+
+		// Getter metoda za dobijanje emaila zaposlenog iz modela
+		public String getEmail() {
+			return model.getEmail();
+		}
+
+		// Metoda za ažuriranje pogleda na zaposlenog
+		public void updatePogled() {
+			pogled.stampajInfoZaposlenog(model.getId(),model.getIme(),model.getPrezime(),model.getPozicija(), model.getOdeljenje(),model.getEmail() );
+		}

@@ -1,0 +1,16 @@
+CREATE DATABASE firma;
+
+CREATE TABLE zaposleni (
+zaposleniID int PRIMARY KEY NOT NULL,
+ime VARCHAR(30),
+prezime VARCHAR(30),
+pozicija VARCHAR(30),
+odeljenje VARCHAR(30),
+poslovniEmail VARCHAR(30)
+);
+
+INSERT INTO `zaposleni`(`zaposleniID`, `ime`, `prezime`, `pozicija`, `odeljenje`, `poslovniEmail`) VALUES (111,"Mika","Mikic","Glavni Prodavac","Prodaja","mikaprodaja@yahoo.com"),
+(122,"Pera","Peric","Pomocni Prodavac","Prodaja","perapprodaja@yahoo.com"),
+(133,"Zika","Zikic","Savetnik","Prodaja","zikasavetnik@yahoo.com"),
+(411,"Ana","Anic","Glavni Racunovodja","Racunovodstvo","anaracunovodstvo@yahoo.com"),
+(412,"Mara","Maric","Pomocni Racunovodja","Racunovodstvo","mararacunovodstvo@yahoo.com");
