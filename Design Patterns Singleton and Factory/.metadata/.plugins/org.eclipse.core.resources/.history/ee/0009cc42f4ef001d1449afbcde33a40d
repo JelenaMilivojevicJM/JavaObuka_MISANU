@@ -1,0 +1,8 @@
+package paket;
+//Konkretna klasa koja nasleđuje apstraktnu klasu IceCream i implementira metodu prepare()
+public class ChocolateIceCream extends IceCream {
+@Override
+public void prepare() {
+System.out.println("Preparing chocolate ice cream");
+}
+}

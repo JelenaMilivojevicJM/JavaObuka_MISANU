@@ -1,0 +1,27 @@
+package paket;
+public class IceCreamStore {
+	 // Statička promenljiva koja čuva jedinstvenu instancu klase IceCreamStore
+	 private static IceCreamStore instance;
+	 // Privatni konstruktor koji sprečava direktno instanciranje klase
+	 private IceCreamStore() {}
+	 // Statička metoda koja vraća jedinstvenu instancu klase IceCreamStore
+	 public static IceCreamStore getInstance() {
+	 // Ako instanca još uvek nije kreirana, kreiraj je
+	 if (instance == null) {
+	 instance = new IceCreamStore();
+	 }
+	 // Vrati instancu
+	 return instance;
+	 }
+	 // Metoda koja prima tip sladoleda kao argument i vraća odgovarajući objekat sladoleda
+	 public IceCream orderIceCream(String type) {
+	 // Koristi Factory obrazac dizajna da kreira odgovarajući objekat sladoleda
+	 IceCream iceCream = IceCreamFactory.createIceCream(type);
+	 // Pripremi sladoled
+	 iceCream.prepare();
+	 // Spakuj sladoled
+	 iceCream.pack();
+	 // Vrati objekat sladoleda
+	 return iceCream;
+	 }
+	}

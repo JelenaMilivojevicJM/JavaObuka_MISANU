@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\Design Patterns Singleton and Factory\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+776207828.index
+3403554338.index

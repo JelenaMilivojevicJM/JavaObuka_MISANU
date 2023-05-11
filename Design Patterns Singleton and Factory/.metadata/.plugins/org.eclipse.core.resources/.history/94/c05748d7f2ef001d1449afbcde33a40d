@@ -1,0 +1,14 @@
+package paket;
+public class IceCreamFactory {
+	 // Statička metoda koja prima tip sladoleda kao argument i vraća odgovarajući objekat sladoleda
+	 public static IceCream createIceCream(String type) {
+	 if (type.equals("chocolate")) {
+	 return new ChocolateIceCream();
+	 } else if (type.equals("vanilla")) {
+	 return new VanillaIceCream();
+	 } else if (type.equals("strawberry")) {
+	 return new StrawberryIceCream();
+	 } else {
+	 return null;
+	 }
+	 }

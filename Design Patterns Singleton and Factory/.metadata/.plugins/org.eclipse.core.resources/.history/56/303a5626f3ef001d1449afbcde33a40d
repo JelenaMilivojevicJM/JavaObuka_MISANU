@@ -1,0 +1,17 @@
+package paket;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Dobavi instancu klase IceCreamStore
+		 IceCreamStore store = IceCreamStore.getInstance();
+		 // Poruči čokoladni sladoled
+		 IceCream chocolate = store.orderIceCream("chocolate");
+		 // Poruči sladoled od vanile
+		 IceCream vanilla = store.orderIceCream("vanilla");
+		 // Poruči sladoled od jagode
+		 IceCream strawberry = store.orderIceCream("strawberry");
+
+	}
+
+}

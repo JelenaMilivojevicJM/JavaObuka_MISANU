@@ -1,0 +1,15 @@
+package paket;
+public class SladoledFactory {
+	 // Statička metoda koja prima tip sladoleda kao argument i vraća odgovarajući objekat sladoleda
+	 public static Sladoled napraviSladoled(String type) {
+	 if (type.equals("Čokolada")) {
+	 return new Cokolada();
+	 } else if (type.equals("Vanila")) {
+	 return new Vanila();
+	 } else if (type.equals("Jagoda")) {
+	 return new Jagoda();
+	 } else {
+	 return null;
+	 }
+	 }
+}

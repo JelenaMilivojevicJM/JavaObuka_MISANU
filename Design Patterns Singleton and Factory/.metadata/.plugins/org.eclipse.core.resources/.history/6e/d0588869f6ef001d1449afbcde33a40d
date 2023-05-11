@@ -1,0 +1,28 @@
+package paket;
+
+public class Main {
+	/*
+	 * Primer zadatka koji zahteva upotrebu i Singleton i Factory obrazaca dizajna:
+	 * Program koji simulira rad prodavnice sladoleda. Prodavnica nudi nekoliko
+	 * vrsta sladoleda: čokoladni, vanila i jagoda. Koristmo Factory obrazac
+	 * dizajna da kreiramo, različite vrste sladoleda. Koristmo Singleton obrazac
+	 * dizajna da osiguramo da postoji samo jedna instanca prodavnice sladoleda.
+	 */
+	public static void main(String[] args) {
+		// Kreiranje instance klase Prodavnica
+		Prodavnica prodavnica = Prodavnica.getInstance();
+		
+		// Poručivanje čokoladnog sladoled
+		Sladoled cokolada = prodavnica.poruciSladoled("Čokolada");
+		System.out.println("*Možete preuzeti Vaš sladoled Čokolada*");
+		
+		// Poručivanje sladoleda od vanile
+		Sladoled vanila = prodavnica.poruciSladoled("Vanila");
+		System.out.println("*Možete preuzeti Vaš sladoled Vanila*");
+		
+		// Poručivanje sladoleda od jagode
+		Sladoled jagoda = prodavnica.poruciSladoled("Jagoda");
+		System.out.println("*Možete preuzeti Vaš sladoled Jagoda*");
+	}
+
+}

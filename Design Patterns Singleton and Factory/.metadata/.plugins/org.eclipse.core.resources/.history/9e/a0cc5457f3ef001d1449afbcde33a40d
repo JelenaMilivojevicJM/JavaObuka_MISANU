@@ -1,0 +1,12 @@
+package paket;// Apstraktna klasa koja definiše zajedničko ponašanje za sve vrste sladoleda
+
+public abstract class IceCream {
+	// Apstraktna metoda koja mora biti implementirana u svim konkretnim klasama
+	// koje nasleđuju ovu klasu
+	public abstract void prepare();
+
+	// Metoda koja definiše zajedničko ponašanje za sve vrste sladoleda
+	public void pack() {
+		System.out.println("Packing ice cream");
+	}
+}
