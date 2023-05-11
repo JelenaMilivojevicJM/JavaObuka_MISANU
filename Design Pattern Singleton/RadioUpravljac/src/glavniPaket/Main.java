@@ -1,0 +1,37 @@
+package glavniPaket;
+
+import java.util.Scanner;
+
+import paketSingleton.RadioUpravljac;
+
+public class Main {
+	public static void main(String[] args) {
+		// Dobijanje instance RadioUpravljac klase
+		RadioUpravljac radioUpravljac = RadioUpravljac.getInstance();
+		
+		// Podešavanje jačine zvuka na 5
+		radioUpravljac.setJacinaZvuka(5);
+		
+		// Ispis trenutne jačine zvuka
+		System.out.println("Trenutna jačina zvuka: " + radioUpravljac.getJacinaZvuka());
+		
+		// Izbor radio stanice "Radio Beograd 1"
+		radioUpravljac.setRadioStation("Radio Beograd 1");
+		
+		// Ispis trenutno izabrane radio stanice
+		System.out.println("Trenutno izabrana radio stanica: " + radioUpravljac.getRadioStanica());
+		
+		//Korisnicki unos
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Unesite naziv radio stanice");
+		String nazivRS = sc.nextLine();
+		radioUpravljac.setRadioStation(nazivRS);
+		System.out.println("Trenutno izabrana radio stanica: "+ radioUpravljac.getRadioStanica());
+		System.out.println("Unesite broj jačine zvuka");
+		int brojJC = sc.nextInt();
+		radioUpravljac.setJacinaZvuka(brojJC);
+		System.out.println("Trenutna jačina zvuka: " + radioUpravljac.getJacinaZvuka());
+		
+		sc.close();
+	}
+}

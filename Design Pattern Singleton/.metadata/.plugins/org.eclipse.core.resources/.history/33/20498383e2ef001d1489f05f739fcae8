@@ -1,0 +1,22 @@
+package glavniPaket;
+
+import paketSingleton.RadioUpravljac;
+
+public class Main {
+	public static void main(String[] args) {
+		// Dobijanje instance AudioManager klase
+		RadioUpravljac radioUpravljac = RadioUpravljac.getInstance();
+		
+		// Podešavanje jačine zvuka na 5
+		radioUpravljac.setVolume(5);
+		
+		// Ispis trenutne jačine zvuka
+		System.out.println("Trenutna jačina zvuka: " + radioUpravljac.getVolume());
+		
+		// Izbor radio stanice "Radio Beograd 1"
+		radioUpravljac.setRadioStation("Radio Beograd 1");
+		
+		// Ispis trenutno izabrane radio stanice
+		System.out.println("Trenutno izabrana radio stanica: " + radioUpravljac.getRadioStanica());
+	}
+}

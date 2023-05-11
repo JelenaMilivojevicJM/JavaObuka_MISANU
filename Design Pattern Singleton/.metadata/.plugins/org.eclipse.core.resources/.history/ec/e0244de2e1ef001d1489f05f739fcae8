@@ -1,0 +1,47 @@
+package paket;
+
+public class RadioUpravljac {
+	// Statička promenljiva koja čuva jedinstvenu instancu klase
+	private static RadioUpravljac instance;
+	// Promenljive koje predstavljaju jačinu zvuka i izabranu radio stanicu
+	private int volume;
+	private String radioStanica;
+
+	// Privatni konstruktor koji sprečava direktno instanciranje objekata ove klase
+	private RadioUpravljac() {
+		// Inicijalizacija promenljivih na početne vrednosti
+		volume = 0;
+		radioStanica = "";
+	}
+
+	// Statička metoda koja vraća jedinstvenu instancu klase
+	public static RadioUpravljac getInstance() {
+		// Provera da li je instanca već kreirana
+		if (instance == null) {
+			// Ako nije, kreiraj novu instancu
+			instance = new RadioUpravljac();
+		}
+		// Vrati instancu
+		return instance;
+	}
+
+	// Metoda za podešavanje jačine zvuka
+	public void setVolume(int volume) {
+		this.volume = volume;
+	}
+
+	// Metoda za dobijanje trenutne jačine zvuka
+	public int getVolume() {
+		return volume;
+	}
+
+	// Metoda za izbor radio stanice
+	public void setRadioStation(String radioStanica) {
+		this.radioStanica = radioStanica;
+	}
+
+	// Metoda za dobijanje trenutno izabrane radio stanice
+	public String getRadioStanica() {
+		return radioStanica;
+	}
+}
