@@ -1,0 +1,13 @@
+package paket;
+//Kreiramo klasu FactoryProvider koja omogućava pristup implementacijama fabrika
+public class FactoryProvider {
+ public static AbstractFactory getFactory(String choice) {
+     // U zavisnosti od izbora, vraćamo instancu odgovarajuće fabrike
+     if ("Animal".equalsIgnoreCase(choice)) {
+         return new AnimalFactory();
+     } else if ("Color".equalsIgnoreCase(choice)) {
+         return new ColorFactory();
+     }
+     return null;
+ }
+}

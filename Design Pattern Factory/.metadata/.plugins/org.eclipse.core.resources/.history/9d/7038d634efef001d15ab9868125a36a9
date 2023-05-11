@@ -1,0 +1,15 @@
+package paket;
+
+//Implementiramo fabriku ColorFactory koja koristi Factory Method pattern
+public class ColorFactory implements AbstractFactory<Animal> {
+	@Override
+	public Animal create(String animalType) {
+		// U zavisnosti od boje životinje, instanciramo odgovarajuću klasu
+		if ("White".equalsIgnoreCase(animalType)) {
+			return new White();
+		} else if ("Blue".equalsIgnoreCase(animalType)) {
+			return new Blue();
+		}
+		return null;
+	}
+}

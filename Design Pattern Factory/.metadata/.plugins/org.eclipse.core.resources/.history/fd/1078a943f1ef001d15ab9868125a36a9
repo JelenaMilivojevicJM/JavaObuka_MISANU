@@ -1,0 +1,48 @@
+package paket;
+
+public class Main {
+	/*
+	 * Factori Pattern je kreacioni obrazac dizajna koji se bavi mehanizmima
+	 * stvaranja objekata, pokušavajući da kreira objekte na način koji odgovara
+	 * situaciji. Osnovni oblik kreiranja objekata može rezultirati problemima u
+	 * dizajnu ili dodatnom složenošću dizajna. Factori Design Pattern rešava ovaj
+	 * problem kreiranjem objekta bez izlaganja logike kreiranja klijentu i
+	 * upućivanjem na novokreirani objekat koristeći zajednički interfejs. Obrazac
+	 * Abstract Factory je jedan od dve vrste facorty desing obrazaca. Obezbeđuje
+	 * interfejs za kreiranje porodica povezanih ili zavisnih objekata bez
+	 * specificiranja njihovih konkretnih klasa. Ukratko, obrazac Factori Method se
+	 * koristi kada imate jedan proizvod koji može imati više implementacija, dok se
+	 * obrazac, Abstract Factori koristi kada imate više proizvoda sa više
+	 * implementacija.
+	 */
+	public static void main(String[] args) {
+		/*
+		 * Prvo, koristimo metodu getFactory klase FactoryProvider da dobijemo instancu
+		 * fabrike za životinje. Prosleđujemo argument "Animal" kako bi dobili instancu
+		 * klase AnimalFactory. Rezultat metode getFactory se čuva u promenljivoj
+		 * animalFactory.
+		 */
+
+		// Koristimo klasu FactoryProvider da dobijemo instancu fabrike i kreiramo
+		// instance konkretnih klasa
+		// Dobijamo instancu fabrike za životinje
+		AbstractFactory<Animal> animalFactory = FactoryProvider.getFactory("Animal");
+
+		/*
+		 * Zatim, koristimo metodu create fabrike animalFactory da kreiramo instancu
+		 * klase Dog. Prosleđujemo argument "Dog" kako bi dobili instancu klase Dog.
+		 * Rezultat metode create se čuva u promenljivoj animal.
+		 */
+		// Kreiramo instancu klase Dog
+		Animal animal = animalFactory.create("Dog");
+
+		/*
+		 * Na kraju, ispisujemo ime i zvuk životinje pozivajući metode getAnimal i
+		 * makeSound na promenljivoj animal. Ovaj kod će ispisati ime i zvuk životinje
+		 * koja je kreirana pomoću fabrike.
+		 */
+		System.out.println(animal.getAnimal());
+		System.out.println(animal.makeSound());
+	}
+
+}

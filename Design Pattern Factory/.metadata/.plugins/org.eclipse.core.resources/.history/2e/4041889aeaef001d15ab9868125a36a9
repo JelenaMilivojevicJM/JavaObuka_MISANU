@@ -1,0 +1,23 @@
+package paket;
+
+public class Main {
+
+	// Koristimo fabričku klasu NotificationFactory da kreiramo instance konkretnih
+	// klasa i šaljemo obaveštenja
+	public static void main(String[] args) {
+		// Kreiramo instancu fabričke klase NotificationFactory
+		NotificationFactory notificationFactory = new NotificationFactory();
+
+		// Kreiramo instancu klase SMSNotification i šaljemo SMS obaveštenje
+		Notification notification1 = notificationFactory.createNotification("SMS");
+		notification1.notifyUser();
+
+		// Kreiramo instancu klase EmailNotification i šaljemo email obaveštenje
+		Notification notification2 = notificationFactory.createNotification("EMAIL");
+		notification2.notifyUser();
+
+		// Kreiramo instancu klase PushNotification i šaljemo push obaveštenje
+		Notification notification3 = notificationFactory.createNotification("PUSH");
+		notification3.notifyUser();
+	}
+}

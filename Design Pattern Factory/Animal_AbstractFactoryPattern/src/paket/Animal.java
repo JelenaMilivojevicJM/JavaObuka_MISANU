@@ -1,0 +1,8 @@
+package paket;
+
+//Kreiramo interfejs Animal sa metodama getAnimal i makeSound
+public interface Animal {
+	String getAnimal();
+
+	String makeSound();
+}
