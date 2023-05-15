@@ -1,0 +1,33 @@
+package paket;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Koliko ukupno elementa sadrzi niz:
+
+		int brojevi[] = { 1, 2, 3, 4, 5 };
+
+		int[] numbers = { 73, 24, 45, 75, 35, 24, 76 };
+
+		System.out.println("Niz brojevi ima ukupno elemenata: " + brojevi.length);
+		System.out.println("Niz numbers ima ukupno elemenata: " + numbers.length);
+
+		// Na kojoj poziciji (lokaciji) odnosno indexu je koji broj
+
+		System.out.println("U nizu brojevi, na poziciji 0 je broj: " + brojevi[0]);
+		System.out.println("U nizu brojevi, na poziciji 4 je broj: " + brojevi[0]);
+
+		System.out.println("U nizu numbers, na poziciji 0 je broj: " + numbers[0]);
+		System.out.println("U nizu numbers, na poziciji 4 je broj: " + numbers[4]);
+
+		/*
+		 * Ako zelimo da proverimo KOLIKO tacno elemenata sadrzi neki niz onda zahtevamo
+		 * stampacu da nam pokaze duzinu:
+		 */
+		System.out.println(brojevi.length);
+		int[] temperatura = { 22, 23, 26, 28, 25, 21, 18, 17 };
+		int[] dnevna_temp = temperatura;
+
+	}
+
+}

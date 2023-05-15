@@ -1,0 +1,11 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\4_JDN_JednoDimenzionalniNiz\.metadata\.plugins\org.eclipse.jdt.core
+2652415515.index
+1711737360.index
+4155574538.index
+375658435.index
+1414698966.index
+1563514106.index
+2762270669.index
+3292005696.index
+1376090015.index
+1865797976.index
