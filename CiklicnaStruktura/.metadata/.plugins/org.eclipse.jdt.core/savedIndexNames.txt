@@ -1,6 +1,0 @@
-INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\CiklicnaStruktura\.metadata\.plugins\org.eclipse.jdt.core
-3917109473.index
-776207828.index
-230286539.index
-2296838412.index
-1865797976.index
