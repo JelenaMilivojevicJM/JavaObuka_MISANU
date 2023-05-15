@@ -1,0 +1,17 @@
+package paket_k6;
+
+public class Box {
+	private double width;
+	private double heigth;
+	private double depth;
+
+	Box(double width, double heigth, double depth) {
+		this.width = width;
+		this.heigth = heigth;
+		this.depth = depth;
+	}
+
+	double volume() {
+		return width * heigth * depth;
+	}
+}

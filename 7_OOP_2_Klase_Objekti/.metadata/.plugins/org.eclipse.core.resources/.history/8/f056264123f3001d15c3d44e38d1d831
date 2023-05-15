@@ -1,0 +1,16 @@
+package paket_Domine;
+
+public class Main {
+	public static void main(String[] args) {
+		/* Zamena mesta poljima objekta */
+		Domine domine = new Domine(2, 5);
+
+		domine.getA();
+		domine.getB();
+
+		System.out.println(domine.opis());
+		domine.okreni();
+		System.out.println(domine.opis());
+		System.out.println(domine.jednakost(domine));
+	}
+}
