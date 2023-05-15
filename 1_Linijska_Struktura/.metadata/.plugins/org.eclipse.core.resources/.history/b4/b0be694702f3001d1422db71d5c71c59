@@ -1,0 +1,14 @@
+package test1;
+
+public class Zadatak2 {
+	/*
+	 * Zadatak 2
+	 * 
+	 * Napisati program kojim se izračunava vrednost funkcije na slici na osnovu
+	 * unetih vrednosti promenljivih x, y i z. Na izlazu štampati vrednost funkcije
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

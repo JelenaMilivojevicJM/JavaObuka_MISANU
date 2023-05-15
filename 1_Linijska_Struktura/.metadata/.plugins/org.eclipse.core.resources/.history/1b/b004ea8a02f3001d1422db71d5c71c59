@@ -1,0 +1,15 @@
+package test1;
+
+public class Zadatak4 {
+	/*
+	 * Zadatak 4
+	 * 
+	 * Neka su zadate tačke A i B svojim koordinatama, XA, YA i XB, YB, respektivno.
+	 * Napisati program kojim se izračunava i štampa rastojanje između zadatih
+	 * tačaka A i B na osnovu izraza
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

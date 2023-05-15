@@ -1,0 +1,15 @@
+package jelena.paket;
+
+public class Main {
+
+	public static void main(String[] args) {
+		System.out.println("Java je programski jezik");
+
+		/*
+		 * Komentari su delovi koda koje kompajler pri prevođenju kôda jednostavno
+		 * ignoriše, a od značaja su za programera. Po konvenciji, editori u gotovo svim
+		 * razvojnim okruženjima komentare boje u svetlo zeleno.
+		 */
+	}
+
+}

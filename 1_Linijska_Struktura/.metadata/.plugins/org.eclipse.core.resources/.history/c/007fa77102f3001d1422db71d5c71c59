@@ -1,0 +1,14 @@
+package test1;
+
+public class Zadatak3 {
+	/*
+	 * Zadatak 3
+	 * 
+	 * Napisati program kojim se na osnovu unete stranice kvadrata a izračunava
+	 * površina i obim. Na izlazu štampati površinu i obim kvadrata.
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

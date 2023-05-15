@@ -1,0 +1,14 @@
+package test1;
+
+public class Zadatak5 {
+	/*
+	 * Zadatak 5
+	 * 
+	 * Trougao je zadat dužinama stranica a, b i c. Napisati program za
+	 * izračunavanje:
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

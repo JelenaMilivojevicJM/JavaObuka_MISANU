@@ -1,0 +1,13 @@
+package test1;
+
+public class Zadatak1 {
+/*Zadatak 1
+
+Napisati program kojim se izračunava vrednost funkcije prikazane na slici na osnovu unetih logičkih vrednosti promenljivih x i y.
+ Na izlazu štampati vrednost funkcije. */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

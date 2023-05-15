@@ -1,0 +1,28 @@
+package test1;
+
+import java.util.Scanner;
+
+public class Zadatak1 {
+/*Zadatak 1
+
+Napisati program kojim se izračunava vrednost funkcije prikazane na slici na osnovu unetih logičkih vrednosti promenljivih x i y.
+ Na izlazu štampati vrednost funkcije. */
+	public static void main(String[] args) {
+		// Ulaz- ucitati promenljive x i y
+		
+				Scanner sc = new Scanner(System.in);
+				System.out.println("Unesite x");
+				boolean x = sc.nextBoolean();
+				System.out.println("Unesite y");
+				boolean y = sc.nextBoolean();
+				
+				//Obrada - racunanje vrednosti funkcije
+				
+				boolean z = !(x||y)&&!x||y;
+				
+				//Izlaz - prikaz vrednosti promenljive z
+				System.out.println("Vrednost promenljive z je: "+z);
+				
+	}
+
+}
