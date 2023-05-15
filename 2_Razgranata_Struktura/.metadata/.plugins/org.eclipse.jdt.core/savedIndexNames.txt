@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\2_Razgranata_Struktura\.metadata\.plugins\org.eclipse.jdt.core
+3950219969.index
+2482085981.index
+776207828.index
+3592260270.index
+1341663164.index
+3495852253.index
+1865797976.index
