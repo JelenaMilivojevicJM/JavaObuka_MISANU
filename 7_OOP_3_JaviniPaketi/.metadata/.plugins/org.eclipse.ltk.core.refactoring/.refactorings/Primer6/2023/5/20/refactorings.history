@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;p1p2&apos; to &apos;p2&apos;&#x0D;&#x0A;- Original project: &apos;Primer6&apos;&#x0D;&#x0A;- Original element: &apos;Primer6/src/p1p2&apos;&#x0D;&#x0A;- Renamed element: &apos;Primer6/src/p2&apos;&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;p1p2&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;p1p2" name="p2" qualified="false" references="false" stamp="1684161517146" textual="false" version="1.0"/>
+</session>
