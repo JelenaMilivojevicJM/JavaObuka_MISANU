@@ -1,0 +1,14 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\7_OOP_Uvod\.metadata\.plugins\org.eclipse.jdt.core
+980952312.index
+3720350207.index
+3292005696.index
+1242746999.index
+2742121794.index
+3564520916.index
+1865797976.index
+1269153271.index
+2865183081.index
+3541795277.index
+1563514106.index
+1024844001.index
+1300173934.index

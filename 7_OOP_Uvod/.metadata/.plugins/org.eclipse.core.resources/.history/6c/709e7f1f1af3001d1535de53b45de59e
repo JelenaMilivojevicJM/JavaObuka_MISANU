@@ -1,0 +1,10 @@
+package paket_oop_4;
+
+public class GeteriSeteriPrikaz {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
