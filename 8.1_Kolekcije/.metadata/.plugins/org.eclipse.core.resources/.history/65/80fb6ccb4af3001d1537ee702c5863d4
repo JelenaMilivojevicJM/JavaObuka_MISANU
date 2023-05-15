@@ -1,0 +1,72 @@
+package paket;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List lista = new ArrayList();
+		/* size() - vraca broj elementa smestenih u kolekciji ArrayList */
+		System.out.println("Pocetna duzina: " + lista.size());
+
+		/* add() - dodaje element na kraj kolekcije */
+		lista.add("Prvi"); // 0
+		lista.add("Drugi"); // 1
+		lista.add("Treci"); // 2
+		lista.add("Cetvrti"); // 3
+
+		/* prolazak kroz kolekciju */
+		for (Object s : lista) {
+			System.out.printf("%s ", s);
+		}
+
+		System.out.println("\nTrenutna duzina kolekcije je: " + lista.size());
+
+		/* provera da li se neki zadati element nalazi unutar kolekcije */
+		/*
+		 * contains - vraca true ako kolekcija sadrzi trazeni element, odnosno vraca
+		 * false ukoliko kolekcija ne sadrzi trazeni element
+		 */
+
+		boolean sadrzi = lista.contains("Treci");
+		if (sadrzi) {
+			System.out.println("Trazeni element se nalazi u zadatoj kolekciji!");
+
+		} else {
+			System.out.println("Trazeni element se ne nalazi u zadatoj kolekciji!");
+		}
+
+		/* get() - vraca element sa zadatim indeksom */
+		Object element = lista.get(2);
+		System.out.println("Element sa indeksom 2 u kolekciji je: " + element);
+
+		/*
+		 * indexOf - vraca indeks prve pojave zadatog elementa kolekcije i vratice -1
+		 * ukoliko trazeni element ne postoji
+		 */
+		int pozicija = lista.indexOf("Drugi");
+		System.out.println("Element Drugi je na poziciji: " + pozicija);
+
+		/* toArray - sluzi za prebacivanje elemenata u niz */
+		String[] nizString = new String[lista.size()];
+		lista.toArray(nizString);
+
+		/* Prolazak kroz niz */
+		for (String s : nizString) {
+			System.out.printf("%s ", s);
+		}
+
+		/* remove - brise prvu pojavu zadate vrednosti */
+		System.out.println("\n\nUklanjanja elementa Treci: ");
+		lista.remove("Treci");
+		for (String s : lista) {
+			System.out.printf("%s ", s);
+		}
+
+		/* clear - brise sve elemente iz zadate kolekcije */
+		lista.clear();
+		System.out.println("\n\nVelicina kolekcije nakon brisanja: " + lista.size());
+	}
+
+}

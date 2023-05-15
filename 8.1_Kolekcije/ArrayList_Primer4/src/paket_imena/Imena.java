@@ -1,0 +1,59 @@
+package paket_imena;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Imena {
+	public static void main(String[] args) {
+		String imena[] = { "Mika", "Zika", "Ana", "Lana", "Hana", "Una" };
+
+		List listaImena = new ArrayList();
+
+		/* Dodavanje imena iz niza u kolekciju */
+		for (String s : imena) {
+			listaImena.add(s);
+		}
+
+		/* Ispsiivanje kolekcije */
+		for (Object s : listaImena) {
+			System.out.printf("%s ", s);
+		}
+
+		/* Imena za brisanje */
+		String imenaZaBrisanje[] = { "Mika", "Lana", "Hana" };
+
+		/* Brisanje imena iz kolekcije */
+		for (String s : imenaZaBrisanje) {
+			listaImena.remove(s);
+		}
+
+		/* Ispsiivanje kolekcije */
+		System.out.println("\n\nNovi izgled: ");
+		for (Object s : listaImena) {
+			System.out.printf("%s ", s);
+		}
+
+		/* Kreiranje iteratora kolekcije i stampanje liste pomocu iteratora */
+		Iterator iter = listaImena.iterator();
+		System.out.println("\n\nStampanje elemenata pomocu iteratora!");
+		while (iter.hasNext()) {
+			System.out.print(iter.next() + " ");
+		}
+
+		/* Brisanje elemenata liste imena koja se nalaze u listi listaImenaZaBrisanje */
+		List listaImenaZaBrisanje = new ArrayList();
+
+		listaImenaZaBrisanje.add("Una");
+		iter = listaImena.iterator();
+		while (iter.hasNext())
+			if (listaImenaZaBrisanje.contains(iter.next()))
+				iter.remove();
+
+		System.out.println("\n\nLista nakon drugog brisanja: ");
+		for (int i = 0; i < listaImena.size(); i++) {
+			System.out.print(listaImena.get(i) + " ");
+		}
+
+	}
+}

@@ -1,0 +1,12 @@
+package paket;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Napisati program koji kreira ArrayList i dodaje vrednosti 5,4,9,7,12 u tu
+		 * list a zatim ispisuje navedenu listu.
+		 */
+	}
+
+}
