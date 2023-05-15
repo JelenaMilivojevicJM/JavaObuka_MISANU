@@ -1,0 +1,10 @@
+package paket_OOP_1;
+
+public class ObjekatKlasePrimer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
