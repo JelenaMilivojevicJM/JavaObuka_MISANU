@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author jelen
- *
- */
-module MatematickeFunkcije {
-}
