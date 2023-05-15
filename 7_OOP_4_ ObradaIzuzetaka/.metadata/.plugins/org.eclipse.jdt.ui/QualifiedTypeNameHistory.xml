@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="paket1.Student"/>
+    <fullyQualifiedTypeName name="paket1.Izuzetak"/>
+    <fullyQualifiedTypeName name="paketMotor.Motor"/>
+    <fullyQualifiedTypeName name="paketMotor.IzuzetakMotor"/>
+    <fullyQualifiedTypeName name="paketCasopis.Casopis"/>
+    <fullyQualifiedTypeName name="paketCasopis.IzuzetakCasopis"/>
+    <fullyQualifiedTypeName name="paket_TelefonskiRacun.TelefonskiRacun"/>
+    <fullyQualifiedTypeName name="paket_Artikal.Artikal"/>
+    <fullyQualifiedTypeName name="paket_Artikal.IzuzetakArtikal"/>
+</qualifiedTypeNameHistroy>
