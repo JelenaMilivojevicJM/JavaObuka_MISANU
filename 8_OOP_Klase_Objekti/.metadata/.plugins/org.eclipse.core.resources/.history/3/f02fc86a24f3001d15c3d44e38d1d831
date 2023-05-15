@@ -1,0 +1,29 @@
+package paket_Kocka;
+
+public class Kocka {
+	private double stranica;
+
+	Kocka(double stranica) {
+
+		this.stranica = stranica;
+	}
+
+	public void setStranica(double str) {
+		stranica = str;
+	}
+
+	public double getStranica() {
+		return stranica;
+	}
+
+	public double racunajZapreninu() {
+		return stranica * stranica * stranica;
+	}
+
+	public double racunajPovrsinu() {
+		return 6 * (stranica * stranica);
+	}
+
+}
+
+}
