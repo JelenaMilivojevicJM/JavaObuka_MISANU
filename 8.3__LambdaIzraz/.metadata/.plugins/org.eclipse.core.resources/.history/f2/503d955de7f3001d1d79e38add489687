@@ -1,0 +1,6 @@
+package paket_lambda_primer2;
+
+/*Napisati Lambda izraz koji ispituje da li je jedan broj deljiv drugim brojem. */
+public interface TestDeljivosti {
+	public boolean test(int n, int m);
+}

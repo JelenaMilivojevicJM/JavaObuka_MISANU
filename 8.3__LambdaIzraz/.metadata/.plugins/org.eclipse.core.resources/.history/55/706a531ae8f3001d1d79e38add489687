@@ -1,0 +1,18 @@
+package paket_domaci;
+
+public class Main {
+	/* Lambda izrazom izracunati faktorijel broja. */
+	public static void main(String[] args) {
+		// Kreiranje promenljive i upotreba lambda izraza:
+		Faktorijel broj = (n) -> {
+
+			int rezultat = 1;
+
+			for (int i = n; i >= 1; i-- ) {
+
+				rezultat *= i;
+			}
+			return rezultat;
+		};
+
+}

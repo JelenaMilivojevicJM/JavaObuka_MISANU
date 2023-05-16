@@ -1,0 +1,13 @@
+package paket;
+
+public interface TestiraBroj {
+	/*
+	 * Funkcionalni interfejs: To je interfejs koji sadrži jednu i samo jednu
+	 * apstraktnu metodu. Apstraktna metoda nema telo, poseduje samo deklaraciju. Ta
+	 * metoda bi trebalo da određuje planiranu svrhu interfejsa
+	 */
+
+	// Deklaracija metode
+	boolean testbr(int n);
+
+}
