@@ -1,9 +1,0 @@
-INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\LambdaIzraz_GenerickiTipovi\.metadata\.plugins\org.eclipse.jdt.core
-2156089343.index
-1720487434.index
-1865797976.index
-428482117.index
-776207828.index
-4286963632.index
-294370972.index
-1854746323.index
