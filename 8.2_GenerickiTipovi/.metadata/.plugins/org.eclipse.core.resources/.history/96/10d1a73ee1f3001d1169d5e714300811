@@ -1,0 +1,14 @@
+package paket;
+
+public class Main public static void main(String[] args) {
+	// Objekat genericke klase
+	GKlasa<Integer> objekat = new GKlasa<Integer>(5);
+
+	// Pozivanje metode genericke klase
+objekat.prikaziTip();
+
+	// Dohvatanje vrednosti objekta
+	int vrednost = objekat.getAtribut();
+	System.out.println("Vrednost objekta je: " + vrednost);
+}
+}

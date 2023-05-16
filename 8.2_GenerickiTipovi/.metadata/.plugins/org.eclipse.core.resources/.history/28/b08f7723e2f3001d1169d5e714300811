@@ -1,0 +1,9 @@
+package paket;
+
+/*Napisati genericku klasu “OpisnaOcena” koja omogućuje smeštanje vrednosti 
+ * (Ocena, OpisnaOcena). Ocena je celobrojna vrednost, a OpisnaOcena je String-ovna vrednost. 
+ * Ispis uraditi za ocene od 1 – 5. */
+
+public class Main {
+
+}

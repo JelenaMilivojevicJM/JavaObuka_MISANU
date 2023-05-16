@@ -1,0 +1,36 @@
+package paket;
+
+/* 1.Parametrizovani tipovi su važni jer omogućavaju pravljenje klasa, interfejsa i metoda kojima se tip podataka na koje deluju prosleđuje kao parameter. 
+
+2.Korist: pomoću generičkih tipova može se napraviti klasa koja radi s različitim tipovima podataka. 
+
+3.Parametar se prolsedjuje u oznaku <>
+
+4.STvarni tip odredjujemo kada kreiramo objekat/pozivamo metodu s kojom ce ta klasa ili metoda raditi
+
+5.Klasa, interfejs ili motoda koja radi sa parametrizovanim tipom zove se generička (klasa ili metoda). U osnovi, generički tipovi znači parametrizovani tipovi.
+
+6.Genericki tipovi su primenljivi za referenti tip podataka. Zato one primitivne prvo smestamo u wrapper klase.
+
+7.Moze imati i vise parametara <T,V>.
+*/
+public class GKlasa<T> {
+
+	// Atribut/Polje genericke klase
+	T atribut;
+
+	// Parametruzovani Konstruktor Genericke klase
+	GKlasa(T atribut) {
+		this.atribut = atribut;
+	}
+
+	// Setter
+	public void setAtribut(T atribut) {
+		this.atribut = atribut;
+	}
+
+	// Getter
+	public T getAtribut() {
+		return atribut;
+	}
+}

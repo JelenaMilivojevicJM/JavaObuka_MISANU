@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\8.2_GenerickiTipovi\.metadata\.plugins\org.eclipse.jdt.core
+1097296737.index
+384597532.index
+3269609996.index
+4280691501.index
+3813981597.index
+1865797976.index
+149933010.index
