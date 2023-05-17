@@ -1,8 +1,0 @@
-INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\ZaGit\Fajlovi\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-1004841558.index
-1131495111.index
-356877281.index
-3665325949.index
-776207828.index
-4282976758.index
