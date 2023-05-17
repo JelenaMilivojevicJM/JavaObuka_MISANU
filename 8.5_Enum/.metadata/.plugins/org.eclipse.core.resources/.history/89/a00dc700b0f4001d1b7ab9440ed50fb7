@@ -1,0 +1,22 @@
+package paket_dani;
+
+public enum Dan {
+    PONEDELJAK("Ponedeljak"),
+    UTORAK("Utorak"),
+    SREDA("Sreda"),
+    ČETVRTAK("Četvrtak"),
+    PETAK("Petak"),
+    SUBOTA("Subota"),
+    NEDELJA("Nedelja");
+
+    private final String ime;
+
+    Dan(String ime) {
+        this.ime = ime;
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+}

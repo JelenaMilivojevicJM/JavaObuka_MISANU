@@ -1,0 +1,5 @@
+package paket_uvod;
+
+public enum Boje {
+
+}

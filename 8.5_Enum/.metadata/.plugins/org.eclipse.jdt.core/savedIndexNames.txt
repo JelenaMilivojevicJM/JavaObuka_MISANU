@@ -1,0 +1,10 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\8.5_Enum\.metadata\.plugins\org.eclipse.jdt.core
+3302800844.index
+3110796519.index
+776207828.index
+2779412536.index
+3455594235.index
+1944737485.index
+2798451141.index
+1865797976.index
+3907046486.index
