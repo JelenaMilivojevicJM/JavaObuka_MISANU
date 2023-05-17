@@ -1,0 +1,25 @@
+package paket_Main;
+
+import paket_novaNitA.A;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Postupak pokretanja nove niti:
+
+		/*
+		 * Nakon kreiranja klase koja implementura interface Runnable, potrebno je
+		 * napraviti instancu objekta tipa Thread. Oblik konstruktora klase Thread:
+		 * Thread(Runnable objektaNit, String imeNiti); • objektaNit - instanca klase
+		 * koja implementira interface Runnable. Ona definise mesto gde pocinje nit. •
+		 * ImeNiti - predastavlja ime nove niti (koje mi kreiramo)
+		 */
+		A a = new A();// **Objekat koji implemnetira taj interface
+
+		Thread t1 = new Thread(a, "Nit1");
+		Thread t2 = new Thread(a, "Nit2");
+		Thread t3 = new Thread(a, "Nit3");
+
+	}
+
+}

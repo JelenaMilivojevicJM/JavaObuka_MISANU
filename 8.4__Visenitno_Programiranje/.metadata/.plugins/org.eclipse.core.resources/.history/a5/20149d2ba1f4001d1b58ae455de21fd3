@@ -1,0 +1,21 @@
+package paket_niti;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Prilikom pokjretanja Java Programa, jedna programska nit odmah pocinje da se
+		 * izvrsava!
+		 * 
+		 * To je glavna - main inicijalna nit!
+		 * 
+		 * • Ona PRVA NASTAJE i POSLEDNJA SE ZAVRSAVA.
+		 * 
+		 * • Takodje ima ulogu i ciscenja adresa ostalih niti nakon sto su one unistene.
+		 * 
+		 * Upravljanje Glavnom niti • radi se preko objekta tipa Thread. • Pozivom
+		 * metode currentThreat(). • Ova metoda pripada clasi Thread.
+		 */
+	}
+
+}

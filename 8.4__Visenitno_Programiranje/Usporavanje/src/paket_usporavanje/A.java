@@ -1,0 +1,30 @@
+package paket_usporavanje;
+
+/*Metoda za usporavanje Threada: Thread.sleep(vrednost u milisekundama); 
+•	Ova metoda privremeno suspenduje odnsosno zaustavlja izvrsavanje niti. 
+Nit se suporava tako sto joj se suspenduju resursi.
+•	Argument metode je interval u milisekundama.
+•	Metoda sleep u klasi Thread moze da izazove izuzetak InterruptedException kada neka druga nit pozeli da prekine izvrzavanje ove suspendovane niti.
+I zato je stavljamo u TRY-CATCH blok.
+•	Usporavanje Thread-a naglasavamo u sporednoj klasi. A u glavnoj ga samo startujemo.
+ */
+public class A extends Thread {
+
+	A(String s) {
+		super(s);
+	}
+
+	public void run() {
+		int i = 1;
+		while (i < 5) {
+			System.out.println("Bravo!");
+			try {
+				Thread.sleep(500);
+			} catch (Exception e) {
+				System.out.println("Nit je prikinuta. Desio se izuzetak!" + e);
+			}
+			i++;
+		}
+		System.out.println("Kraj!");
+	}
+}

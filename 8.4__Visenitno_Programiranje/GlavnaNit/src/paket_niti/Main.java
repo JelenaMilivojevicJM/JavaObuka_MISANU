@@ -1,0 +1,40 @@
+package paket_niti;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Prilikom pokjretanja Java Programa, jedna programska nit odmah pocinje da se
+		 * izvrsava!
+		 * 
+		 * To je glavna - main inicijalna nit!
+		 * 
+		 * • Ona PRVA NASTAJE i POSLEDNJA SE ZAVRSAVA.
+		 * 
+		 * • Takodje ima ulogu i ciscenja adresa ostalih niti nakon sto su one unistene.
+		 * 
+		 * Upravljanje Glavnom niti radi se preko objekta tipa Thread. Pozivom metode
+		 * currentThreat().Ova metoda pripada clasi Thread.
+		 */
+
+		/*
+		 * Kreiramo prvo referencu na trenutnu nit Ova trenutna nit dodeljuje se
+		 * promenljivoj - objektu t koji smo mi kreirali sada
+		 */
+		Thread t = Thread.currentThread();
+
+		// Da vidimo koja je trenutna nit:
+		System.out.println("Trenutna nit: " + t);
+		/* Izlaz: Trenutna nit: Thread[main,5,main] */
+		// [ime niti, prioritet procesa, ime grupe kojoj nit pripada]
+
+		// Da vidimo koje je ime niti:
+		System.out.println("Naziv niti: " + Thread.currentThread().getName());
+
+		// Da vidimo kog je prioriteta proces u kojem je data nit:
+		System.out.println("Prioritet niti: " + t.getPriority());
+		System.out.println("Prioritet niti(cela putanja): " + Thread.currentThread().getPriority());
+
+	}
+
+}
