@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\8.8_DizajnPaternAdapter\.metadata\.plugins\org.eclipse.jdt.core
+776207828.index
+1865797976.index
+1371415807.index
