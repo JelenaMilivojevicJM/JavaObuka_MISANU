@@ -1,0 +1,361 @@
+#Prikazati ime, prezime platu svih radnika sortiranih po iznosu plate u rastucem poretku
+SELECT ime, prezime, plata
+ FROM radnici 
+ORDER BY plata;
+
+#Prikazati ime, prezime platu svih radnika sortiranih po iznosu plate u opadajucem poretku
+SELECT ime, prezime, plata 
+FROM radnici 
+ORDER BY plata DESC;
+
+#Izracunati prosecnu platu svih radnika
+SELECT AVG(plata) AS ProsekPlata 
+FROM radnici;
+
+#Ispisati ukupan broj svih radnika
+#COUNT( ili primarni kljuc radnikID ili *)
+SELECT COUNT(radnik_id)AS UkupanBrojRadnika FROM radnici;
+
+#Prikazati najvecu platu radnika
+SELECT MAX(plata) AS NajvecaPlata FROM radnici;
+
+#Prikazati najmanju platu radnika
+SELECT MIN(plata) AS NajmanjaPlata FROM radnici;
+
+# Prikazati zbir svih plata radnika 
+SELECT SUM(plata) AS ZbirPlata FROM radnici;
+
+#KONKATENACIJA
+SELECT CONCAT(ime," ",prezime) AS Radnik  FROM radnici;
+
+# Prikaz samo prvog radnika
+SELECT ime, prezime FROM radnici LIMIT 0, 1; 
+
+
+#Prikazati po sektorima broj radnika koji radi u njemu
+
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika 
+FROM radnici GROUP BY sektor_id;
+
+#Prikazati za svaki sektor broj radnika koji radi u njemu, tako da su prikazani podaci samo o sektorima koji imaju više od jednog radnika.
+
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika 
+FROM radnici GROUP BY sektor_id HAVING COUNT(radnik_id) > 1;
+
+#POGLED:
+
+CREATE VIEW sviradnici AS SELECT * from radnici;
+SELECT * from sviradnici;
+
+#1.) Prikazati prezimena svih radnika
+
+SELECT prezime AS PrezimenaRadnika FROM `radnici`;
+
+#2.) Prikazati sve podatke iz tabele sortirane po prezimenima (Z-A), opadajuce.
+
+SELECT * FROM `radnici` ORDER BY prezime DESC;
+
+#3.) Prikazati imena i zarade svih radnika sortiranih prema zaradi rastuce.
+
+SELECT ime,plata FROM `radnici` ORDER BY plata ASC;
+
+#4.) Prikazati ukupan broj sektora. Upit izvrsiti na dva nacina.
+
+#Prvi nacin
+SELECT COUNT(sektor_id)AS UkupanBrojSektora FROM sektori;
+#Drugi nacin:
+SELECT COUNT(*) AS UkupanBrojSektora FROM sektori;
+
+#5.) Prikazati najvecu platu svih ranika. Na dva nacina
+
+#Koriscenje MAX funkcije
+SELECT MAX(plata)AS NajvecaPlata FROM `radnici`;
+
+#Koriscenje limit klauzule:
+SELECT ime,prezime,plata FROM radnici ORDER BY plata DESC LIMIT 0,1;
+
+#6.) Prikazati najstarijeg radnika. Vise nacina
+
+#Koriscenje MIN funkcije
+SELECT MIN(datumrodj) AS NajstarijiRadnik FROM radnici;
+#Koriscenje kaluzule ORDER BY + LIMIT
+SELECT * FROM radnici ORDER BY datumrodj ASC LIMIT 0,1;
+
+#7.) Prikazati podatke o radniku koji se preziva Lazic
+
+SELECT * FROM `radnici` WHERE prezime = "Lazic";
+
+#8.) Prikazati podatke o svim zenskim radnicima
+
+SELECT * FROM `radnici` WHERE pol = 'Z';
+
+#9.) Prikazati podatke o radnicima koji se prezivaju Anic i Mikic
+
+SELECT * FROM `radnici` WHERE prezime IN("Anic","Mikic");
+
+#10.) Prikazati imena i prezimena svih radnika koji su rodjeni izmedju 1990 i 2000 godine.
+
+SELECT ime AS Ime, prezime AS Prezime, datumrodj AS DatumRodjenja 
+FROM radnici
+WHERE datumrodj BETWEEN '1990-01-01' AND '2000-01-01';
+
+#11.) Prikazati imena i prezimena svih radnika cije prezime pocinje na slovo A.
+
+SELECT ime AS Ime, prezime AS Prezime 
+FROM radnici
+WHERE prezime LIKE"A%";
+
+
+#12.) Promeniti ime radniku koji se zove Milan Milanovic, tako da se preziva Petrovic. Upit izvrsiti kroz korake 1-3.
+
+#Prvi korak
+SELECT * FROM `radnici` WHERE ime = "Milan" AND prezime = "Milanovic";
+#Drugi Korak
+UPDATE radnici
+SET prezime = "Petrovic"
+WHERE radnik_id = 5;
+
+#Treci Korak
+SELECT * FROM radnici WHERE radnik_id = 5;
+
+#13.) Obrisati radnika Lazu Lazica. Upit izvrsiti kroz korake 1-4.
+
+SELECT radnik_id FROM radnici WHERE ime = "Laza" AND prezime = "Lazic";
+SELECT * FROM radnici WHERE radnik_id = 3;
+DELETE FROM radnici WHERE radnik_id = 3;
+SELECT * FROM radnici WHERE radnik_id = 3;
+
+
+#14.) Prikazati imena i prezimena svih radnika ispisanih velikim slovima u koloni RADNIK, sortiranih po prezimenima rastuce.
+
+#Prvi nacin
+SELECT UPPER(CONCAT(ime," ",prezime)) AS RADNIK FROM radnici ORDER BY prezime ASC;
+#Drugi nacin
+SELECT CONCAT(UPPER(ime)," ",UPPER(prezime)) AS RADNIK FROM radnici ORDER BY prezime ASC;
+
+#15.) Prikazati imena i prezimena svakog radnika i mesec rodjenja ispisan u koloni MesecRodjenja (January- Decembar)
+SELECT concat(ime, ' ' , prezime,' ',datumrodj) AS MesecRodjenja From radnici ORDER BY datumrodj; 
+SELECT ime, prezime, DATE_FORMAT(datumrodj, '%M') AS MesecRodjenja FROM radnici ORDER BY prezime ;
+
+#16.) Prikazati za svaki sektor broj radnika koji radi u njemu.
+#1.Nacin:
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika FROM radnici GROUP BY sektor_id;
+#2.Nacin:
+SELECT sektor_id AS Sektor, COUNT(*) AS BrojRadnika FROM radnici GROUP BY sektor_id;
+
+#3.Nacin: Joins
+SELECT sektori.naziv AS Sektor, COUNT(radnici.radnik_id) AS BrojRadnika
+FROM sektori INNER JOIN radnici
+USING(sektor_id)
+GROUP BY Sektor;
+
+#17.) Prikazati za svaki sektor broj radnika koji radi u njemu, tako da su prikazani podaci samo o sektorima koji imaju više od jednog radnika.
+#1.Nacin:
+SELECT sektor_id AS Sektor, COUNT(*) AS BrojRadnika 
+FROM radnici 
+GROUP BY sektor_id 
+HAVING COUNT(*) > 1;
+#2.Nacin:
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika FROM radnici
+GROUP BY sektor_id 
+HAVING COUNT(radnik_id)>1;
+
+#18.) Prikazati podatke samo o sektorima koji imaju više od jednog muskog radnika.
+#1. nacin: Obican upit
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika 
+FROM radnici 
+WHERE pol ='M'
+GROUP BY sektor_id
+HAVING COUNT(radnik_id)>1;
+#2 nacin: Join
+SELECT sektori.naziv AS Sektori,COUNT(radnici.radnik_id) AS BrojRadnika
+FROM sektori INNER JOIN radnici
+USING (sektor_id)
+WHERE pol='M'
+GROUP BY sektori
+HAVING BrojRadnika>1;
+
+
+#19.) Prikazati podatke o prosečnim platama ,po sektorima, po polovima radnika.
+SELECT AVG(plata) AS ProsecnaPlata, sektor_id As Sektor, pol AS Pol 
+FROM radnici 
+GROUP BY sektor_id, pol 
+ORDER BY AVG(plata);
+#JOIN:
+SELECT AVG(radnici.plata) AS ProsekPlate, radnici.pol AS Pol, sektori.naziv AS Sektor
+FROM radnici INNER JOIN sektori
+USING(sektor_id)
+GROUP BY Sektor,Pol;
+
+
+#20.) Prikazati imena i prezimena radnika, njihove plate i plate uvećane za bonus od 5000, kod radnika čija plata nakon dodatka bonusa ima iznos veci od 70000.
+
+SELECT ime AS Ime, prezime AS Prezime, plata AS Plata, plata+5000 AS PlataIBonus
+FROM radnici
+WHERE plata+5000>70000;
+
+#21.) Prikazati prvih 5 radnika (imena i prezimena, datumeRodjenja), sortiranih prema datumu rodjenja opadajuce.
+
+SELECT ime AS Ime, prezime AS Prezime, datumrodj AS DatumRodjenja
+FROM radnici
+ORDER BY datumrodj DESC 
+LIMIT 0,5;
+
+
+#22.) Prikazati prvih 5 najstarijih radnika.
+SELECT * FROM radnici 
+ORDER BY datumrodj ASC 
+LIMIT 0,5;
+
+#23.) Prikazati drugu, trecu i cetrvru osobu, odnosno radnika koji su najstariji.
+SELECT * FROM radnici 
+ORDER BY datumrodj ASC 
+LIMIT 1, 3;
+
+#24.) Prikazati pet radnika sa najmanjim platama.
+SELECT * FROM radnici ORDER BY plata ASC LIMIT 5;
+
+#25.) Prikazati sve radnike zenskog pola koji su rodjeni 1987 godine.
+#Nacin 1:
+SELECT * FROM `radnici` WHERE pol = 'Z' AND datumrodj BETWEEN '1987-01-01' AND '1987-12-31';
+#Nacin 2:
+SELECT * FROM radnici WHERE pol ='Z' AND datumrodj LIKE('1987-%-%');
+
+#26) Spojiti imena i prezimena radnika i sortirati ih po duzini opadajuce.
+#Nacin 1:
+SELECT CONCAT(ime," ",prezime) AS Ime_Prezime, LENGTH(CONCAT(ime," ",prezime)) AS Duzina
+FROM radnici 
+ORDER BY Duzina DESC;
+#Nacin 2:
+SELECT concat(ime, ' ' , prezime) AS ImePrezime 
+From radnici 
+order by length(ImePrezime) DESC;
+
+#27) Ispisati duzine svih imena radnika koristeci alijas i sortirajuci opadajuce
+SELECT ime AS Ime, LENGTH(ime) AS DuzinaImena 
+FROM radnici 
+ORDER BY DuzinaImena DESC;
+
+#28) Prikazati prvih pet najmladjih radnika.
+SELECT ime, prezime, datumrodj
+FROM radnici 
+ORDER BY datumrodj DESC LIMIT 5;
+
+#29) Prikazati najstarijeg radnika.
+SELECT ime, prezime, datumrodj 
+FROM radnici 
+ORDER BY datumrodj ASC
+LIMIT 1; 
+
+#30) Prikazati za svaki sektor broj radnika koji radi u njemu.
+SELECT sektor_id AS Sektor, COUNT(radnik_id) AS BrojRadnika 
+FROM radnici 
+GROUP BY sektor_id;
+
+#31) Prikazati podatke o sektorima koji imaju vise od jednog zenskog radnika.
+SELECT sektor_id AS SEKTOR, COUNT(radnik_id) AS BrojRadnika 
+FROM radnici 
+WHERE pol ='Z'
+GROUP BY sektor_id
+HAVING COUNT(radnik_id)>1;
+
+#JOIN:
+SELECT sektori.naziv AS Sektor, sektori.sektor_id AS IDBrojSektora, 
+COUNT(radnici.radnik_id) AS BrojRadnika
+FROM sektori INNER JOIN radnici 
+USING(sektor_id)
+WHERe radnici.pol='Z'
+GROUP BY Sektor 
+HAVING BrojRadnika>0;
+
+#32) Prikazati podatke radnika po prosecnim platama po sektorima, po polovima.
+SELECT sektor_id AS Sektor, pol as Pol, AVG(plata) AS ProsekPlate 
+FROM radnici 
+GROUP BY sektor_id, pol 
+ORDER BY AVG(plata);
+
+#33) Prikazati u jednoj recenici rezultat deljenja 10 / 3. Rezultat treba da izadje u realnom broju u obliku 3,1.
+SELECT CONCAT(10 DIV 3,",", MOD(10,3)) AS Deset_PODELJENO_SA_Tri;
+
+#34) Prikazati imena dana kada je svako od zaposlenih rodjen, poredjana po azbucnom redosledu.
+#Nacin 1:
+SELECT CONCAT(ime," ",prezime) AS Radnik, DAYNAME(datumrodj) AS ImeDanaRodjenja
+FROM radnici
+ORDER BY DAYNAME(datumrodj)ASC; 
+#Nacin 2:
+SELECT ime, prezime, DATE_FORMAT(datumrodj,'%W') AS DanRodjenja FROM radnici; 
+
+#35) Prikazati pune godine rodjenja svih radnika po radniku, po godini rastuce. Dva nacina.
+# Nacin 1:
+SELECT CONCAT(ime," ", prezime) AS Radnik, DATE_FORMAT(datumrodj,'%Y') AS GodinaRodjenja
+FROM radnici
+GROUP BY radnik_id
+ORDER BY DATE_FORMAT(datumrodj,'%Y');
+# Nacin 2:
+SELECT CONCAT(ime," ", prezime) AS Radnik, YEAR(datumrodj) AS GodinaRodjenja
+FROM radnici
+GROUP BY radnik_id
+ORDER BY YEAR(datumrodj) ASC;
+
+#36) Prikazati godista svih radnika, od najmadjeg godista do najstarijeg. 
+SELECT CONCAT(ime," ",prezime) AS Radnik, DATE_FORMAT(datumrodj,'%y') AS Godiste
+FROM radnici
+ORDER BY DATE_FORMAT(datumrodj,'%y') ASC;
+
+#37) Od trenutnog vremena prikazite na izlazu samo BROJ koliko je tacno sati. 
+SELECT TIME_FORMAT(NOW(),'%H') AS KolikoJeSatiTrenutno;
+
+#38) Od trenutnog vremena prikazati tacno vreme u 24-oro casovno obliku, sa odrednicom da li je AM ili PM. Te to sacuvati kao pogled. 
+#Nacin 1
+CREATE VIEW trenutnoVreme AS
+SELECT TIME_FORMAT(NOW(),'%T') AS TrenutnoVreme,TIME_FORMAT(NOW(),'%p') AS DobaDana;
+#Nacin 2
+SELECT * FROM `trenutnovreme`;
+
+#39) Prikazati neki radnom broj i zaokruziti ga na 3 decimale.
+#Nacin 1
+SELECT RAND(10) AS RandomBroj, ROUND(RAND(10),3) AS Zaokruzivanje;
+#Nacin 2
+SELECT ROUND(RAND(2),3);
+
+#40) Izdvojite ime i prezime ranika (u koloni Radnik) i naziv sektora u kojem rade (u koloni Sektor) .
+SELECT CONCAT(radnici.ime," ", radnici.prezime) AS Radnik, 
+sektori.naziv AS Sektor
+FROM radnici INNER JOIN sektori 
+ON radnici.sektor_id = sektori.sektor_id;
+
+#41) Izdvojite ime i datum rodjenja radnika,kao  i naziv sektora u kojem rade, za sve radnike cije ime pocinje na slovo M.
+SELECT radnici.ime, radnici.datumrodj, sektori.naziv
+FROM radnici INNER JOIN sektori 
+ON radnici.sektor_id = sektori.sektor_id
+WHERE radnici.ime LIKE "M%";
+
+#42) Izdvojite ime i datum rodjenja 5 najmladjih radnika kao  i naziv sektora u kojem rade.
+SELECT radnici.ime, radnici.datumrodj, sektori.naziv
+FROM radnici INNER JOIN sektori
+ON radnici.sektor_id = sektori.sektor_id
+ORDER BY radnici.datumrodj DESC
+LIMIT 0,5; 
+
+#43) Izdvojite ime i prezime radniika , kao i naziv sektora, za sve radnike koji su zaposljeni u administarciji. 
+SELECT radnici.ime, radnici.prezime, sektori.naziv
+FROM radnici INNER JOIN sektori
+ON radnici.sektor_id=sektori.sektor_id
+WHERE sektori.naziv = "Administracija";
+
+#44) Izdvojiti broj sektora radnika, kao i naziv sektora u kome radi vise od 2 radnika.
+SELECT radnici.sektor_id AS IDBrojSektora,sektori.naziv AS NazivSektora, 
+COUNT(radnici.radnik_id) AS BrojRadnika
+FROM radnici INNER JOIN sektori
+ON radnici.sektor_id = sektori.sektor_id
+GROUP BY radnici.sektor_id
+HAVING COUNT(radnici.radnik_id) > 2;
+
+#45) Izdvojiti ime, datum rodjenja i platu radnika, kao i naziv sektora u kome radi, za sve radnike cija je plata izmedju 50000 i 80000.
+SELECT radnici.ime, radnici.datumrodj, radnici.plata, sektori.naziv
+FROM radnici INNER JOIN sektori
+ON radnici.sektor_id = sektori.sektor_id
+WHERE radnici.plata BETWEEN 50000 AND 80000;
+
+
+

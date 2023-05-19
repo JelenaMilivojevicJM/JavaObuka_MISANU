@@ -1,0 +1,45 @@
+package paket;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Update {
+
+	public static void main(String[] args) {
+		// Informacije o bazi sa kojom se povezujemo:
+		String url = "jdbc:mysql://localhost:3306/firma";
+		String username = "root";
+		String password = "";
+
+		System.out.println("Konekcija.... ");
+		// Konektovanje sa bazom:
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+			System.out.println("Uspesna konekcija ka bazi!");
+
+			String sqlupdate = "UPDATE sektori SET naziv=? WHERE sektor_id=?";
+
+			PreparedStatement ps = conn.prepareStatement(sqlupdate);
+
+			// Postavljanje nove vrednosti vec postojecoj koloni tabele
+			// Naziv koji postavljamo(menjamo)
+			ps.setString(1, "NoviNazivSektora");
+			// Koji je inace ID tog sektora
+			ps.setInt(2, 3);
+
+			// Metoda za izvrsavanje naredbe objekta ps je njegova metoda executeUpdate
+			int promenjenPodatak = ps.executeUpdate();
+
+			// Provera statusa promenljive za izmenjen podatak
+			if (promenjenPodatak > 0) {
+				System.out.println("Usepeno izvrsena izmena!");
+			}
+
+		} catch (SQLException e) {
+			// Izuzetak
+			e.printStackTrace();
+		}
+
+	}
+}

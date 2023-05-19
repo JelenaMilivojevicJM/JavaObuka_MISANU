@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\jelen\OneDrive\Desktop\9.1_BazePodataka_SQL_PrimerFirma\JDBC_DB_Firma\.metadata\.plugins\org.eclipse.jdt.core
+2427455077.index
+2763509381.index
+1865797976.index
+3832474446.index
+575727852.index

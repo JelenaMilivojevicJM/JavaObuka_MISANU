@@ -1,0 +1,43 @@
+CREATE DATABASE firma;
+
+CREATE TABLE IF NOT EXISTS `radnici` (
+`radnik_id` int(10) AUTO_INCREMENT,
+`ime` varchar(55) NOT NULL,
+`prezime` varchar(55) NOT NULL,
+`datumrodj` date DEFAULT NULL,
+`pol` ENUM("M", "Z") DEFAULT NULL,
+`plata` int(10) DEFAULT NULL,
+`sektor_id` int(10) DEFAULT NULL ,
+PRIMARY KEY (`radnik_id`)
+) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `sektori` (
+`sektor_id` int(10),
+`naziv` varchar(55) NOT NULL,
+PRIMARY KEY (`sektor_id`)
+) ENGINE = InnoDB;
+
+alter table radnici
+add foreign key(sektor_id) references sektori(sektor_id)
+on delete no action
+on update cascade;
+
+INSERT INTO `sektori`(`sektor_id`, `naziv`) VALUES (1, 'Uprava');
+INSERT INTO `sektori`(`sektor_id`, `naziv`) VALUES (2, 'Administracija');
+INSERT INTO `sektori`(`sektor_id`, `naziv`) VALUES (3, 'Marketing');
+INSERT INTO `sektori`(`sektor_id`, `naziv`) VALUES (4, 'Razvoj softvera');
+INSERT INTO `sektori`(`sektor_id`, `naziv`) VALUES (5, 'Testiranje');
+
+
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Pera', 'Peric', '2000-01-01', 'M', '45000', 1);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Zika', 'Zikic', '2001-01-01', 'M', '55000', 2);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Laza', 'Lazic', '2002-01-01', 'M', '65000', 3);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Mika', 'Mikic', '1990-01-01', 'M', '75000', 4);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Milan', 'Milanovic', '1985-01-01', 'M', '85000', 5);
+
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Ivana', 'Ivanovic', '1986-02-02', 'Z', '46000', 1);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Ana', 'Anic', '1987-06-06', 'Z', '56000', 2);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Nina', 'Ninic', '1987-07-07', 'Z', '66000', 3);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Mara', 'Maric', '1988-08-08', 'Z', '77000', 4);
+INSERT INTO `radnici`(`ime`, `prezime`, `datumrodj`, `pol`, `plata`, `sektor_id`) VALUES ('Masa', 'Masic', '1989-09-09', 'Z', '88000', 5);
